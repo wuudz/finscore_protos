@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+enum ViewerType {
+  UNKNOWN = 0;
+  APP = 1;
+  WEBSITE = 2;
+}
+
+message Viewer {
+  ViewerType type = 1;
+}

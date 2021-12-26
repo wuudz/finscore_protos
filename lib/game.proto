@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+enum PlayerOrder {
+  USER_DEFINED = 0;
+  RANDOM = 1;
+}
+
+message GameConfig {
+  uint32 zeros = 1;
+  uint32 reset_score = 2;
+  uint32 winning_score = 3;
+  PlayerOrder player_order = 4;
+}
+
+message GamePlayer {
+  repeated uint32 scores = 1;
+  bool kicked = 2;
+}
+
+message Game {
+  GameConfig config = 1;
+  map<string, GamePlayer> players = 2;
+}
