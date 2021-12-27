@@ -7,6 +7,6 @@
   },
   "scripts": {
     "build": "npm run build:ts",
-    "build:ts": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./build/ts ./lib/*.proto && tsc -p ./build/ts/tsconfig.json"
+    "build:ts": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./build/ts ./lib/*.proto"
   }
 }
