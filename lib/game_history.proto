@@ -12,4 +12,8 @@ message GameHistory {
   google.protobuf.Timestamp timestamp = 1;
   string uid = 2;
   GameHistoryEvent event = 3;
+
+  oneof data {
+    uint32 score = 4;
+  }
 }

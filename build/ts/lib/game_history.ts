@@ -53,6 +53,7 @@ export interface GameHistory {
   timestamp: Date | undefined;
   uid: string;
   event: GameHistoryEvent;
+  score: number | undefined;
 }
 
 const baseGameHistory: object = { uid: "", event: 0 };
@@ -70,6 +71,9 @@ export const GameHistory = {
     }
     if (message.event !== 0) {
       writer.uint32(24).int32(message.event);
+    }
+    if (message.score !== undefined) {
+      writer.uint32(32).uint32(message.score);
     }
     return writer;
   },
@@ -92,6 +96,9 @@ export const GameHistory = {
         case 3:
           message.event = reader.int32() as any;
           break;
+        case 4:
+          message.score = reader.uint32();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -112,6 +119,10 @@ export const GameHistory = {
       object.event !== undefined && object.event !== null
         ? gameHistoryEventFromJSON(object.event)
         : 0;
+    message.score =
+      object.score !== undefined && object.score !== null
+        ? Number(object.score)
+        : undefined;
     return message;
   },
 
@@ -122,6 +133,7 @@ export const GameHistory = {
     message.uid !== undefined && (obj.uid = message.uid);
     message.event !== undefined &&
       (obj.event = gameHistoryEventToJSON(message.event));
+    message.score !== undefined && (obj.score = Math.round(message.score));
     return obj;
   },
 
@@ -132,6 +144,7 @@ export const GameHistory = {
     message.timestamp = object.timestamp ?? undefined;
     message.uid = object.uid ?? "";
     message.event = object.event ?? 0;
+    message.score = object.score ?? undefined;
     return message;
   },
 };

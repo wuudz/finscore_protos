@@ -15,11 +15,22 @@ import 'game_history.pbenum.dart';
 
 export 'game_history.pbenum.dart';
 
+enum GameHistory_Data {
+  score, 
+  notSet
+}
+
 class GameHistory extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, GameHistory_Data> _GameHistory_DataByTag = {
+    4 : GameHistory_Data.score,
+    0 : GameHistory_Data.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GameHistory', createEmptyInstance: create)
+    ..oo(0, [4])
     ..aOM<$0.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp', subBuilder: $0.Timestamp.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uid')
     ..e<GameHistoryEvent>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'event', $pb.PbFieldType.OE, defaultOrMaker: GameHistoryEvent.SCORE, valueOf: GameHistoryEvent.valueOf, enumValues: GameHistoryEvent.values)
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'score', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -28,6 +39,7 @@ class GameHistory extends $pb.GeneratedMessage {
     $0.Timestamp? timestamp,
     $core.String? uid,
     GameHistoryEvent? event,
+    $core.int? score,
   }) {
     final _result = create();
     if (timestamp != null) {
@@ -38,6 +50,9 @@ class GameHistory extends $pb.GeneratedMessage {
     }
     if (event != null) {
       _result.event = event;
+    }
+    if (score != null) {
+      _result.score = score;
     }
     return _result;
   }
@@ -61,6 +76,9 @@ class GameHistory extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GameHistory getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GameHistory>(create);
   static GameHistory? _defaultInstance;
+
+  GameHistory_Data whichData() => _GameHistory_DataByTag[$_whichOneof(0)]!;
+  void clearData() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   $0.Timestamp get timestamp => $_getN(0);
@@ -90,5 +108,14 @@ class GameHistory extends $pb.GeneratedMessage {
   $core.bool hasEvent() => $_has(2);
   @$pb.TagNumber(3)
   void clearEvent() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get score => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set score($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasScore() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearScore() => clearField(4);
 }
 

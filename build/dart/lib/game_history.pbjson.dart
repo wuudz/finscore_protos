@@ -28,8 +28,12 @@ const GameHistory$json = const {
     const {'1': 'timestamp', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'timestamp'},
     const {'1': 'uid', '3': 2, '4': 1, '5': 9, '10': 'uid'},
     const {'1': 'event', '3': 3, '4': 1, '5': 14, '6': '.GameHistoryEvent', '10': 'event'},
+    const {'1': 'score', '3': 4, '4': 1, '5': 13, '9': 0, '10': 'score'},
+  ],
+  '8': const [
+    const {'1': 'data'},
   ],
 };
 
 /// Descriptor for `GameHistory`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameHistoryDescriptor = $convert.base64Decode('CgtHYW1lSGlzdG9yeRI4Cgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl0aW1lc3RhbXASEAoDdWlkGAIgASgJUgN1aWQSJwoFZXZlbnQYAyABKA4yES5HYW1lSGlzdG9yeUV2ZW50UgVldmVudA==');
+final $typed_data.Uint8List gameHistoryDescriptor = $convert.base64Decode('CgtHYW1lSGlzdG9yeRI4Cgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl0aW1lc3RhbXASEAoDdWlkGAIgASgJUgN1aWQSJwoFZXZlbnQYAyABKA4yES5HYW1lSGlzdG9yeUV2ZW50UgVldmVudBIWCgVzY29yZRgEIAEoDUgAUgVzY29yZUIGCgRkYXRh');
