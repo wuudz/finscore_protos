@@ -1,11 +1,11 @@
-import { Game, GameConfig, GamePlayer, PlayerOrder } from "./lib/game";
-import { Player } from "./lib/player";
-import { Session } from "./lib/session";
-import { Viewer, ViewerType } from "./lib/viewer";
+import type { Game, GameConfig, GamePlayer, PlayerOrder } from "./lib/game";
+import type { Player } from "./lib/player";
+import type { Session } from "./lib/session";
+import type { Viewer, ViewerType } from "./lib/viewer";
 
 export {
   Game,
-  GameConfig, 
+  GameConfig,
   GamePlayer,
   PlayerOrder,
   Player,
