@@ -6,7 +6,6 @@
     "ts-proto": "^1.96.0"
   },
   "scripts": {
-    "build": "npm run build:ts",
-    "build:ts": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./build/ts ./lib/*.proto"
+    "build": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=build/ts --dart_out=build/dart lib/*.proto google/protobuf/timestamp.proto",
   }
 }
