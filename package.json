@@ -1,5 +1,12 @@
 {
-  "dependencies": {
+  "name": "finscore_protos",
+  "version": "1.0.0",
+  "devDependencies": {
+    "typescript": "^4.5.4",
     "ts-proto": "^1.96.0"
+  },
+  "scripts": {
+    "build": "npm run build:ts",
+    "build:ts": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./build/ts ./lib/*.proto && tsc -p ./build/ts/tsconfig.json"
   }
 }
