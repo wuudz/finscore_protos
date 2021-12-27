@@ -45,3 +45,22 @@ class GameStatus extends $pb.ProtobufEnum {
   const GameStatus._($core.int v, $core.String n) : super(v, n);
 }
 
+class GameAwardType extends $pb.ProtobufEnum {
+  static const GameAwardType SLOW_POKE = GameAwardType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SLOW_POKE');
+  static const GameAwardType SHARP_SHOOTER = GameAwardType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SHARP_SHOOTER');
+  static const GameAwardType PEA_SHOOTER = GameAwardType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PEA_SHOOTER');
+  static const GameAwardType TWELVIE = GameAwardType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TWELVIE');
+
+  static const $core.List<GameAwardType> values = <GameAwardType> [
+    SLOW_POKE,
+    SHARP_SHOOTER,
+    PEA_SHOOTER,
+    TWELVIE,
+  ];
+
+  static final $core.Map<$core.int, GameAwardType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static GameAwardType? valueOf($core.int value) => _byValue[value];
+
+  const GameAwardType._($core.int v, $core.String n) : super(v, n);
+}
+

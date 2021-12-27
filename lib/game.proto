@@ -1,5 +1,6 @@
 syntax = "proto3";
-import "lib/game_history.proto";
+
+import "google/protobuf/timestamp.proto";
 
 enum PlayerOrder {
   USER_DEFINED = 0;
@@ -13,7 +14,13 @@ message GameConfig {
   PlayerOrder player_order = 4;
 }
 
+message GameScore {
+  uint32 score = 1;
+  google.protobuf.Timestamp timestamp = 2;
+}
+
 message GamePlayer {
+  repeated GameScore scores = 1;
   bool kicked = 2;
 }
 
@@ -25,9 +32,29 @@ enum GameStatus {
   CANCELED = 4;
 }
 
+enum GameAwardType {
+  SLOW_POKE = 0;
+  SHARP_SHOOTER = 1;
+  PEA_SHOOTER = 2;
+  TWELVIE = 3;
+}
+
+message GameAward {
+  GameAwardType type = 1;
+  string receipient = 2;
+  string value = 3;
+}
+
+message GameResolution {
+  google.protobuf.Timestamp finishedAt = 1;
+  string winner = 2;
+  repeated GameAward awards = 3;
+}
+
 message Game {
   GameConfig config = 1;
   map<string, GamePlayer> players = 2;
-  repeated GameHistory history = 3;
+  GameResolution resolution = 3;
   GameStatus status = 4;
+  google.protobuf.Timestamp startedAt = 5;
 }
