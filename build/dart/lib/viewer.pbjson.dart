@@ -12,14 +12,13 @@ import 'dart:typed_data' as $typed_data;
 const ViewerType$json = const {
   '1': 'ViewerType',
   '2': const [
-    const {'1': 'UNKNOWN', '2': 0},
+    const {'1': 'WEBSITE', '2': 0},
     const {'1': 'APP', '2': 1},
-    const {'1': 'WEBSITE', '2': 2},
   ],
 };
 
 /// Descriptor for `ViewerType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List viewerTypeDescriptor = $convert.base64Decode('CgpWaWV3ZXJUeXBlEgsKB1VOS05PV04QABIHCgNBUFAQARILCgdXRUJTSVRFEAI=');
+final $typed_data.Uint8List viewerTypeDescriptor = $convert.base64Decode('CgpWaWV3ZXJUeXBlEgsKB1dFQlNJVEUQABIHCgNBUFAQAQ==');
 @$core.Deprecated('Use viewerDescriptor instead')
 const Viewer$json = const {
   '1': 'Viewer',

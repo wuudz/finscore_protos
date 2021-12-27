@@ -5,23 +5,19 @@ import * as Long from "long";
 export const protobufPackage = "";
 
 export enum ViewerType {
-  UNKNOWN = 0,
+  WEBSITE = 0,
   APP = 1,
-  WEBSITE = 2,
   UNRECOGNIZED = -1,
 }
 
 export function viewerTypeFromJSON(object: any): ViewerType {
   switch (object) {
     case 0:
-    case "UNKNOWN":
-      return ViewerType.UNKNOWN;
+    case "WEBSITE":
+      return ViewerType.WEBSITE;
     case 1:
     case "APP":
       return ViewerType.APP;
-    case 2:
-    case "WEBSITE":
-      return ViewerType.WEBSITE;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -31,12 +27,10 @@ export function viewerTypeFromJSON(object: any): ViewerType {
 
 export function viewerTypeToJSON(object: ViewerType): string {
   switch (object) {
-    case ViewerType.UNKNOWN:
-      return "UNKNOWN";
-    case ViewerType.APP:
-      return "APP";
     case ViewerType.WEBSITE:
       return "WEBSITE";
+    case ViewerType.APP:
+      return "APP";
     default:
       return "UNKNOWN";
   }

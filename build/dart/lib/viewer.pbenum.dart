@@ -10,14 +10,12 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class ViewerType extends $pb.ProtobufEnum {
-  static const ViewerType UNKNOWN = ViewerType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
+  static const ViewerType WEBSITE = ViewerType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WEBSITE');
   static const ViewerType APP = ViewerType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'APP');
-  static const ViewerType WEBSITE = ViewerType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WEBSITE');
 
   static const $core.List<ViewerType> values = <ViewerType> [
-    UNKNOWN,
-    APP,
     WEBSITE,
+    APP,
   ];
 
   static final $core.Map<$core.int, ViewerType> _byValue = $pb.ProtobufEnum.initByValue(values);

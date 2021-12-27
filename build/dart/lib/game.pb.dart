@@ -9,6 +9,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'game_history.pb.dart' as $1;
+
 import 'game.pbenum.dart';
 
 export 'game.pbenum.dart';
@@ -104,20 +106,15 @@ class GameConfig extends $pb.GeneratedMessage {
 
 class GamePlayer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GamePlayer', createEmptyInstance: create)
-    ..p<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scores', $pb.PbFieldType.PU3)
     ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'kicked')
     ..hasRequiredFields = false
   ;
 
   GamePlayer._() : super();
   factory GamePlayer({
-    $core.Iterable<$core.int>? scores,
     $core.bool? kicked,
   }) {
     final _result = create();
-    if (scores != null) {
-      _result.scores.addAll(scores);
-    }
     if (kicked != null) {
       _result.kicked = kicked;
     }
@@ -144,15 +141,12 @@ class GamePlayer extends $pb.GeneratedMessage {
   static GamePlayer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GamePlayer>(create);
   static GamePlayer? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get scores => $_getList(0);
-
   @$pb.TagNumber(2)
-  $core.bool get kicked => $_getBF(1);
+  $core.bool get kicked => $_getBF(0);
   @$pb.TagNumber(2)
-  set kicked($core.bool v) { $_setBool(1, v); }
+  set kicked($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(2)
-  $core.bool hasKicked() => $_has(1);
+  $core.bool hasKicked() => $_has(0);
   @$pb.TagNumber(2)
   void clearKicked() => clearField(2);
 }
@@ -161,6 +155,8 @@ class Game extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Game', createEmptyInstance: create)
     ..aOM<GameConfig>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'config', subBuilder: GameConfig.create)
     ..m<$core.String, GamePlayer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', entryClassName: 'Game.PlayersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: GamePlayer.create)
+    ..pc<$1.GameHistory>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', $pb.PbFieldType.PM, subBuilder: $1.GameHistory.create)
+    ..e<GameStatus>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: GameStatus.UNKNOWN, valueOf: GameStatus.valueOf, enumValues: GameStatus.values)
     ..hasRequiredFields = false
   ;
 
@@ -168,6 +164,8 @@ class Game extends $pb.GeneratedMessage {
   factory Game({
     GameConfig? config,
     $core.Map<$core.String, GamePlayer>? players,
+    $core.Iterable<$1.GameHistory>? history,
+    GameStatus? status,
   }) {
     final _result = create();
     if (config != null) {
@@ -175,6 +173,12 @@ class Game extends $pb.GeneratedMessage {
     }
     if (players != null) {
       _result.players.addAll(players);
+    }
+    if (history != null) {
+      _result.history.addAll(history);
+    }
+    if (status != null) {
+      _result.status = status;
     }
     return _result;
   }
@@ -212,5 +216,17 @@ class Game extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $core.Map<$core.String, GamePlayer> get players => $_getMap(1);
+
+  @$pb.TagNumber(3)
+  $core.List<$1.GameHistory> get history => $_getList(2);
+
+  @$pb.TagNumber(4)
+  GameStatus get status => $_getN(3);
+  @$pb.TagNumber(4)
+  set status(GameStatus v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasStatus() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearStatus() => clearField(4);
 }
 

@@ -19,6 +19,20 @@ const PlayerOrder$json = const {
 
 /// Descriptor for `PlayerOrder`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List playerOrderDescriptor = $convert.base64Decode('CgtQbGF5ZXJPcmRlchIQCgxVU0VSX0RFRklORUQQABIKCgZSQU5ET00QAQ==');
+@$core.Deprecated('Use gameStatusDescriptor instead')
+const GameStatus$json = const {
+  '1': 'GameStatus',
+  '2': const [
+    const {'1': 'UNKNOWN', '2': 0},
+    const {'1': 'PLAYING', '2': 1},
+    const {'1': 'PAUSED', '2': 2},
+    const {'1': 'FINISHED', '2': 3},
+    const {'1': 'CANCELED', '2': 4},
+  ],
+};
+
+/// Descriptor for `GameStatus`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List gameStatusDescriptor = $convert.base64Decode('CgpHYW1lU3RhdHVzEgsKB1VOS05PV04QABILCgdQTEFZSU5HEAESCgoGUEFVU0VEEAISDAoIRklOSVNIRUQQAxIMCghDQU5DRUxFRBAE');
 @$core.Deprecated('Use gameConfigDescriptor instead')
 const GameConfig$json = const {
   '1': 'GameConfig',
@@ -36,19 +50,20 @@ final $typed_data.Uint8List gameConfigDescriptor = $convert.base64Decode('CgpHYW
 const GamePlayer$json = const {
   '1': 'GamePlayer',
   '2': const [
-    const {'1': 'scores', '3': 1, '4': 3, '5': 13, '10': 'scores'},
     const {'1': 'kicked', '3': 2, '4': 1, '5': 8, '10': 'kicked'},
   ],
 };
 
 /// Descriptor for `GamePlayer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gamePlayerDescriptor = $convert.base64Decode('CgpHYW1lUGxheWVyEhYKBnNjb3JlcxgBIAMoDVIGc2NvcmVzEhYKBmtpY2tlZBgCIAEoCFIGa2lja2Vk');
+final $typed_data.Uint8List gamePlayerDescriptor = $convert.base64Decode('CgpHYW1lUGxheWVyEhYKBmtpY2tlZBgCIAEoCFIGa2lja2Vk');
 @$core.Deprecated('Use gameDescriptor instead')
 const Game$json = const {
   '1': 'Game',
   '2': const [
     const {'1': 'config', '3': 1, '4': 1, '5': 11, '6': '.GameConfig', '10': 'config'},
     const {'1': 'players', '3': 2, '4': 3, '5': 11, '6': '.Game.PlayersEntry', '10': 'players'},
+    const {'1': 'history', '3': 3, '4': 3, '5': 11, '6': '.GameHistory', '10': 'history'},
+    const {'1': 'status', '3': 4, '4': 1, '5': 14, '6': '.GameStatus', '10': 'status'},
   ],
   '3': const [Game_PlayersEntry$json],
 };
@@ -64,4 +79,4 @@ const Game_PlayersEntry$json = const {
 };
 
 /// Descriptor for `Game`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameDescriptor = $convert.base64Decode('CgRHYW1lEiMKBmNvbmZpZxgBIAEoCzILLkdhbWVDb25maWdSBmNvbmZpZxIsCgdwbGF5ZXJzGAIgAygLMhIuR2FtZS5QbGF5ZXJzRW50cnlSB3BsYXllcnMaRwoMUGxheWVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiEKBXZhbHVlGAIgASgLMgsuR2FtZVBsYXllclIFdmFsdWU6AjgB');
+final $typed_data.Uint8List gameDescriptor = $convert.base64Decode('CgRHYW1lEiMKBmNvbmZpZxgBIAEoCzILLkdhbWVDb25maWdSBmNvbmZpZxIsCgdwbGF5ZXJzGAIgAygLMhIuR2FtZS5QbGF5ZXJzRW50cnlSB3BsYXllcnMSJgoHaGlzdG9yeRgDIAMoCzIMLkdhbWVIaXN0b3J5UgdoaXN0b3J5EiMKBnN0YXR1cxgEIAEoDjILLkdhbWVTdGF0dXNSBnN0YXR1cxpHCgxQbGF5ZXJzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSIQoFdmFsdWUYAiABKAsyCy5HYW1lUGxheWVyUgV2YWx1ZToCOAE=');

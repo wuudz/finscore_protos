@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { util, configure, Writer, Reader } from "protobufjs/minimal";
 import * as Long from "long";
+import { GameHistory } from "../lib/game_history";
 
 export const protobufPackage = "";
 
@@ -36,6 +37,56 @@ export function playerOrderToJSON(object: PlayerOrder): string {
   }
 }
 
+export enum GameStatus {
+  UNKNOWN = 0,
+  PLAYING = 1,
+  PAUSED = 2,
+  FINISHED = 3,
+  CANCELED = 4,
+  UNRECOGNIZED = -1,
+}
+
+export function gameStatusFromJSON(object: any): GameStatus {
+  switch (object) {
+    case 0:
+    case "UNKNOWN":
+      return GameStatus.UNKNOWN;
+    case 1:
+    case "PLAYING":
+      return GameStatus.PLAYING;
+    case 2:
+    case "PAUSED":
+      return GameStatus.PAUSED;
+    case 3:
+    case "FINISHED":
+      return GameStatus.FINISHED;
+    case 4:
+    case "CANCELED":
+      return GameStatus.CANCELED;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return GameStatus.UNRECOGNIZED;
+  }
+}
+
+export function gameStatusToJSON(object: GameStatus): string {
+  switch (object) {
+    case GameStatus.UNKNOWN:
+      return "UNKNOWN";
+    case GameStatus.PLAYING:
+      return "PLAYING";
+    case GameStatus.PAUSED:
+      return "PAUSED";
+    case GameStatus.FINISHED:
+      return "FINISHED";
+    case GameStatus.CANCELED:
+      return "CANCELED";
+    default:
+      return "UNKNOWN";
+  }
+}
+
 export interface GameConfig {
   zeros: number;
   resetScore: number;
@@ -44,13 +95,14 @@ export interface GameConfig {
 }
 
 export interface GamePlayer {
-  scores: number[];
   kicked: boolean;
 }
 
 export interface Game {
   config: GameConfig | undefined;
   players: { [key: string]: GamePlayer };
+  history: GameHistory[];
+  status: GameStatus;
 }
 
 export interface Game_PlayersEntry {
@@ -154,15 +206,10 @@ export const GameConfig = {
   },
 };
 
-const baseGamePlayer: object = { scores: 0, kicked: false };
+const baseGamePlayer: object = { kicked: false };
 
 export const GamePlayer = {
   encode(message: GamePlayer, writer: Writer = Writer.create()): Writer {
-    writer.uint32(10).fork();
-    for (const v of message.scores) {
-      writer.uint32(v);
-    }
-    writer.ldelim();
     if (message.kicked === true) {
       writer.uint32(16).bool(message.kicked);
     }
@@ -173,20 +220,9 @@ export const GamePlayer = {
     const reader = input instanceof Reader ? input : new Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGamePlayer } as GamePlayer;
-    message.scores = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          if ((tag & 7) === 2) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.scores.push(reader.uint32());
-            }
-          } else {
-            message.scores.push(reader.uint32());
-          }
-          break;
         case 2:
           message.kicked = reader.bool();
           break;
@@ -200,7 +236,6 @@ export const GamePlayer = {
 
   fromJSON(object: any): GamePlayer {
     const message = { ...baseGamePlayer } as GamePlayer;
-    message.scores = (object.scores ?? []).map((e: any) => Number(e));
     message.kicked =
       object.kicked !== undefined && object.kicked !== null
         ? Boolean(object.kicked)
@@ -210,11 +245,6 @@ export const GamePlayer = {
 
   toJSON(message: GamePlayer): unknown {
     const obj: any = {};
-    if (message.scores) {
-      obj.scores = message.scores.map((e) => Math.round(e));
-    } else {
-      obj.scores = [];
-    }
     message.kicked !== undefined && (obj.kicked = message.kicked);
     return obj;
   },
@@ -223,13 +253,12 @@ export const GamePlayer = {
     object: I
   ): GamePlayer {
     const message = { ...baseGamePlayer } as GamePlayer;
-    message.scores = object.scores?.map((e) => e) || [];
     message.kicked = object.kicked ?? false;
     return message;
   },
 };
 
-const baseGame: object = {};
+const baseGame: object = { status: 0 };
 
 export const Game = {
   encode(message: Game, writer: Writer = Writer.create()): Writer {
@@ -242,6 +271,12 @@ export const Game = {
         writer.uint32(18).fork()
       ).ldelim();
     });
+    for (const v of message.history) {
+      GameHistory.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.status !== 0) {
+      writer.uint32(32).int32(message.status);
+    }
     return writer;
   },
 
@@ -250,6 +285,7 @@ export const Game = {
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGame } as Game;
     message.players = {};
+    message.history = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -261,6 +297,12 @@ export const Game = {
           if (entry2.value !== undefined) {
             message.players[entry2.key] = entry2.value;
           }
+          break;
+        case 3:
+          message.history.push(GameHistory.decode(reader, reader.uint32()));
+          break;
+        case 4:
+          message.status = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -282,6 +324,13 @@ export const Game = {
       acc[key] = GamePlayer.fromJSON(value);
       return acc;
     }, {});
+    message.history = (object.history ?? []).map((e: any) =>
+      GameHistory.fromJSON(e)
+    );
+    message.status =
+      object.status !== undefined && object.status !== null
+        ? gameStatusFromJSON(object.status)
+        : 0;
     return message;
   },
 
@@ -297,6 +346,15 @@ export const Game = {
         obj.players[k] = GamePlayer.toJSON(v);
       });
     }
+    if (message.history) {
+      obj.history = message.history.map((e) =>
+        e ? GameHistory.toJSON(e) : undefined
+      );
+    } else {
+      obj.history = [];
+    }
+    message.status !== undefined &&
+      (obj.status = gameStatusToJSON(message.status));
     return obj;
   },
 
@@ -314,6 +372,9 @@ export const Game = {
       }
       return acc;
     }, {});
+    message.history =
+      object.history?.map((e) => GameHistory.fromPartial(e)) || [];
+    message.status = object.status ?? 0;
     return message;
   },
 };

@@ -9,25 +9,25 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'game.pb.dart' as $0;
-import 'viewer.pb.dart' as $1;
-import 'player.pb.dart' as $2;
+import 'game.pb.dart' as $2;
+import 'viewer.pb.dart' as $3;
+import 'player.pb.dart' as $4;
 
 class Session extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Session', createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
-    ..m<$core.String, $1.Viewer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'viewers', entryClassName: 'Session.ViewersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $1.Viewer.create)
-    ..m<$core.String, $2.Player>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', entryClassName: 'Session.PlayersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $2.Player.create)
-    ..pc<$0.Game>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'games', $pb.PbFieldType.PM, subBuilder: $0.Game.create)
+    ..m<$core.String, $3.Viewer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'viewers', entryClassName: 'Session.ViewersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.Viewer.create)
+    ..m<$core.String, $4.Player>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', entryClassName: 'Session.PlayersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $4.Player.create)
+    ..pc<$2.Game>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'games', $pb.PbFieldType.PM, subBuilder: $2.Game.create)
     ..hasRequiredFields = false
   ;
 
   Session._() : super();
   factory Session({
     $core.String? owner,
-    $core.Map<$core.String, $1.Viewer>? viewers,
-    $core.Map<$core.String, $2.Player>? players,
-    $core.Iterable<$0.Game>? games,
+    $core.Map<$core.String, $3.Viewer>? viewers,
+    $core.Map<$core.String, $4.Player>? players,
+    $core.Iterable<$2.Game>? games,
   }) {
     final _result = create();
     if (owner != null) {
@@ -75,12 +75,12 @@ class Session extends $pb.GeneratedMessage {
   void clearOwner() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.Map<$core.String, $1.Viewer> get viewers => $_getMap(1);
+  $core.Map<$core.String, $3.Viewer> get viewers => $_getMap(1);
 
   @$pb.TagNumber(3)
-  $core.Map<$core.String, $2.Player> get players => $_getMap(2);
+  $core.Map<$core.String, $4.Player> get players => $_getMap(2);
 
   @$pb.TagNumber(4)
-  $core.List<$0.Game> get games => $_getList(3);
+  $core.List<$2.Game> get games => $_getList(3);
 }
 

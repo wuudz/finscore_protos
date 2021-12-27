@@ -1,9 +1,8 @@
 syntax = "proto3";
 
 enum ViewerType {
-  UNKNOWN = 0;
+  WEBSITE = 0;
   APP = 1;
-  WEBSITE = 2;
 }
 
 message Viewer {

@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "lib/game_history.proto";
 
 enum PlayerOrder {
   USER_DEFINED = 0;
@@ -13,11 +14,20 @@ message GameConfig {
 }
 
 message GamePlayer {
-  repeated uint32 scores = 1;
   bool kicked = 2;
+}
+
+enum GameStatus {
+  UNKNOWN = 0;
+  PLAYING = 1;
+  PAUSED = 2;
+  FINISHED = 3;
+  CANCELED = 4;
 }
 
 message Game {
   GameConfig config = 1;
   map<string, GamePlayer> players = 2;
+  repeated GameHistory history = 3;
+  GameStatus status = 4;
 }

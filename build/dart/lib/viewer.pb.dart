@@ -15,7 +15,7 @@ export 'viewer.pbenum.dart';
 
 class Viewer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Viewer', createEmptyInstance: create)
-    ..e<ViewerType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: ViewerType.UNKNOWN, valueOf: ViewerType.valueOf, enumValues: ViewerType.values)
+    ..e<ViewerType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: ViewerType.WEBSITE, valueOf: ViewerType.valueOf, enumValues: ViewerType.values)
     ..hasRequiredFields = false
   ;
 
