@@ -1,7 +1,7 @@
 syntax = "proto3";
-import "lib/game.proto";
-import "lib/player.proto";
-import "lib/viewer.proto";
+import "src/game.proto";
+import "src/player.proto";
+import "src/viewer.proto";
 
 message Session {
   string owner = 1;

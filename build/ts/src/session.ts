@@ -1,9 +1,9 @@
 /* eslint-disable */
 import { util, configure, Writer, Reader } from "protobufjs/minimal";
 import * as Long from "long";
-import { Viewer } from "../lib/viewer";
-import { Player } from "../lib/player";
-import { Game } from "../lib/game";
+import { Viewer } from "../src/viewer";
+import { Player } from "../src/player";
+import { Game } from "../src/game";
 
 export const protobufPackage = "";
 
