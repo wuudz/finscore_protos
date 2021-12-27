@@ -3,9 +3,9 @@ import { Player } from "./lib/player";
 import { Session } from "./lib/session";
 import { Viewer, ViewerType } from "./lib/viewer";
 
-export default {
+export {
   Game,
-  GameConfig,
+  GameConfig, 
   GamePlayer,
   PlayerOrder,
   Player,

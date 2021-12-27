@@ -1,16 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ViewerType = exports.Viewer = exports.Session = exports.Player = exports.PlayerOrder = exports.GamePlayer = exports.GameConfig = exports.Game = void 0;
 var game_1 = require("./lib/game");
+Object.defineProperty(exports, "Game", { enumerable: true, get: function () { return game_1.Game; } });
+Object.defineProperty(exports, "GameConfig", { enumerable: true, get: function () { return game_1.GameConfig; } });
+Object.defineProperty(exports, "GamePlayer", { enumerable: true, get: function () { return game_1.GamePlayer; } });
+Object.defineProperty(exports, "PlayerOrder", { enumerable: true, get: function () { return game_1.PlayerOrder; } });
 var player_1 = require("./lib/player");
+Object.defineProperty(exports, "Player", { enumerable: true, get: function () { return player_1.Player; } });
 var session_1 = require("./lib/session");
+Object.defineProperty(exports, "Session", { enumerable: true, get: function () { return session_1.Session; } });
 var viewer_1 = require("./lib/viewer");
-exports.default = {
-    Game: game_1.Game,
-    GameConfig: game_1.GameConfig,
-    GamePlayer: game_1.GamePlayer,
-    PlayerOrder: game_1.PlayerOrder,
-    Player: player_1.Player,
-    Session: session_1.Session,
-    Viewer: viewer_1.Viewer,
-    ViewerType: viewer_1.ViewerType,
-};
+Object.defineProperty(exports, "Viewer", { enumerable: true, get: function () { return viewer_1.Viewer; } });
+Object.defineProperty(exports, "ViewerType", { enumerable: true, get: function () { return viewer_1.ViewerType; } });
