@@ -120,14 +120,25 @@ final $typed_data.Uint8List gameViewerDataPlayerDescriptor = $convert.base64Deco
 const GameViewerData$json = const {
   '1': 'GameViewerData',
   '2': const [
-    const {'1': 'players', '3': 1, '4': 3, '5': 11, '6': '.GameViewerDataPlayer', '10': 'players'},
+    const {'1': 'players', '3': 1, '4': 3, '5': 11, '6': '.GameViewerData.PlayersEntry', '10': 'players'},
     const {'1': 'current_player_name', '3': 2, '4': 1, '5': 9, '10': 'currentPlayerName'},
     const {'1': 'next_player_name', '3': 3, '4': 1, '5': 9, '10': 'nextPlayerName'},
   ],
+  '3': const [GameViewerData_PlayersEntry$json],
+};
+
+@$core.Deprecated('Use gameViewerDataDescriptor instead')
+const GameViewerData_PlayersEntry$json = const {
+  '1': 'PlayersEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.GameViewerDataPlayer', '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `GameViewerData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameViewerDataDescriptor = $convert.base64Decode('Cg5HYW1lVmlld2VyRGF0YRIvCgdwbGF5ZXJzGAEgAygLMhUuR2FtZVZpZXdlckRhdGFQbGF5ZXJSB3BsYXllcnMSLgoTY3VycmVudF9wbGF5ZXJfbmFtZRgCIAEoCVIRY3VycmVudFBsYXllck5hbWUSKAoQbmV4dF9wbGF5ZXJfbmFtZRgDIAEoCVIObmV4dFBsYXllck5hbWU=');
+final $typed_data.Uint8List gameViewerDataDescriptor = $convert.base64Decode('Cg5HYW1lVmlld2VyRGF0YRI2CgdwbGF5ZXJzGAEgAygLMhwuR2FtZVZpZXdlckRhdGEuUGxheWVyc0VudHJ5UgdwbGF5ZXJzEi4KE2N1cnJlbnRfcGxheWVyX25hbWUYAiABKAlSEWN1cnJlbnRQbGF5ZXJOYW1lEigKEG5leHRfcGxheWVyX25hbWUYAyABKAlSDm5leHRQbGF5ZXJOYW1lGlEKDFBsYXllcnNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIrCgV2YWx1ZRgCIAEoCzIVLkdhbWVWaWV3ZXJEYXRhUGxheWVyUgV2YWx1ZToCOAE=');
 @$core.Deprecated('Use gameDescriptor instead')
 const Game$json = const {
   '1': 'Game',

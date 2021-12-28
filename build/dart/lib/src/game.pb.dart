@@ -419,7 +419,7 @@ class GameViewerDataPlayer extends $pb.GeneratedMessage {
 
 class GameViewerData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GameViewerData', createEmptyInstance: create)
-    ..pc<GameViewerDataPlayer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', $pb.PbFieldType.PM, subBuilder: GameViewerDataPlayer.create)
+    ..m<$core.String, GameViewerDataPlayer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', entryClassName: 'GameViewerData.PlayersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: GameViewerDataPlayer.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentPlayerName')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nextPlayerName')
     ..hasRequiredFields = false
@@ -427,7 +427,7 @@ class GameViewerData extends $pb.GeneratedMessage {
 
   GameViewerData._() : super();
   factory GameViewerData({
-    $core.Iterable<GameViewerDataPlayer>? players,
+    $core.Map<$core.String, GameViewerDataPlayer>? players,
     $core.String? currentPlayerName,
     $core.String? nextPlayerName,
   }) {
@@ -465,7 +465,7 @@ class GameViewerData extends $pb.GeneratedMessage {
   static GameViewerData? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<GameViewerDataPlayer> get players => $_getList(0);
+  $core.Map<$core.String, GameViewerDataPlayer> get players => $_getMap(0);
 
   @$pb.TagNumber(2)
   $core.String get currentPlayerName => $_getSZ(1);

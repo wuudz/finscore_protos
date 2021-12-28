@@ -166,9 +166,14 @@ export interface GameViewerDataPlayer {
 }
 
 export interface GameViewerData {
-  players: GameViewerDataPlayer[];
+  players: { [key: string]: GameViewerDataPlayer };
   currentPlayerName: string;
   nextPlayerName: string;
+}
+
+export interface GameViewerData_PlayersEntry {
+  key: string;
+  value: GameViewerDataPlayer | undefined;
 }
 
 export interface Game {
@@ -682,9 +687,12 @@ const baseGameViewerData: object = {
 
 export const GameViewerData = {
   encode(message: GameViewerData, writer: Writer = Writer.create()): Writer {
-    for (const v of message.players) {
-      GameViewerDataPlayer.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
+    Object.entries(message.players).forEach(([key, value]) => {
+      GameViewerData_PlayersEntry.encode(
+        { key: key as any, value },
+        writer.uint32(10).fork()
+      ).ldelim();
+    });
     if (message.currentPlayerName !== "") {
       writer.uint32(18).string(message.currentPlayerName);
     }
@@ -698,14 +706,18 @@ export const GameViewerData = {
     const reader = input instanceof Reader ? input : new Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameViewerData } as GameViewerData;
-    message.players = [];
+    message.players = {};
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.players.push(
-            GameViewerDataPlayer.decode(reader, reader.uint32())
+          const entry1 = GameViewerData_PlayersEntry.decode(
+            reader,
+            reader.uint32()
           );
+          if (entry1.value !== undefined) {
+            message.players[entry1.key] = entry1.value;
+          }
           break;
         case 2:
           message.currentPlayerName = reader.string();
@@ -723,9 +735,12 @@ export const GameViewerData = {
 
   fromJSON(object: any): GameViewerData {
     const message = { ...baseGameViewerData } as GameViewerData;
-    message.players = (object.players ?? []).map((e: any) =>
-      GameViewerDataPlayer.fromJSON(e)
-    );
+    message.players = Object.entries(object.players ?? {}).reduce<{
+      [key: string]: GameViewerDataPlayer;
+    }>((acc, [key, value]) => {
+      acc[key] = GameViewerDataPlayer.fromJSON(value);
+      return acc;
+    }, {});
     message.currentPlayerName =
       object.currentPlayerName !== undefined &&
       object.currentPlayerName !== null
@@ -740,12 +755,11 @@ export const GameViewerData = {
 
   toJSON(message: GameViewerData): unknown {
     const obj: any = {};
+    obj.players = {};
     if (message.players) {
-      obj.players = message.players.map((e) =>
-        e ? GameViewerDataPlayer.toJSON(e) : undefined
-      );
-    } else {
-      obj.players = [];
+      Object.entries(message.players).forEach(([k, v]) => {
+        obj.players[k] = GameViewerDataPlayer.toJSON(v);
+      });
     }
     message.currentPlayerName !== undefined &&
       (obj.currentPlayerName = message.currentPlayerName);
@@ -758,10 +772,99 @@ export const GameViewerData = {
     object: I
   ): GameViewerData {
     const message = { ...baseGameViewerData } as GameViewerData;
-    message.players =
-      object.players?.map((e) => GameViewerDataPlayer.fromPartial(e)) || [];
+    message.players = Object.entries(object.players ?? {}).reduce<{
+      [key: string]: GameViewerDataPlayer;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = GameViewerDataPlayer.fromPartial(value);
+      }
+      return acc;
+    }, {});
     message.currentPlayerName = object.currentPlayerName ?? "";
     message.nextPlayerName = object.nextPlayerName ?? "";
+    return message;
+  },
+};
+
+const baseGameViewerData_PlayersEntry: object = { key: "" };
+
+export const GameViewerData_PlayersEntry = {
+  encode(
+    message: GameViewerData_PlayersEntry,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== undefined) {
+      GameViewerDataPlayer.encode(
+        message.value,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): GameViewerData_PlayersEntry {
+    const reader = input instanceof Reader ? input : new Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = {
+      ...baseGameViewerData_PlayersEntry,
+    } as GameViewerData_PlayersEntry;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.key = reader.string();
+          break;
+        case 2:
+          message.value = GameViewerDataPlayer.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GameViewerData_PlayersEntry {
+    const message = {
+      ...baseGameViewerData_PlayersEntry,
+    } as GameViewerData_PlayersEntry;
+    message.key =
+      object.key !== undefined && object.key !== null ? String(object.key) : "";
+    message.value =
+      object.value !== undefined && object.value !== null
+        ? GameViewerDataPlayer.fromJSON(object.value)
+        : undefined;
+    return message;
+  },
+
+  toJSON(message: GameViewerData_PlayersEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value
+        ? GameViewerDataPlayer.toJSON(message.value)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial<I extends Exact<DeepPartial<GameViewerData_PlayersEntry>, I>>(
+    object: I
+  ): GameViewerData_PlayersEntry {
+    const message = {
+      ...baseGameViewerData_PlayersEntry,
+    } as GameViewerData_PlayersEntry;
+    message.key = object.key ?? "";
+    message.value =
+      object.value !== undefined && object.value !== null
+        ? GameViewerDataPlayer.fromPartial(object.value)
+        : undefined;
     return message;
   },
 };
