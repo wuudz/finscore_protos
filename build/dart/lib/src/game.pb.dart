@@ -299,7 +299,7 @@ class GameAward extends $pb.GeneratedMessage {
 
 class GameResolution extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GameResolution', createEmptyInstance: create)
-    ..aOM<$0.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'finishedAt', protoName: 'finishedAt', subBuilder: $0.Timestamp.create)
+    ..aOM<$0.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'finishedAt', subBuilder: $0.Timestamp.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'winner')
     ..pc<GameAward>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'awards', $pb.PbFieldType.PM, subBuilder: GameAward.create)
     ..hasRequiredFields = false
@@ -368,13 +368,132 @@ class GameResolution extends $pb.GeneratedMessage {
   $core.List<GameAward> get awards => $_getList(2);
 }
 
+class GameViewerDataPlayer extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GameViewerDataPlayer', createEmptyInstance: create)
+    ..p<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scores', $pb.PbFieldType.PU3)
+    ..p<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalScores', $pb.PbFieldType.PU3)
+    ..hasRequiredFields = false
+  ;
+
+  GameViewerDataPlayer._() : super();
+  factory GameViewerDataPlayer({
+    $core.Iterable<$core.int>? scores,
+    $core.Iterable<$core.int>? totalScores,
+  }) {
+    final _result = create();
+    if (scores != null) {
+      _result.scores.addAll(scores);
+    }
+    if (totalScores != null) {
+      _result.totalScores.addAll(totalScores);
+    }
+    return _result;
+  }
+  factory GameViewerDataPlayer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GameViewerDataPlayer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GameViewerDataPlayer clone() => GameViewerDataPlayer()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GameViewerDataPlayer copyWith(void Function(GameViewerDataPlayer) updates) => super.copyWith((message) => updates(message as GameViewerDataPlayer)) as GameViewerDataPlayer; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GameViewerDataPlayer create() => GameViewerDataPlayer._();
+  GameViewerDataPlayer createEmptyInstance() => create();
+  static $pb.PbList<GameViewerDataPlayer> createRepeated() => $pb.PbList<GameViewerDataPlayer>();
+  @$core.pragma('dart2js:noInline')
+  static GameViewerDataPlayer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GameViewerDataPlayer>(create);
+  static GameViewerDataPlayer? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get scores => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get totalScores => $_getList(1);
+}
+
+class GameViewerData extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GameViewerData', createEmptyInstance: create)
+    ..pc<GameViewerDataPlayer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', $pb.PbFieldType.PM, subBuilder: GameViewerDataPlayer.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentPlayerName')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nextPlayerName')
+    ..hasRequiredFields = false
+  ;
+
+  GameViewerData._() : super();
+  factory GameViewerData({
+    $core.Iterable<GameViewerDataPlayer>? players,
+    $core.String? currentPlayerName,
+    $core.String? nextPlayerName,
+  }) {
+    final _result = create();
+    if (players != null) {
+      _result.players.addAll(players);
+    }
+    if (currentPlayerName != null) {
+      _result.currentPlayerName = currentPlayerName;
+    }
+    if (nextPlayerName != null) {
+      _result.nextPlayerName = nextPlayerName;
+    }
+    return _result;
+  }
+  factory GameViewerData.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GameViewerData.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GameViewerData clone() => GameViewerData()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GameViewerData copyWith(void Function(GameViewerData) updates) => super.copyWith((message) => updates(message as GameViewerData)) as GameViewerData; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GameViewerData create() => GameViewerData._();
+  GameViewerData createEmptyInstance() => create();
+  static $pb.PbList<GameViewerData> createRepeated() => $pb.PbList<GameViewerData>();
+  @$core.pragma('dart2js:noInline')
+  static GameViewerData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GameViewerData>(create);
+  static GameViewerData? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<GameViewerDataPlayer> get players => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.String get currentPlayerName => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set currentPlayerName($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCurrentPlayerName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCurrentPlayerName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get nextPlayerName => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set nextPlayerName($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasNextPlayerName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearNextPlayerName() => clearField(3);
+}
+
 class Game extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Game', createEmptyInstance: create)
     ..aOM<GameConfig>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'config', subBuilder: GameConfig.create)
     ..m<$core.String, GamePlayer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', entryClassName: 'Game.PlayersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: GamePlayer.create)
     ..aOM<GameResolution>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resolution', subBuilder: GameResolution.create)
     ..e<GameStatus>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: GameStatus.UNKNOWN, valueOf: GameStatus.valueOf, enumValues: GameStatus.values)
-    ..aOM<$0.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startedAt', protoName: 'startedAt', subBuilder: $0.Timestamp.create)
+    ..aOM<$0.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startedAt', subBuilder: $0.Timestamp.create)
+    ..aOM<GameViewerData>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'viewerData', subBuilder: GameViewerData.create)
     ..hasRequiredFields = false
   ;
 
@@ -385,6 +504,7 @@ class Game extends $pb.GeneratedMessage {
     GameResolution? resolution,
     GameStatus? status,
     $0.Timestamp? startedAt,
+    GameViewerData? viewerData,
   }) {
     final _result = create();
     if (config != null) {
@@ -401,6 +521,9 @@ class Game extends $pb.GeneratedMessage {
     }
     if (startedAt != null) {
       _result.startedAt = startedAt;
+    }
+    if (viewerData != null) {
+      _result.viewerData = viewerData;
     }
     return _result;
   }
@@ -469,5 +592,16 @@ class Game extends $pb.GeneratedMessage {
   void clearStartedAt() => clearField(5);
   @$pb.TagNumber(5)
   $0.Timestamp ensureStartedAt() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  GameViewerData get viewerData => $_getN(5);
+  @$pb.TagNumber(6)
+  set viewerData(GameViewerData v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasViewerData() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearViewerData() => clearField(6);
+  @$pb.TagNumber(6)
+  GameViewerData ensureViewerData() => $_ensure(5);
 }
 

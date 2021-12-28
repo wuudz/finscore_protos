@@ -97,14 +97,37 @@ final $typed_data.Uint8List gameAwardDescriptor = $convert.base64Decode('CglHYW1
 const GameResolution$json = const {
   '1': 'GameResolution',
   '2': const [
-    const {'1': 'finishedAt', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'finishedAt'},
+    const {'1': 'finished_at', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'finishedAt'},
     const {'1': 'winner', '3': 2, '4': 1, '5': 9, '10': 'winner'},
     const {'1': 'awards', '3': 3, '4': 3, '5': 11, '6': '.GameAward', '10': 'awards'},
   ],
 };
 
 /// Descriptor for `GameResolution`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameResolutionDescriptor = $convert.base64Decode('Cg5HYW1lUmVzb2x1dGlvbhI6CgpmaW5pc2hlZEF0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIKZmluaXNoZWRBdBIWCgZ3aW5uZXIYAiABKAlSBndpbm5lchIiCgZhd2FyZHMYAyADKAsyCi5HYW1lQXdhcmRSBmF3YXJkcw==');
+final $typed_data.Uint8List gameResolutionDescriptor = $convert.base64Decode('Cg5HYW1lUmVzb2x1dGlvbhI7CgtmaW5pc2hlZF9hdBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCmZpbmlzaGVkQXQSFgoGd2lubmVyGAIgASgJUgZ3aW5uZXISIgoGYXdhcmRzGAMgAygLMgouR2FtZUF3YXJkUgZhd2FyZHM=');
+@$core.Deprecated('Use gameViewerDataPlayerDescriptor instead')
+const GameViewerDataPlayer$json = const {
+  '1': 'GameViewerDataPlayer',
+  '2': const [
+    const {'1': 'scores', '3': 1, '4': 3, '5': 13, '10': 'scores'},
+    const {'1': 'total_scores', '3': 2, '4': 3, '5': 13, '10': 'totalScores'},
+  ],
+};
+
+/// Descriptor for `GameViewerDataPlayer`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List gameViewerDataPlayerDescriptor = $convert.base64Decode('ChRHYW1lVmlld2VyRGF0YVBsYXllchIWCgZzY29yZXMYASADKA1SBnNjb3JlcxIhCgx0b3RhbF9zY29yZXMYAiADKA1SC3RvdGFsU2NvcmVz');
+@$core.Deprecated('Use gameViewerDataDescriptor instead')
+const GameViewerData$json = const {
+  '1': 'GameViewerData',
+  '2': const [
+    const {'1': 'players', '3': 1, '4': 3, '5': 11, '6': '.GameViewerDataPlayer', '10': 'players'},
+    const {'1': 'current_player_name', '3': 2, '4': 1, '5': 9, '10': 'currentPlayerName'},
+    const {'1': 'next_player_name', '3': 3, '4': 1, '5': 9, '10': 'nextPlayerName'},
+  ],
+};
+
+/// Descriptor for `GameViewerData`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List gameViewerDataDescriptor = $convert.base64Decode('Cg5HYW1lVmlld2VyRGF0YRIvCgdwbGF5ZXJzGAEgAygLMhUuR2FtZVZpZXdlckRhdGFQbGF5ZXJSB3BsYXllcnMSLgoTY3VycmVudF9wbGF5ZXJfbmFtZRgCIAEoCVIRY3VycmVudFBsYXllck5hbWUSKAoQbmV4dF9wbGF5ZXJfbmFtZRgDIAEoCVIObmV4dFBsYXllck5hbWU=');
 @$core.Deprecated('Use gameDescriptor instead')
 const Game$json = const {
   '1': 'Game',
@@ -113,7 +136,8 @@ const Game$json = const {
     const {'1': 'players', '3': 2, '4': 3, '5': 11, '6': '.Game.PlayersEntry', '10': 'players'},
     const {'1': 'resolution', '3': 3, '4': 1, '5': 11, '6': '.GameResolution', '10': 'resolution'},
     const {'1': 'status', '3': 4, '4': 1, '5': 14, '6': '.GameStatus', '10': 'status'},
-    const {'1': 'startedAt', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'startedAt'},
+    const {'1': 'started_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'startedAt'},
+    const {'1': 'viewer_data', '3': 6, '4': 1, '5': 11, '6': '.GameViewerData', '10': 'viewerData'},
   ],
   '3': const [Game_PlayersEntry$json],
 };
@@ -129,4 +153,4 @@ const Game_PlayersEntry$json = const {
 };
 
 /// Descriptor for `Game`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameDescriptor = $convert.base64Decode('CgRHYW1lEiMKBmNvbmZpZxgBIAEoCzILLkdhbWVDb25maWdSBmNvbmZpZxIsCgdwbGF5ZXJzGAIgAygLMhIuR2FtZS5QbGF5ZXJzRW50cnlSB3BsYXllcnMSLwoKcmVzb2x1dGlvbhgDIAEoCzIPLkdhbWVSZXNvbHV0aW9uUgpyZXNvbHV0aW9uEiMKBnN0YXR1cxgEIAEoDjILLkdhbWVTdGF0dXNSBnN0YXR1cxI4CglzdGFydGVkQXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUglzdGFydGVkQXQaRwoMUGxheWVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiEKBXZhbHVlGAIgASgLMgsuR2FtZVBsYXllclIFdmFsdWU6AjgB');
+final $typed_data.Uint8List gameDescriptor = $convert.base64Decode('CgRHYW1lEiMKBmNvbmZpZxgBIAEoCzILLkdhbWVDb25maWdSBmNvbmZpZxIsCgdwbGF5ZXJzGAIgAygLMhIuR2FtZS5QbGF5ZXJzRW50cnlSB3BsYXllcnMSLwoKcmVzb2x1dGlvbhgDIAEoCzIPLkdhbWVSZXNvbHV0aW9uUgpyZXNvbHV0aW9uEiMKBnN0YXR1cxgEIAEoDjILLkdhbWVTdGF0dXNSBnN0YXR1cxI5CgpzdGFydGVkX2F0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJc3RhcnRlZEF0EjAKC3ZpZXdlcl9kYXRhGAYgASgLMg8uR2FtZVZpZXdlckRhdGFSCnZpZXdlckRhdGEaRwoMUGxheWVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiEKBXZhbHVlGAIgASgLMgsuR2FtZVBsYXllclIFdmFsdWU6AjgB');

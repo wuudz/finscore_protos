@@ -46,9 +46,20 @@ message GameAward {
 }
 
 message GameResolution {
-  google.protobuf.Timestamp finishedAt = 1;
+  google.protobuf.Timestamp finished_at = 1;
   string winner = 2;
   repeated GameAward awards = 3;
+}
+
+message GameViewerDataPlayer {
+  repeated uint32 scores = 1;
+  repeated uint32 total_scores = 2;
+}
+
+message GameViewerData {
+  repeated GameViewerDataPlayer players = 1;
+  string current_player_name = 2;
+  string next_player_name = 3;
 }
 
 message Game {
@@ -56,5 +67,6 @@ message Game {
   map<string, GamePlayer> players = 2;
   GameResolution resolution = 3;
   GameStatus status = 4;
-  google.protobuf.Timestamp startedAt = 5;
+  google.protobuf.Timestamp started_at = 5;
+  GameViewerData viewer_data = 6;
 }
