@@ -50,12 +50,24 @@ class GameAwardType extends $pb.ProtobufEnum {
   static const GameAwardType SHARP_SHOOTER = GameAwardType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SHARP_SHOOTER');
   static const GameAwardType PEA_SHOOTER = GameAwardType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PEA_SHOOTER');
   static const GameAwardType TWELVIE = GameAwardType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TWELVIE');
+  static const GameAwardType HIGH_ROLLER = GameAwardType._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'HIGH_ROLLER');
+  static const GameAwardType ZEROS = GameAwardType._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ZEROS');
+  static const GameAwardType RESETER = GameAwardType._(6, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RESETER');
+  static const GameAwardType SO_CLOSE = GameAwardType._(7, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SO_CLOSE');
+  static const GameAwardType LOWEST_SCORE = GameAwardType._(8, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'LOWEST_SCORE');
+  static const GameAwardType CLOSE_CALL = GameAwardType._(9, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CLOSE_CALL');
 
   static const $core.List<GameAwardType> values = <GameAwardType> [
     SLOW_POKE,
     SHARP_SHOOTER,
     PEA_SHOOTER,
     TWELVIE,
+    HIGH_ROLLER,
+    ZEROS,
+    RESETER,
+    SO_CLOSE,
+    LOWEST_SCORE,
+    CLOSE_CALL,
   ];
 
   static final $core.Map<$core.int, GameAwardType> _byValue = $pb.ProtobufEnum.initByValue(values);

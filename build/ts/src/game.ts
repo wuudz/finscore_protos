@@ -92,6 +92,12 @@ export enum GameAwardType {
   SHARP_SHOOTER = 1,
   PEA_SHOOTER = 2,
   TWELVIE = 3,
+  HIGH_ROLLER = 4,
+  ZEROS = 5,
+  RESETER = 6,
+  SO_CLOSE = 7,
+  LOWEST_SCORE = 8,
+  CLOSE_CALL = 9,
   UNRECOGNIZED = -1,
 }
 
@@ -109,6 +115,24 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 3:
     case "TWELVIE":
       return GameAwardType.TWELVIE;
+    case 4:
+    case "HIGH_ROLLER":
+      return GameAwardType.HIGH_ROLLER;
+    case 5:
+    case "ZEROS":
+      return GameAwardType.ZEROS;
+    case 6:
+    case "RESETER":
+      return GameAwardType.RESETER;
+    case 7:
+    case "SO_CLOSE":
+      return GameAwardType.SO_CLOSE;
+    case 8:
+    case "LOWEST_SCORE":
+      return GameAwardType.LOWEST_SCORE;
+    case 9:
+    case "CLOSE_CALL":
+      return GameAwardType.CLOSE_CALL;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -126,6 +150,18 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "PEA_SHOOTER";
     case GameAwardType.TWELVIE:
       return "TWELVIE";
+    case GameAwardType.HIGH_ROLLER:
+      return "HIGH_ROLLER";
+    case GameAwardType.ZEROS:
+      return "ZEROS";
+    case GameAwardType.RESETER:
+      return "RESETER";
+    case GameAwardType.SO_CLOSE:
+      return "SO_CLOSE";
+    case GameAwardType.LOWEST_SCORE:
+      return "LOWEST_SCORE";
+    case GameAwardType.CLOSE_CALL:
+      return "CLOSE_CALL";
     default:
       return "UNKNOWN";
   }
@@ -153,6 +189,7 @@ export interface GameAward {
   type: GameAwardType;
   receipient: string;
   value: string;
+  name: string;
 }
 
 export interface GameResolution {
@@ -165,6 +202,7 @@ export interface GameViewerDataPlayer {
   name: string;
   scores: number[];
   totalScores: number[];
+  eliminated: boolean;
 }
 
 export interface GameViewerData {
@@ -431,7 +469,7 @@ export const GamePlayer = {
   },
 };
 
-const baseGameAward: object = { type: 0, receipient: "", value: "" };
+const baseGameAward: object = { type: 0, receipient: "", value: "", name: "" };
 
 export const GameAward = {
   encode(message: GameAward, writer: Writer = Writer.create()): Writer {
@@ -443,6 +481,9 @@ export const GameAward = {
     }
     if (message.value !== "") {
       writer.uint32(26).string(message.value);
+    }
+    if (message.name !== "") {
+      writer.uint32(34).string(message.name);
     }
     return writer;
   },
@@ -462,6 +503,9 @@ export const GameAward = {
           break;
         case 3:
           message.value = reader.string();
+          break;
+        case 4:
+          message.name = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -485,6 +529,10 @@ export const GameAward = {
       object.value !== undefined && object.value !== null
         ? String(object.value)
         : "";
+    message.name =
+      object.name !== undefined && object.name !== null
+        ? String(object.name)
+        : "";
     return message;
   },
 
@@ -494,6 +542,7 @@ export const GameAward = {
       (obj.type = gameAwardTypeToJSON(message.type));
     message.receipient !== undefined && (obj.receipient = message.receipient);
     message.value !== undefined && (obj.value = message.value);
+    message.name !== undefined && (obj.name = message.name);
     return obj;
   },
 
@@ -504,6 +553,7 @@ export const GameAward = {
     message.type = object.type ?? 0;
     message.receipient = object.receipient ?? "";
     message.value = object.value ?? "";
+    message.name = object.name ?? "";
     return message;
   },
 };
@@ -600,6 +650,7 @@ const baseGameViewerDataPlayer: object = {
   name: "",
   scores: 0,
   totalScores: 0,
+  eliminated: false,
 };
 
 export const GameViewerDataPlayer = {
@@ -620,6 +671,9 @@ export const GameViewerDataPlayer = {
       writer.uint32(v);
     }
     writer.ldelim();
+    if (message.eliminated === true) {
+      writer.uint32(32).bool(message.eliminated);
+    }
     return writer;
   },
 
@@ -655,6 +709,9 @@ export const GameViewerDataPlayer = {
             message.totalScores.push(reader.uint32());
           }
           break;
+        case 4:
+          message.eliminated = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -671,6 +728,10 @@ export const GameViewerDataPlayer = {
         : "";
     message.scores = (object.scores ?? []).map((e: any) => Number(e));
     message.totalScores = (object.totalScores ?? []).map((e: any) => Number(e));
+    message.eliminated =
+      object.eliminated !== undefined && object.eliminated !== null
+        ? Boolean(object.eliminated)
+        : false;
     return message;
   },
 
@@ -687,6 +748,7 @@ export const GameViewerDataPlayer = {
     } else {
       obj.totalScores = [];
     }
+    message.eliminated !== undefined && (obj.eliminated = message.eliminated);
     return obj;
   },
 
@@ -697,6 +759,7 @@ export const GameViewerDataPlayer = {
     message.name = object.name ?? "";
     message.scores = object.scores?.map((e) => e) || [];
     message.totalScores = object.totalScores?.map((e) => e) || [];
+    message.eliminated = object.eliminated ?? false;
     return message;
   },
 };

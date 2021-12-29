@@ -38,12 +38,19 @@ enum GameAwardType {
   SHARP_SHOOTER = 1;
   PEA_SHOOTER = 2;
   TWELVIE = 3;
+  HIGH_ROLLER = 4;
+  ZEROS = 5;
+  RESETER = 6;
+  SO_CLOSE = 7;
+  LOWEST_SCORE = 8;
+  CLOSE_CALL = 9;
 }
 
 message GameAward {
   GameAwardType type = 1;
   string receipient = 2;
   string value = 3;
+  string name = 4;
 }
 
 message GameResolution {
@@ -56,6 +63,7 @@ message GameViewerDataPlayer {
   string name = 1;
   repeated uint32 scores = 2;
   repeated uint32 total_scores = 3;
+  bool eliminated = 4;
 }
 
 message GameViewerData {

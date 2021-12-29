@@ -241,6 +241,7 @@ class GameAward extends $pb.GeneratedMessage {
     ..e<GameAwardType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: GameAwardType.SLOW_POKE, valueOf: GameAwardType.valueOf, enumValues: GameAwardType.values)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receipient')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..hasRequiredFields = false
   ;
 
@@ -249,6 +250,7 @@ class GameAward extends $pb.GeneratedMessage {
     GameAwardType? type,
     $core.String? receipient,
     $core.String? value,
+    $core.String? name,
   }) {
     final _result = create();
     if (type != null) {
@@ -259,6 +261,9 @@ class GameAward extends $pb.GeneratedMessage {
     }
     if (value != null) {
       _result.value = value;
+    }
+    if (name != null) {
+      _result.name = name;
     }
     return _result;
   }
@@ -309,6 +314,15 @@ class GameAward extends $pb.GeneratedMessage {
   $core.bool hasValue() => $_has(2);
   @$pb.TagNumber(3)
   void clearValue() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get name => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set name($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasName() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearName() => clearField(4);
 }
 
 class GameResolution extends $pb.GeneratedMessage {
@@ -387,6 +401,7 @@ class GameViewerDataPlayer extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..p<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scores', $pb.PbFieldType.PU3)
     ..p<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalScores', $pb.PbFieldType.PU3)
+    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'eliminated')
     ..hasRequiredFields = false
   ;
 
@@ -395,6 +410,7 @@ class GameViewerDataPlayer extends $pb.GeneratedMessage {
     $core.String? name,
     $core.Iterable<$core.int>? scores,
     $core.Iterable<$core.int>? totalScores,
+    $core.bool? eliminated,
   }) {
     final _result = create();
     if (name != null) {
@@ -405,6 +421,9 @@ class GameViewerDataPlayer extends $pb.GeneratedMessage {
     }
     if (totalScores != null) {
       _result.totalScores.addAll(totalScores);
+    }
+    if (eliminated != null) {
+      _result.eliminated = eliminated;
     }
     return _result;
   }
@@ -443,6 +462,15 @@ class GameViewerDataPlayer extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   $core.List<$core.int> get totalScores => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.bool get eliminated => $_getBF(3);
+  @$pb.TagNumber(4)
+  set eliminated($core.bool v) { $_setBool(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasEliminated() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearEliminated() => clearField(4);
 }
 
 class GameViewerData extends $pb.GeneratedMessage {

@@ -41,11 +41,17 @@ const GameAwardType$json = const {
     const {'1': 'SHARP_SHOOTER', '2': 1},
     const {'1': 'PEA_SHOOTER', '2': 2},
     const {'1': 'TWELVIE', '2': 3},
+    const {'1': 'HIGH_ROLLER', '2': 4},
+    const {'1': 'ZEROS', '2': 5},
+    const {'1': 'RESETER', '2': 6},
+    const {'1': 'SO_CLOSE', '2': 7},
+    const {'1': 'LOWEST_SCORE', '2': 8},
+    const {'1': 'CLOSE_CALL', '2': 9},
   ],
 };
 
 /// Descriptor for `GameAwardType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List gameAwardTypeDescriptor = $convert.base64Decode('Cg1HYW1lQXdhcmRUeXBlEg0KCVNMT1dfUE9LRRAAEhEKDVNIQVJQX1NIT09URVIQARIPCgtQRUFfU0hPT1RFUhACEgsKB1RXRUxWSUUQAw==');
+final $typed_data.Uint8List gameAwardTypeDescriptor = $convert.base64Decode('Cg1HYW1lQXdhcmRUeXBlEg0KCVNMT1dfUE9LRRAAEhEKDVNIQVJQX1NIT09URVIQARIPCgtQRUFfU0hPT1RFUhACEgsKB1RXRUxWSUUQAxIPCgtISUdIX1JPTExFUhAEEgkKBVpFUk9TEAUSCwoHUkVTRVRFUhAGEgwKCFNPX0NMT1NFEAcSEAoMTE9XRVNUX1NDT1JFEAgSDgoKQ0xPU0VfQ0FMTBAJ');
 @$core.Deprecated('Use gameConfigDescriptor instead')
 const GameConfig$json = const {
   '1': 'GameConfig',
@@ -89,11 +95,12 @@ const GameAward$json = const {
     const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.GameAwardType', '10': 'type'},
     const {'1': 'receipient', '3': 2, '4': 1, '5': 9, '10': 'receipient'},
     const {'1': 'value', '3': 3, '4': 1, '5': 9, '10': 'value'},
+    const {'1': 'name', '3': 4, '4': 1, '5': 9, '10': 'name'},
   ],
 };
 
 /// Descriptor for `GameAward`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameAwardDescriptor = $convert.base64Decode('CglHYW1lQXdhcmQSIgoEdHlwZRgBIAEoDjIOLkdhbWVBd2FyZFR5cGVSBHR5cGUSHgoKcmVjZWlwaWVudBgCIAEoCVIKcmVjZWlwaWVudBIUCgV2YWx1ZRgDIAEoCVIFdmFsdWU=');
+final $typed_data.Uint8List gameAwardDescriptor = $convert.base64Decode('CglHYW1lQXdhcmQSIgoEdHlwZRgBIAEoDjIOLkdhbWVBd2FyZFR5cGVSBHR5cGUSHgoKcmVjZWlwaWVudBgCIAEoCVIKcmVjZWlwaWVudBIUCgV2YWx1ZRgDIAEoCVIFdmFsdWUSEgoEbmFtZRgEIAEoCVIEbmFtZQ==');
 @$core.Deprecated('Use gameResolutionDescriptor instead')
 const GameResolution$json = const {
   '1': 'GameResolution',
@@ -113,11 +120,12 @@ const GameViewerDataPlayer$json = const {
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'scores', '3': 2, '4': 3, '5': 13, '10': 'scores'},
     const {'1': 'total_scores', '3': 3, '4': 3, '5': 13, '10': 'totalScores'},
+    const {'1': 'eliminated', '3': 4, '4': 1, '5': 8, '10': 'eliminated'},
   ],
 };
 
 /// Descriptor for `GameViewerDataPlayer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameViewerDataPlayerDescriptor = $convert.base64Decode('ChRHYW1lVmlld2VyRGF0YVBsYXllchISCgRuYW1lGAEgASgJUgRuYW1lEhYKBnNjb3JlcxgCIAMoDVIGc2NvcmVzEiEKDHRvdGFsX3Njb3JlcxgDIAMoDVILdG90YWxTY29yZXM=');
+final $typed_data.Uint8List gameViewerDataPlayerDescriptor = $convert.base64Decode('ChRHYW1lVmlld2VyRGF0YVBsYXllchISCgRuYW1lGAEgASgJUgRuYW1lEhYKBnNjb3JlcxgCIAMoDVIGc2NvcmVzEiEKDHRvdGFsX3Njb3JlcxgDIAMoDVILdG90YWxTY29yZXMSHgoKZWxpbWluYXRlZBgEIAEoCFIKZWxpbWluYXRlZA==');
 @$core.Deprecated('Use gameViewerDataDescriptor instead')
 const GameViewerData$json = const {
   '1': 'GameViewerData',
