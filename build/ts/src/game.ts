@@ -94,7 +94,7 @@ export enum GameAwardType {
   TWELVIE = 3,
   HIGH_ROLLER = 4,
   ZEROS = 5,
-  RESETER = 6,
+  RESETTER = 6,
   SO_CLOSE = 7,
   LOWEST_SCORE = 8,
   CLOSE_CALL = 9,
@@ -122,8 +122,8 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case "ZEROS":
       return GameAwardType.ZEROS;
     case 6:
-    case "RESETER":
-      return GameAwardType.RESETER;
+    case "RESETTER":
+      return GameAwardType.RESETTER;
     case 7:
     case "SO_CLOSE":
       return GameAwardType.SO_CLOSE;
@@ -154,8 +154,8 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "HIGH_ROLLER";
     case GameAwardType.ZEROS:
       return "ZEROS";
-    case GameAwardType.RESETER:
-      return "RESETER";
+    case GameAwardType.RESETTER:
+      return "RESETTER";
     case GameAwardType.SO_CLOSE:
       return "SO_CLOSE";
     case GameAwardType.LOWEST_SCORE:

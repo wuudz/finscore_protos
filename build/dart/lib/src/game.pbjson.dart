@@ -43,7 +43,7 @@ const GameAwardType$json = const {
     const {'1': 'TWELVIE', '2': 3},
     const {'1': 'HIGH_ROLLER', '2': 4},
     const {'1': 'ZEROS', '2': 5},
-    const {'1': 'RESETER', '2': 6},
+    const {'1': 'RESETTER', '2': 6},
     const {'1': 'SO_CLOSE', '2': 7},
     const {'1': 'LOWEST_SCORE', '2': 8},
     const {'1': 'CLOSE_CALL', '2': 9},
@@ -51,7 +51,7 @@ const GameAwardType$json = const {
 };
 
 /// Descriptor for `GameAwardType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List gameAwardTypeDescriptor = $convert.base64Decode('Cg1HYW1lQXdhcmRUeXBlEg0KCVNMT1dfUE9LRRAAEhEKDVNIQVJQX1NIT09URVIQARIPCgtQRUFfU0hPT1RFUhACEgsKB1RXRUxWSUUQAxIPCgtISUdIX1JPTExFUhAEEgkKBVpFUk9TEAUSCwoHUkVTRVRFUhAGEgwKCFNPX0NMT1NFEAcSEAoMTE9XRVNUX1NDT1JFEAgSDgoKQ0xPU0VfQ0FMTBAJ');
+final $typed_data.Uint8List gameAwardTypeDescriptor = $convert.base64Decode('Cg1HYW1lQXdhcmRUeXBlEg0KCVNMT1dfUE9LRRAAEhEKDVNIQVJQX1NIT09URVIQARIPCgtQRUFfU0hPT1RFUhACEgsKB1RXRUxWSUUQAxIPCgtISUdIX1JPTExFUhAEEgkKBVpFUk9TEAUSDAoIUkVTRVRURVIQBhIMCghTT19DTE9TRRAHEhAKDExPV0VTVF9TQ09SRRAIEg4KCkNMT1NFX0NBTEwQCQ==');
 @$core.Deprecated('Use gameConfigDescriptor instead')
 const GameConfig$json = const {
   '1': 'GameConfig',

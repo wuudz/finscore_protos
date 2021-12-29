@@ -40,7 +40,7 @@ enum GameAwardType {
   TWELVIE = 3;
   HIGH_ROLLER = 4;
   ZEROS = 5;
-  RESETER = 6;
+  RESETTER = 6;
   SO_CLOSE = 7;
   LOWEST_SCORE = 8;
   CLOSE_CALL = 9;

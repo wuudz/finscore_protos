@@ -52,7 +52,7 @@ class GameAwardType extends $pb.ProtobufEnum {
   static const GameAwardType TWELVIE = GameAwardType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TWELVIE');
   static const GameAwardType HIGH_ROLLER = GameAwardType._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'HIGH_ROLLER');
   static const GameAwardType ZEROS = GameAwardType._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ZEROS');
-  static const GameAwardType RESETER = GameAwardType._(6, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RESETER');
+  static const GameAwardType RESETTER = GameAwardType._(6, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RESETTER');
   static const GameAwardType SO_CLOSE = GameAwardType._(7, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SO_CLOSE');
   static const GameAwardType LOWEST_SCORE = GameAwardType._(8, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'LOWEST_SCORE');
   static const GameAwardType CLOSE_CALL = GameAwardType._(9, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CLOSE_CALL');
@@ -64,7 +64,7 @@ class GameAwardType extends $pb.ProtobufEnum {
     TWELVIE,
     HIGH_ROLLER,
     ZEROS,
-    RESETER,
+    RESETTER,
     SO_CLOSE,
     LOWEST_SCORE,
     CLOSE_CALL,
