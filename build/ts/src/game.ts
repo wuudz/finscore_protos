@@ -144,6 +144,7 @@ export interface GameScore {
 }
 
 export interface GamePlayer {
+  name: string;
   scores: GameScore[];
   kicked: boolean;
 }
@@ -161,33 +162,24 @@ export interface GameResolution {
 }
 
 export interface GameViewerDataPlayer {
+  name: string;
   scores: number[];
   totalScores: number[];
 }
 
 export interface GameViewerData {
-  players: { [key: string]: GameViewerDataPlayer };
+  players: GameViewerDataPlayer[];
   currentPlayerName: string;
   nextPlayerName: string;
 }
 
-export interface GameViewerData_PlayersEntry {
-  key: string;
-  value: GameViewerDataPlayer | undefined;
-}
-
 export interface Game {
   config: GameConfig | undefined;
-  players: { [key: string]: GamePlayer };
+  players: GamePlayer[];
   resolution: GameResolution | undefined;
   status: GameStatus;
   startedAt: Date | undefined;
   viewerData: GameViewerData | undefined;
-}
-
-export interface Game_PlayersEntry {
-  key: string;
-  value: GamePlayer | undefined;
 }
 
 const baseGameConfig: object = {
@@ -356,15 +348,18 @@ export const GameScore = {
   },
 };
 
-const baseGamePlayer: object = { kicked: false };
+const baseGamePlayer: object = { name: "", kicked: false };
 
 export const GamePlayer = {
   encode(message: GamePlayer, writer: Writer = Writer.create()): Writer {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
     for (const v of message.scores) {
-      GameScore.encode(v!, writer.uint32(10).fork()).ldelim();
+      GameScore.encode(v!, writer.uint32(18).fork()).ldelim();
     }
     if (message.kicked === true) {
-      writer.uint32(16).bool(message.kicked);
+      writer.uint32(24).bool(message.kicked);
     }
     return writer;
   },
@@ -378,9 +373,12 @@ export const GamePlayer = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.scores.push(GameScore.decode(reader, reader.uint32()));
+          message.name = reader.string();
           break;
         case 2:
+          message.scores.push(GameScore.decode(reader, reader.uint32()));
+          break;
+        case 3:
           message.kicked = reader.bool();
           break;
         default:
@@ -393,6 +391,10 @@ export const GamePlayer = {
 
   fromJSON(object: any): GamePlayer {
     const message = { ...baseGamePlayer } as GamePlayer;
+    message.name =
+      object.name !== undefined && object.name !== null
+        ? String(object.name)
+        : "";
     message.scores = (object.scores ?? []).map((e: any) =>
       GameScore.fromJSON(e)
     );
@@ -405,6 +407,7 @@ export const GamePlayer = {
 
   toJSON(message: GamePlayer): unknown {
     const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
     if (message.scores) {
       obj.scores = message.scores.map((e) =>
         e ? GameScore.toJSON(e) : undefined
@@ -420,6 +423,7 @@ export const GamePlayer = {
     object: I
   ): GamePlayer {
     const message = { ...baseGamePlayer } as GamePlayer;
+    message.name = object.name ?? "";
     message.scores = object.scores?.map((e) => GameScore.fromPartial(e)) || [];
     message.kicked = object.kicked ?? false;
     return message;
@@ -591,19 +595,26 @@ export const GameResolution = {
   },
 };
 
-const baseGameViewerDataPlayer: object = { scores: 0, totalScores: 0 };
+const baseGameViewerDataPlayer: object = {
+  name: "",
+  scores: 0,
+  totalScores: 0,
+};
 
 export const GameViewerDataPlayer = {
   encode(
     message: GameViewerDataPlayer,
     writer: Writer = Writer.create()
   ): Writer {
-    writer.uint32(10).fork();
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+    writer.uint32(18).fork();
     for (const v of message.scores) {
       writer.uint32(v);
     }
     writer.ldelim();
-    writer.uint32(18).fork();
+    writer.uint32(26).fork();
     for (const v of message.totalScores) {
       writer.uint32(v);
     }
@@ -621,6 +632,9 @@ export const GameViewerDataPlayer = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
+          message.name = reader.string();
+          break;
+        case 2:
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
@@ -630,7 +644,7 @@ export const GameViewerDataPlayer = {
             message.scores.push(reader.uint32());
           }
           break;
-        case 2:
+        case 3:
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
@@ -650,6 +664,10 @@ export const GameViewerDataPlayer = {
 
   fromJSON(object: any): GameViewerDataPlayer {
     const message = { ...baseGameViewerDataPlayer } as GameViewerDataPlayer;
+    message.name =
+      object.name !== undefined && object.name !== null
+        ? String(object.name)
+        : "";
     message.scores = (object.scores ?? []).map((e: any) => Number(e));
     message.totalScores = (object.totalScores ?? []).map((e: any) => Number(e));
     return message;
@@ -657,6 +675,7 @@ export const GameViewerDataPlayer = {
 
   toJSON(message: GameViewerDataPlayer): unknown {
     const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
     if (message.scores) {
       obj.scores = message.scores.map((e) => Math.round(e));
     } else {
@@ -674,6 +693,7 @@ export const GameViewerDataPlayer = {
     object: I
   ): GameViewerDataPlayer {
     const message = { ...baseGameViewerDataPlayer } as GameViewerDataPlayer;
+    message.name = object.name ?? "";
     message.scores = object.scores?.map((e) => e) || [];
     message.totalScores = object.totalScores?.map((e) => e) || [];
     return message;
@@ -687,12 +707,9 @@ const baseGameViewerData: object = {
 
 export const GameViewerData = {
   encode(message: GameViewerData, writer: Writer = Writer.create()): Writer {
-    Object.entries(message.players).forEach(([key, value]) => {
-      GameViewerData_PlayersEntry.encode(
-        { key: key as any, value },
-        writer.uint32(10).fork()
-      ).ldelim();
-    });
+    for (const v of message.players) {
+      GameViewerDataPlayer.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
     if (message.currentPlayerName !== "") {
       writer.uint32(18).string(message.currentPlayerName);
     }
@@ -706,18 +723,14 @@ export const GameViewerData = {
     const reader = input instanceof Reader ? input : new Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGameViewerData } as GameViewerData;
-    message.players = {};
+    message.players = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          const entry1 = GameViewerData_PlayersEntry.decode(
-            reader,
-            reader.uint32()
+          message.players.push(
+            GameViewerDataPlayer.decode(reader, reader.uint32())
           );
-          if (entry1.value !== undefined) {
-            message.players[entry1.key] = entry1.value;
-          }
           break;
         case 2:
           message.currentPlayerName = reader.string();
@@ -735,12 +748,9 @@ export const GameViewerData = {
 
   fromJSON(object: any): GameViewerData {
     const message = { ...baseGameViewerData } as GameViewerData;
-    message.players = Object.entries(object.players ?? {}).reduce<{
-      [key: string]: GameViewerDataPlayer;
-    }>((acc, [key, value]) => {
-      acc[key] = GameViewerDataPlayer.fromJSON(value);
-      return acc;
-    }, {});
+    message.players = (object.players ?? []).map((e: any) =>
+      GameViewerDataPlayer.fromJSON(e)
+    );
     message.currentPlayerName =
       object.currentPlayerName !== undefined &&
       object.currentPlayerName !== null
@@ -755,11 +765,12 @@ export const GameViewerData = {
 
   toJSON(message: GameViewerData): unknown {
     const obj: any = {};
-    obj.players = {};
     if (message.players) {
-      Object.entries(message.players).forEach(([k, v]) => {
-        obj.players[k] = GameViewerDataPlayer.toJSON(v);
-      });
+      obj.players = message.players.map((e) =>
+        e ? GameViewerDataPlayer.toJSON(e) : undefined
+      );
+    } else {
+      obj.players = [];
     }
     message.currentPlayerName !== undefined &&
       (obj.currentPlayerName = message.currentPlayerName);
@@ -772,99 +783,10 @@ export const GameViewerData = {
     object: I
   ): GameViewerData {
     const message = { ...baseGameViewerData } as GameViewerData;
-    message.players = Object.entries(object.players ?? {}).reduce<{
-      [key: string]: GameViewerDataPlayer;
-    }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = GameViewerDataPlayer.fromPartial(value);
-      }
-      return acc;
-    }, {});
+    message.players =
+      object.players?.map((e) => GameViewerDataPlayer.fromPartial(e)) || [];
     message.currentPlayerName = object.currentPlayerName ?? "";
     message.nextPlayerName = object.nextPlayerName ?? "";
-    return message;
-  },
-};
-
-const baseGameViewerData_PlayersEntry: object = { key: "" };
-
-export const GameViewerData_PlayersEntry = {
-  encode(
-    message: GameViewerData_PlayersEntry,
-    writer: Writer = Writer.create()
-  ): Writer {
-    if (message.key !== "") {
-      writer.uint32(10).string(message.key);
-    }
-    if (message.value !== undefined) {
-      GameViewerDataPlayer.encode(
-        message.value,
-        writer.uint32(18).fork()
-      ).ldelim();
-    }
-    return writer;
-  },
-
-  decode(
-    input: Reader | Uint8Array,
-    length?: number
-  ): GameViewerData_PlayersEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = {
-      ...baseGameViewerData_PlayersEntry,
-    } as GameViewerData_PlayersEntry;
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.key = reader.string();
-          break;
-        case 2:
-          message.value = GameViewerDataPlayer.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): GameViewerData_PlayersEntry {
-    const message = {
-      ...baseGameViewerData_PlayersEntry,
-    } as GameViewerData_PlayersEntry;
-    message.key =
-      object.key !== undefined && object.key !== null ? String(object.key) : "";
-    message.value =
-      object.value !== undefined && object.value !== null
-        ? GameViewerDataPlayer.fromJSON(object.value)
-        : undefined;
-    return message;
-  },
-
-  toJSON(message: GameViewerData_PlayersEntry): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined &&
-      (obj.value = message.value
-        ? GameViewerDataPlayer.toJSON(message.value)
-        : undefined);
-    return obj;
-  },
-
-  fromPartial<I extends Exact<DeepPartial<GameViewerData_PlayersEntry>, I>>(
-    object: I
-  ): GameViewerData_PlayersEntry {
-    const message = {
-      ...baseGameViewerData_PlayersEntry,
-    } as GameViewerData_PlayersEntry;
-    message.key = object.key ?? "";
-    message.value =
-      object.value !== undefined && object.value !== null
-        ? GameViewerDataPlayer.fromPartial(object.value)
-        : undefined;
     return message;
   },
 };
@@ -876,12 +798,9 @@ export const Game = {
     if (message.config !== undefined) {
       GameConfig.encode(message.config, writer.uint32(10).fork()).ldelim();
     }
-    Object.entries(message.players).forEach(([key, value]) => {
-      Game_PlayersEntry.encode(
-        { key: key as any, value },
-        writer.uint32(18).fork()
-      ).ldelim();
-    });
+    for (const v of message.players) {
+      GamePlayer.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
     if (message.resolution !== undefined) {
       GameResolution.encode(
         message.resolution,
@@ -910,7 +829,7 @@ export const Game = {
     const reader = input instanceof Reader ? input : new Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGame } as Game;
-    message.players = {};
+    message.players = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -918,10 +837,7 @@ export const Game = {
           message.config = GameConfig.decode(reader, reader.uint32());
           break;
         case 2:
-          const entry2 = Game_PlayersEntry.decode(reader, reader.uint32());
-          if (entry2.value !== undefined) {
-            message.players[entry2.key] = entry2.value;
-          }
+          message.players.push(GamePlayer.decode(reader, reader.uint32()));
           break;
         case 3:
           message.resolution = GameResolution.decode(reader, reader.uint32());
@@ -951,12 +867,9 @@ export const Game = {
       object.config !== undefined && object.config !== null
         ? GameConfig.fromJSON(object.config)
         : undefined;
-    message.players = Object.entries(object.players ?? {}).reduce<{
-      [key: string]: GamePlayer;
-    }>((acc, [key, value]) => {
-      acc[key] = GamePlayer.fromJSON(value);
-      return acc;
-    }, {});
+    message.players = (object.players ?? []).map((e: any) =>
+      GamePlayer.fromJSON(e)
+    );
     message.resolution =
       object.resolution !== undefined && object.resolution !== null
         ? GameResolution.fromJSON(object.resolution)
@@ -982,11 +895,12 @@ export const Game = {
       (obj.config = message.config
         ? GameConfig.toJSON(message.config)
         : undefined);
-    obj.players = {};
     if (message.players) {
-      Object.entries(message.players).forEach(([k, v]) => {
-        obj.players[k] = GamePlayer.toJSON(v);
-      });
+      obj.players = message.players.map((e) =>
+        e ? GamePlayer.toJSON(e) : undefined
+      );
+    } else {
+      obj.players = [];
     }
     message.resolution !== undefined &&
       (obj.resolution = message.resolution
@@ -1009,14 +923,8 @@ export const Game = {
       object.config !== undefined && object.config !== null
         ? GameConfig.fromPartial(object.config)
         : undefined;
-    message.players = Object.entries(object.players ?? {}).reduce<{
-      [key: string]: GamePlayer;
-    }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = GamePlayer.fromPartial(value);
-      }
-      return acc;
-    }, {});
+    message.players =
+      object.players?.map((e) => GamePlayer.fromPartial(e)) || [];
     message.resolution =
       object.resolution !== undefined && object.resolution !== null
         ? GameResolution.fromPartial(object.resolution)
@@ -1026,74 +934,6 @@ export const Game = {
     message.viewerData =
       object.viewerData !== undefined && object.viewerData !== null
         ? GameViewerData.fromPartial(object.viewerData)
-        : undefined;
-    return message;
-  },
-};
-
-const baseGame_PlayersEntry: object = { key: "" };
-
-export const Game_PlayersEntry = {
-  encode(message: Game_PlayersEntry, writer: Writer = Writer.create()): Writer {
-    if (message.key !== "") {
-      writer.uint32(10).string(message.key);
-    }
-    if (message.value !== undefined) {
-      GamePlayer.encode(message.value, writer.uint32(18).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: Reader | Uint8Array, length?: number): Game_PlayersEntry {
-    const reader = input instanceof Reader ? input : new Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = { ...baseGame_PlayersEntry } as Game_PlayersEntry;
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.key = reader.string();
-          break;
-        case 2:
-          message.value = GamePlayer.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): Game_PlayersEntry {
-    const message = { ...baseGame_PlayersEntry } as Game_PlayersEntry;
-    message.key =
-      object.key !== undefined && object.key !== null ? String(object.key) : "";
-    message.value =
-      object.value !== undefined && object.value !== null
-        ? GamePlayer.fromJSON(object.value)
-        : undefined;
-    return message;
-  },
-
-  toJSON(message: Game_PlayersEntry): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined &&
-      (obj.value = message.value
-        ? GamePlayer.toJSON(message.value)
-        : undefined);
-    return obj;
-  },
-
-  fromPartial<I extends Exact<DeepPartial<Game_PlayersEntry>, I>>(
-    object: I
-  ): Game_PlayersEntry {
-    const message = { ...baseGame_PlayersEntry } as Game_PlayersEntry;
-    message.key = object.key ?? "";
-    message.value =
-      object.value !== undefined && object.value !== null
-        ? GamePlayer.fromPartial(object.value)
         : undefined;
     return message;
   },

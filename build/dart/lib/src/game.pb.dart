@@ -169,17 +169,22 @@ class GameScore extends $pb.GeneratedMessage {
 
 class GamePlayer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GamePlayer', createEmptyInstance: create)
-    ..pc<GameScore>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scores', $pb.PbFieldType.PM, subBuilder: GameScore.create)
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'kicked')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..pc<GameScore>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scores', $pb.PbFieldType.PM, subBuilder: GameScore.create)
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'kicked')
     ..hasRequiredFields = false
   ;
 
   GamePlayer._() : super();
   factory GamePlayer({
+    $core.String? name,
     $core.Iterable<GameScore>? scores,
     $core.bool? kicked,
   }) {
     final _result = create();
+    if (name != null) {
+      _result.name = name;
+    }
     if (scores != null) {
       _result.scores.addAll(scores);
     }
@@ -210,16 +215,25 @@ class GamePlayer extends $pb.GeneratedMessage {
   static GamePlayer? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<GameScore> get scores => $_getList(0);
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get kicked => $_getBF(1);
-  @$pb.TagNumber(2)
-  set kicked($core.bool v) { $_setBool(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasKicked() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearKicked() => clearField(2);
+  $core.List<GameScore> get scores => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.bool get kicked => $_getBF(2);
+  @$pb.TagNumber(3)
+  set kicked($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasKicked() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearKicked() => clearField(3);
 }
 
 class GameAward extends $pb.GeneratedMessage {
@@ -370,17 +384,22 @@ class GameResolution extends $pb.GeneratedMessage {
 
 class GameViewerDataPlayer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GameViewerDataPlayer', createEmptyInstance: create)
-    ..p<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scores', $pb.PbFieldType.PU3)
-    ..p<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalScores', $pb.PbFieldType.PU3)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..p<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'scores', $pb.PbFieldType.PU3)
+    ..p<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalScores', $pb.PbFieldType.PU3)
     ..hasRequiredFields = false
   ;
 
   GameViewerDataPlayer._() : super();
   factory GameViewerDataPlayer({
+    $core.String? name,
     $core.Iterable<$core.int>? scores,
     $core.Iterable<$core.int>? totalScores,
   }) {
     final _result = create();
+    if (name != null) {
+      _result.name = name;
+    }
     if (scores != null) {
       _result.scores.addAll(scores);
     }
@@ -411,15 +430,24 @@ class GameViewerDataPlayer extends $pb.GeneratedMessage {
   static GameViewerDataPlayer? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get scores => $_getList(0);
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.int> get totalScores => $_getList(1);
+  $core.List<$core.int> get scores => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get totalScores => $_getList(2);
 }
 
 class GameViewerData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GameViewerData', createEmptyInstance: create)
-    ..m<$core.String, GameViewerDataPlayer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', entryClassName: 'GameViewerData.PlayersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: GameViewerDataPlayer.create)
+    ..pc<GameViewerDataPlayer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', $pb.PbFieldType.PM, subBuilder: GameViewerDataPlayer.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentPlayerName')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nextPlayerName')
     ..hasRequiredFields = false
@@ -427,7 +455,7 @@ class GameViewerData extends $pb.GeneratedMessage {
 
   GameViewerData._() : super();
   factory GameViewerData({
-    $core.Map<$core.String, GameViewerDataPlayer>? players,
+    $core.Iterable<GameViewerDataPlayer>? players,
     $core.String? currentPlayerName,
     $core.String? nextPlayerName,
   }) {
@@ -465,7 +493,7 @@ class GameViewerData extends $pb.GeneratedMessage {
   static GameViewerData? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.Map<$core.String, GameViewerDataPlayer> get players => $_getMap(0);
+  $core.List<GameViewerDataPlayer> get players => $_getList(0);
 
   @$pb.TagNumber(2)
   $core.String get currentPlayerName => $_getSZ(1);
@@ -489,7 +517,7 @@ class GameViewerData extends $pb.GeneratedMessage {
 class Game extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Game', createEmptyInstance: create)
     ..aOM<GameConfig>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'config', subBuilder: GameConfig.create)
-    ..m<$core.String, GamePlayer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', entryClassName: 'Game.PlayersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: GamePlayer.create)
+    ..pc<GamePlayer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', $pb.PbFieldType.PM, subBuilder: GamePlayer.create)
     ..aOM<GameResolution>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resolution', subBuilder: GameResolution.create)
     ..e<GameStatus>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: GameStatus.UNKNOWN, valueOf: GameStatus.valueOf, enumValues: GameStatus.values)
     ..aOM<$0.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startedAt', subBuilder: $0.Timestamp.create)
@@ -500,7 +528,7 @@ class Game extends $pb.GeneratedMessage {
   Game._() : super();
   factory Game({
     GameConfig? config,
-    $core.Map<$core.String, GamePlayer>? players,
+    $core.Iterable<GamePlayer>? players,
     GameResolution? resolution,
     GameStatus? status,
     $0.Timestamp? startedAt,
@@ -560,7 +588,7 @@ class Game extends $pb.GeneratedMessage {
   GameConfig ensureConfig() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.Map<$core.String, GamePlayer> get players => $_getMap(1);
+  $core.List<GamePlayer> get players => $_getList(1);
 
   @$pb.TagNumber(3)
   GameResolution get resolution => $_getN(2);

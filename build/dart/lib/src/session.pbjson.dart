@@ -14,10 +14,9 @@ const Session$json = const {
   '2': const [
     const {'1': 'owner', '3': 1, '4': 1, '5': 9, '10': 'owner'},
     const {'1': 'viewers', '3': 2, '4': 3, '5': 11, '6': '.Session.ViewersEntry', '10': 'viewers'},
-    const {'1': 'players', '3': 3, '4': 3, '5': 11, '6': '.Session.PlayersEntry', '10': 'players'},
     const {'1': 'games', '3': 4, '4': 3, '5': 11, '6': '.Game', '10': 'games'},
   ],
-  '3': const [Session_ViewersEntry$json, Session_PlayersEntry$json],
+  '3': const [Session_ViewersEntry$json],
 };
 
 @$core.Deprecated('Use sessionDescriptor instead')
@@ -30,15 +29,5 @@ const Session_ViewersEntry$json = const {
   '7': const {'7': true},
 };
 
-@$core.Deprecated('Use sessionDescriptor instead')
-const Session_PlayersEntry$json = const {
-  '1': 'PlayersEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.Player', '10': 'value'},
-  ],
-  '7': const {'7': true},
-};
-
 /// Descriptor for `Session`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sessionDescriptor = $convert.base64Decode('CgdTZXNzaW9uEhQKBW93bmVyGAEgASgJUgVvd25lchIvCgd2aWV3ZXJzGAIgAygLMhUuU2Vzc2lvbi5WaWV3ZXJzRW50cnlSB3ZpZXdlcnMSLwoHcGxheWVycxgDIAMoCzIVLlNlc3Npb24uUGxheWVyc0VudHJ5UgdwbGF5ZXJzEhsKBWdhbWVzGAQgAygLMgUuR2FtZVIFZ2FtZXMaQwoMVmlld2Vyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5Eh0KBXZhbHVlGAIgASgLMgcuVmlld2VyUgV2YWx1ZToCOAEaQwoMUGxheWVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5Eh0KBXZhbHVlGAIgASgLMgcuUGxheWVyUgV2YWx1ZToCOAE=');
+final $typed_data.Uint8List sessionDescriptor = $convert.base64Decode('CgdTZXNzaW9uEhQKBW93bmVyGAEgASgJUgVvd25lchIvCgd2aWV3ZXJzGAIgAygLMhUuU2Vzc2lvbi5WaWV3ZXJzRW50cnlSB3ZpZXdlcnMSGwoFZ2FtZXMYBCADKAsyBS5HYW1lUgVnYW1lcxpDCgxWaWV3ZXJzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSHQoFdmFsdWUYAiABKAsyBy5WaWV3ZXJSBXZhbHVlOgI4AQ==');

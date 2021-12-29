@@ -74,13 +74,14 @@ final $typed_data.Uint8List gameScoreDescriptor = $convert.base64Decode('CglHYW1
 const GamePlayer$json = const {
   '1': 'GamePlayer',
   '2': const [
-    const {'1': 'scores', '3': 1, '4': 3, '5': 11, '6': '.GameScore', '10': 'scores'},
-    const {'1': 'kicked', '3': 2, '4': 1, '5': 8, '10': 'kicked'},
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'scores', '3': 2, '4': 3, '5': 11, '6': '.GameScore', '10': 'scores'},
+    const {'1': 'kicked', '3': 3, '4': 1, '5': 8, '10': 'kicked'},
   ],
 };
 
 /// Descriptor for `GamePlayer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gamePlayerDescriptor = $convert.base64Decode('CgpHYW1lUGxheWVyEiIKBnNjb3JlcxgBIAMoCzIKLkdhbWVTY29yZVIGc2NvcmVzEhYKBmtpY2tlZBgCIAEoCFIGa2lja2Vk');
+final $typed_data.Uint8List gamePlayerDescriptor = $convert.base64Decode('CgpHYW1lUGxheWVyEhIKBG5hbWUYASABKAlSBG5hbWUSIgoGc2NvcmVzGAIgAygLMgouR2FtZVNjb3JlUgZzY29yZXMSFgoGa2lja2VkGAMgASgIUgZraWNrZWQ=');
 @$core.Deprecated('Use gameAwardDescriptor instead')
 const GameAward$json = const {
   '1': 'GameAward',
@@ -109,59 +110,38 @@ final $typed_data.Uint8List gameResolutionDescriptor = $convert.base64Decode('Cg
 const GameViewerDataPlayer$json = const {
   '1': 'GameViewerDataPlayer',
   '2': const [
-    const {'1': 'scores', '3': 1, '4': 3, '5': 13, '10': 'scores'},
-    const {'1': 'total_scores', '3': 2, '4': 3, '5': 13, '10': 'totalScores'},
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'scores', '3': 2, '4': 3, '5': 13, '10': 'scores'},
+    const {'1': 'total_scores', '3': 3, '4': 3, '5': 13, '10': 'totalScores'},
   ],
 };
 
 /// Descriptor for `GameViewerDataPlayer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameViewerDataPlayerDescriptor = $convert.base64Decode('ChRHYW1lVmlld2VyRGF0YVBsYXllchIWCgZzY29yZXMYASADKA1SBnNjb3JlcxIhCgx0b3RhbF9zY29yZXMYAiADKA1SC3RvdGFsU2NvcmVz');
+final $typed_data.Uint8List gameViewerDataPlayerDescriptor = $convert.base64Decode('ChRHYW1lVmlld2VyRGF0YVBsYXllchISCgRuYW1lGAEgASgJUgRuYW1lEhYKBnNjb3JlcxgCIAMoDVIGc2NvcmVzEiEKDHRvdGFsX3Njb3JlcxgDIAMoDVILdG90YWxTY29yZXM=');
 @$core.Deprecated('Use gameViewerDataDescriptor instead')
 const GameViewerData$json = const {
   '1': 'GameViewerData',
   '2': const [
-    const {'1': 'players', '3': 1, '4': 3, '5': 11, '6': '.GameViewerData.PlayersEntry', '10': 'players'},
+    const {'1': 'players', '3': 1, '4': 3, '5': 11, '6': '.GameViewerDataPlayer', '10': 'players'},
     const {'1': 'current_player_name', '3': 2, '4': 1, '5': 9, '10': 'currentPlayerName'},
     const {'1': 'next_player_name', '3': 3, '4': 1, '5': 9, '10': 'nextPlayerName'},
   ],
-  '3': const [GameViewerData_PlayersEntry$json],
-};
-
-@$core.Deprecated('Use gameViewerDataDescriptor instead')
-const GameViewerData_PlayersEntry$json = const {
-  '1': 'PlayersEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.GameViewerDataPlayer', '10': 'value'},
-  ],
-  '7': const {'7': true},
 };
 
 /// Descriptor for `GameViewerData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameViewerDataDescriptor = $convert.base64Decode('Cg5HYW1lVmlld2VyRGF0YRI2CgdwbGF5ZXJzGAEgAygLMhwuR2FtZVZpZXdlckRhdGEuUGxheWVyc0VudHJ5UgdwbGF5ZXJzEi4KE2N1cnJlbnRfcGxheWVyX25hbWUYAiABKAlSEWN1cnJlbnRQbGF5ZXJOYW1lEigKEG5leHRfcGxheWVyX25hbWUYAyABKAlSDm5leHRQbGF5ZXJOYW1lGlEKDFBsYXllcnNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIrCgV2YWx1ZRgCIAEoCzIVLkdhbWVWaWV3ZXJEYXRhUGxheWVyUgV2YWx1ZToCOAE=');
+final $typed_data.Uint8List gameViewerDataDescriptor = $convert.base64Decode('Cg5HYW1lVmlld2VyRGF0YRIvCgdwbGF5ZXJzGAEgAygLMhUuR2FtZVZpZXdlckRhdGFQbGF5ZXJSB3BsYXllcnMSLgoTY3VycmVudF9wbGF5ZXJfbmFtZRgCIAEoCVIRY3VycmVudFBsYXllck5hbWUSKAoQbmV4dF9wbGF5ZXJfbmFtZRgDIAEoCVIObmV4dFBsYXllck5hbWU=');
 @$core.Deprecated('Use gameDescriptor instead')
 const Game$json = const {
   '1': 'Game',
   '2': const [
     const {'1': 'config', '3': 1, '4': 1, '5': 11, '6': '.GameConfig', '10': 'config'},
-    const {'1': 'players', '3': 2, '4': 3, '5': 11, '6': '.Game.PlayersEntry', '10': 'players'},
+    const {'1': 'players', '3': 2, '4': 3, '5': 11, '6': '.GamePlayer', '10': 'players'},
     const {'1': 'resolution', '3': 3, '4': 1, '5': 11, '6': '.GameResolution', '10': 'resolution'},
     const {'1': 'status', '3': 4, '4': 1, '5': 14, '6': '.GameStatus', '10': 'status'},
     const {'1': 'started_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'startedAt'},
     const {'1': 'viewer_data', '3': 6, '4': 1, '5': 11, '6': '.GameViewerData', '10': 'viewerData'},
   ],
-  '3': const [Game_PlayersEntry$json],
-};
-
-@$core.Deprecated('Use gameDescriptor instead')
-const Game_PlayersEntry$json = const {
-  '1': 'PlayersEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.GamePlayer', '10': 'value'},
-  ],
-  '7': const {'7': true},
 };
 
 /// Descriptor for `Game`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameDescriptor = $convert.base64Decode('CgRHYW1lEiMKBmNvbmZpZxgBIAEoCzILLkdhbWVDb25maWdSBmNvbmZpZxIsCgdwbGF5ZXJzGAIgAygLMhIuR2FtZS5QbGF5ZXJzRW50cnlSB3BsYXllcnMSLwoKcmVzb2x1dGlvbhgDIAEoCzIPLkdhbWVSZXNvbHV0aW9uUgpyZXNvbHV0aW9uEiMKBnN0YXR1cxgEIAEoDjILLkdhbWVTdGF0dXNSBnN0YXR1cxI5CgpzdGFydGVkX2F0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJc3RhcnRlZEF0EjAKC3ZpZXdlcl9kYXRhGAYgASgLMg8uR2FtZVZpZXdlckRhdGFSCnZpZXdlckRhdGEaRwoMUGxheWVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiEKBXZhbHVlGAIgASgLMgsuR2FtZVBsYXllclIFdmFsdWU6AjgB');
+final $typed_data.Uint8List gameDescriptor = $convert.base64Decode('CgRHYW1lEiMKBmNvbmZpZxgBIAEoCzILLkdhbWVDb25maWdSBmNvbmZpZxIlCgdwbGF5ZXJzGAIgAygLMgsuR2FtZVBsYXllclIHcGxheWVycxIvCgpyZXNvbHV0aW9uGAMgASgLMg8uR2FtZVJlc29sdXRpb25SCnJlc29sdXRpb24SIwoGc3RhdHVzGAQgASgOMgsuR2FtZVN0YXR1c1IGc3RhdHVzEjkKCnN0YXJ0ZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUglzdGFydGVkQXQSMAoLdmlld2VyX2RhdGEYBiABKAsyDy5HYW1lVmlld2VyRGF0YVIKdmlld2VyRGF0YQ==');

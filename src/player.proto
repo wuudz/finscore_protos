@@ -1,5 +1,0 @@
-syntax = "proto3";
-
-message Player {
-  bool handicap = 1;
-}

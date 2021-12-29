@@ -20,8 +20,9 @@ message GameScore {
 }
 
 message GamePlayer {
-  repeated GameScore scores = 1;
-  bool kicked = 2;
+  string name = 1;
+  repeated GameScore scores = 2;
+  bool kicked = 3;
 }
 
 enum GameStatus {
@@ -52,19 +53,20 @@ message GameResolution {
 }
 
 message GameViewerDataPlayer {
-  repeated uint32 scores = 1;
-  repeated uint32 total_scores = 2;
+  string name = 1;
+  repeated uint32 scores = 2;
+  repeated uint32 total_scores = 3;
 }
 
 message GameViewerData {
-  map<string, GameViewerDataPlayer> players = 1;
+  repeated GameViewerDataPlayer players = 1;
   string current_player_name = 2;
   string next_player_name = 3;
 }
 
 message Game {
   GameConfig config = 1;
-  map<string, GamePlayer> players = 2;
+  repeated GamePlayer players = 2;
   GameResolution resolution = 3;
   GameStatus status = 4;
   google.protobuf.Timestamp started_at = 5;

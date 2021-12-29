@@ -11,13 +11,11 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'game.pb.dart' as $1;
 import 'viewer.pb.dart' as $2;
-import 'player.pb.dart' as $3;
 
 class Session extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Session', createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
     ..m<$core.String, $2.Viewer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'viewers', entryClassName: 'Session.ViewersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $2.Viewer.create)
-    ..m<$core.String, $3.Player>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', entryClassName: 'Session.PlayersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.Player.create)
     ..pc<$1.Game>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'games', $pb.PbFieldType.PM, subBuilder: $1.Game.create)
     ..hasRequiredFields = false
   ;
@@ -26,7 +24,6 @@ class Session extends $pb.GeneratedMessage {
   factory Session({
     $core.String? owner,
     $core.Map<$core.String, $2.Viewer>? viewers,
-    $core.Map<$core.String, $3.Player>? players,
     $core.Iterable<$1.Game>? games,
   }) {
     final _result = create();
@@ -35,9 +32,6 @@ class Session extends $pb.GeneratedMessage {
     }
     if (viewers != null) {
       _result.viewers.addAll(viewers);
-    }
-    if (players != null) {
-      _result.players.addAll(players);
     }
     if (games != null) {
       _result.games.addAll(games);
@@ -77,10 +71,7 @@ class Session extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.Map<$core.String, $2.Viewer> get viewers => $_getMap(1);
 
-  @$pb.TagNumber(3)
-  $core.Map<$core.String, $3.Player> get players => $_getMap(2);
-
   @$pb.TagNumber(4)
-  $core.List<$1.Game> get games => $_getList(3);
+  $core.List<$1.Game> get games => $_getList(2);
 }
 

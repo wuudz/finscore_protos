@@ -1,11 +1,9 @@
 syntax = "proto3";
 import "src/game.proto";
-import "src/player.proto";
 import "src/viewer.proto";
 
 message Session {
   string owner = 1;
   map<string, Viewer> viewers = 2;
-  map<string, Player> players = 3;
   repeated Game games = 4;
 }
