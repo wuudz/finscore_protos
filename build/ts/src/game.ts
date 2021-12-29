@@ -171,6 +171,7 @@ export interface GameViewerData {
   players: GameViewerDataPlayer[];
   currentPlayerName: string;
   nextPlayerName: string;
+  currentRound: number;
 }
 
 export interface Game {
@@ -703,6 +704,7 @@ export const GameViewerDataPlayer = {
 const baseGameViewerData: object = {
   currentPlayerName: "",
   nextPlayerName: "",
+  currentRound: 0,
 };
 
 export const GameViewerData = {
@@ -715,6 +717,9 @@ export const GameViewerData = {
     }
     if (message.nextPlayerName !== "") {
       writer.uint32(26).string(message.nextPlayerName);
+    }
+    if (message.currentRound !== 0) {
+      writer.uint32(32).uint32(message.currentRound);
     }
     return writer;
   },
@@ -738,6 +743,9 @@ export const GameViewerData = {
         case 3:
           message.nextPlayerName = reader.string();
           break;
+        case 4:
+          message.currentRound = reader.uint32();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -760,6 +768,10 @@ export const GameViewerData = {
       object.nextPlayerName !== undefined && object.nextPlayerName !== null
         ? String(object.nextPlayerName)
         : "";
+    message.currentRound =
+      object.currentRound !== undefined && object.currentRound !== null
+        ? Number(object.currentRound)
+        : 0;
     return message;
   },
 
@@ -776,6 +788,8 @@ export const GameViewerData = {
       (obj.currentPlayerName = message.currentPlayerName);
     message.nextPlayerName !== undefined &&
       (obj.nextPlayerName = message.nextPlayerName);
+    message.currentRound !== undefined &&
+      (obj.currentRound = Math.round(message.currentRound));
     return obj;
   },
 
@@ -787,6 +801,7 @@ export const GameViewerData = {
       object.players?.map((e) => GameViewerDataPlayer.fromPartial(e)) || [];
     message.currentPlayerName = object.currentPlayerName ?? "";
     message.nextPlayerName = object.nextPlayerName ?? "";
+    message.currentRound = object.currentRound ?? 0;
     return message;
   },
 };

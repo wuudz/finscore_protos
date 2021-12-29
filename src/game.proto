@@ -62,6 +62,7 @@ message GameViewerData {
   repeated GameViewerDataPlayer players = 1;
   string current_player_name = 2;
   string next_player_name = 3;
+  uint32 current_round = 4;
 }
 
 message Game {

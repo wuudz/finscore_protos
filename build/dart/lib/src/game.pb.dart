@@ -450,6 +450,7 @@ class GameViewerData extends $pb.GeneratedMessage {
     ..pc<GameViewerDataPlayer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', $pb.PbFieldType.PM, subBuilder: GameViewerDataPlayer.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentPlayerName')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nextPlayerName')
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentRound', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -458,6 +459,7 @@ class GameViewerData extends $pb.GeneratedMessage {
     $core.Iterable<GameViewerDataPlayer>? players,
     $core.String? currentPlayerName,
     $core.String? nextPlayerName,
+    $core.int? currentRound,
   }) {
     final _result = create();
     if (players != null) {
@@ -468,6 +470,9 @@ class GameViewerData extends $pb.GeneratedMessage {
     }
     if (nextPlayerName != null) {
       _result.nextPlayerName = nextPlayerName;
+    }
+    if (currentRound != null) {
+      _result.currentRound = currentRound;
     }
     return _result;
   }
@@ -512,6 +517,15 @@ class GameViewerData extends $pb.GeneratedMessage {
   $core.bool hasNextPlayerName() => $_has(2);
   @$pb.TagNumber(3)
   void clearNextPlayerName() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get currentRound => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set currentRound($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasCurrentRound() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearCurrentRound() => clearField(4);
 }
 
 class Game extends $pb.GeneratedMessage {
