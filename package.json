@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rm -r ./build/dart/lib/src ./build/dart/lib/google ./build/ts/src ./build/ts/google",
     "build": "npm run build:local && npm run build:timestamps",
-    "build:local": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=build/ts --dart_out=build/dart/lib src/*.proto",
-    "build:timestamps": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=build/ts --dart_out=build/dart/lib google/protobuf/timestamp.proto"
+    "build:local": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=stringEnums=true --ts_proto_out=build/ts --dart_out=build/dart/lib src/*.proto",
+    "build:timestamps": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=stringEnums=true --ts_proto_out=build/ts --dart_out=build/dart/lib google/protobuf/timestamp.proto"
   }
 }

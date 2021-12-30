@@ -5,9 +5,9 @@ import * as Long from "long";
 export const protobufPackage = "";
 
 export enum ViewerType {
-  WEBSITE = 0,
-  APP = 1,
-  UNRECOGNIZED = -1,
+  WEBSITE = "WEBSITE",
+  APP = "APP",
+  UNRECOGNIZED = "UNRECOGNIZED",
 }
 
 export function viewerTypeFromJSON(object: any): ViewerType {
@@ -36,16 +36,27 @@ export function viewerTypeToJSON(object: ViewerType): string {
   }
 }
 
+export function viewerTypeToNumber(object: ViewerType): number {
+  switch (object) {
+    case ViewerType.WEBSITE:
+      return 0;
+    case ViewerType.APP:
+      return 1;
+    default:
+      return 0;
+  }
+}
+
 export interface Viewer {
   type: ViewerType;
 }
 
-const baseViewer: object = { type: 0 };
+const baseViewer: object = { type: ViewerType.WEBSITE };
 
 export const Viewer = {
   encode(message: Viewer, writer: Writer = Writer.create()): Writer {
-    if (message.type !== 0) {
-      writer.uint32(8).int32(message.type);
+    if (message.type !== ViewerType.WEBSITE) {
+      writer.uint32(8).int32(viewerTypeToNumber(message.type));
     }
     return writer;
   },
@@ -58,7 +69,7 @@ export const Viewer = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.type = reader.int32() as any;
+          message.type = viewerTypeFromJSON(reader.int32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -73,7 +84,7 @@ export const Viewer = {
     message.type =
       object.type !== undefined && object.type !== null
         ? viewerTypeFromJSON(object.type)
-        : 0;
+        : ViewerType.WEBSITE;
     return message;
   },
 
@@ -85,7 +96,7 @@ export const Viewer = {
 
   fromPartial<I extends Exact<DeepPartial<Viewer>, I>>(object: I): Viewer {
     const message = { ...baseViewer } as Viewer;
-    message.type = object.type ?? 0;
+    message.type = object.type ?? ViewerType.WEBSITE;
     return message;
   },
 };

@@ -6,9 +6,9 @@ import { Timestamp } from "../google/protobuf/timestamp";
 export const protobufPackage = "";
 
 export enum PlayerOrder {
-  USER_DEFINED = 0,
-  RANDOM = 1,
-  UNRECOGNIZED = -1,
+  USER_DEFINED = "USER_DEFINED",
+  RANDOM = "RANDOM",
+  UNRECOGNIZED = "UNRECOGNIZED",
 }
 
 export function playerOrderFromJSON(object: any): PlayerOrder {
@@ -37,13 +37,24 @@ export function playerOrderToJSON(object: PlayerOrder): string {
   }
 }
 
+export function playerOrderToNumber(object: PlayerOrder): number {
+  switch (object) {
+    case PlayerOrder.USER_DEFINED:
+      return 0;
+    case PlayerOrder.RANDOM:
+      return 1;
+    default:
+      return 0;
+  }
+}
+
 export enum GameStatus {
-  UNKNOWN = 0,
-  PLAYING = 1,
-  PAUSED = 2,
-  FINISHED = 3,
-  CANCELED = 4,
-  UNRECOGNIZED = -1,
+  UNKNOWN = "UNKNOWN",
+  PLAYING = "PLAYING",
+  PAUSED = "PAUSED",
+  FINISHED = "FINISHED",
+  CANCELED = "CANCELED",
+  UNRECOGNIZED = "UNRECOGNIZED",
 }
 
 export function gameStatusFromJSON(object: any): GameStatus {
@@ -87,18 +98,35 @@ export function gameStatusToJSON(object: GameStatus): string {
   }
 }
 
+export function gameStatusToNumber(object: GameStatus): number {
+  switch (object) {
+    case GameStatus.UNKNOWN:
+      return 0;
+    case GameStatus.PLAYING:
+      return 1;
+    case GameStatus.PAUSED:
+      return 2;
+    case GameStatus.FINISHED:
+      return 3;
+    case GameStatus.CANCELED:
+      return 4;
+    default:
+      return 0;
+  }
+}
+
 export enum GameAwardType {
-  SLOW_POKE = 0,
-  SHARP_SHOOTER = 1,
-  PEA_SHOOTER = 2,
-  TWELVIE = 3,
-  HIGH_ROLLER = 4,
-  ZEROS = 5,
-  RESETTER = 6,
-  SO_CLOSE = 7,
-  LOWEST_SCORE = 8,
-  CLOSE_CALL = 9,
-  UNRECOGNIZED = -1,
+  SLOW_POKE = "SLOW_POKE",
+  SHARP_SHOOTER = "SHARP_SHOOTER",
+  PEA_SHOOTER = "PEA_SHOOTER",
+  TWELVIE = "TWELVIE",
+  HIGH_ROLLER = "HIGH_ROLLER",
+  ZEROS = "ZEROS",
+  RESETTER = "RESETTER",
+  SO_CLOSE = "SO_CLOSE",
+  LOWEST_SCORE = "LOWEST_SCORE",
+  CLOSE_CALL = "CLOSE_CALL",
+  UNRECOGNIZED = "UNRECOGNIZED",
 }
 
 export function gameAwardTypeFromJSON(object: any): GameAwardType {
@@ -167,6 +195,33 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
   }
 }
 
+export function gameAwardTypeToNumber(object: GameAwardType): number {
+  switch (object) {
+    case GameAwardType.SLOW_POKE:
+      return 0;
+    case GameAwardType.SHARP_SHOOTER:
+      return 1;
+    case GameAwardType.PEA_SHOOTER:
+      return 2;
+    case GameAwardType.TWELVIE:
+      return 3;
+    case GameAwardType.HIGH_ROLLER:
+      return 4;
+    case GameAwardType.ZEROS:
+      return 5;
+    case GameAwardType.RESETTER:
+      return 6;
+    case GameAwardType.SO_CLOSE:
+      return 7;
+    case GameAwardType.LOWEST_SCORE:
+      return 8;
+    case GameAwardType.CLOSE_CALL:
+      return 9;
+    default:
+      return 0;
+  }
+}
+
 export interface GameConfig {
   zeros: number;
   resetScore: number;
@@ -225,7 +280,7 @@ const baseGameConfig: object = {
   zeros: 0,
   resetScore: 0,
   winningScore: 0,
-  playerOrder: 0,
+  playerOrder: PlayerOrder.USER_DEFINED,
 };
 
 export const GameConfig = {
@@ -239,8 +294,8 @@ export const GameConfig = {
     if (message.winningScore !== 0) {
       writer.uint32(24).uint32(message.winningScore);
     }
-    if (message.playerOrder !== 0) {
-      writer.uint32(32).int32(message.playerOrder);
+    if (message.playerOrder !== PlayerOrder.USER_DEFINED) {
+      writer.uint32(32).int32(playerOrderToNumber(message.playerOrder));
     }
     return writer;
   },
@@ -262,7 +317,7 @@ export const GameConfig = {
           message.winningScore = reader.uint32();
           break;
         case 4:
-          message.playerOrder = reader.int32() as any;
+          message.playerOrder = playerOrderFromJSON(reader.int32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -289,7 +344,7 @@ export const GameConfig = {
     message.playerOrder =
       object.playerOrder !== undefined && object.playerOrder !== null
         ? playerOrderFromJSON(object.playerOrder)
-        : 0;
+        : PlayerOrder.USER_DEFINED;
     return message;
   },
 
@@ -312,7 +367,7 @@ export const GameConfig = {
     message.zeros = object.zeros ?? 0;
     message.resetScore = object.resetScore ?? 0;
     message.winningScore = object.winningScore ?? 0;
-    message.playerOrder = object.playerOrder ?? 0;
+    message.playerOrder = object.playerOrder ?? PlayerOrder.USER_DEFINED;
     return message;
   },
 };
@@ -469,12 +524,17 @@ export const GamePlayer = {
   },
 };
 
-const baseGameAward: object = { type: 0, receipient: "", value: "", name: "" };
+const baseGameAward: object = {
+  type: GameAwardType.SLOW_POKE,
+  receipient: "",
+  value: "",
+  name: "",
+};
 
 export const GameAward = {
   encode(message: GameAward, writer: Writer = Writer.create()): Writer {
-    if (message.type !== 0) {
-      writer.uint32(8).int32(message.type);
+    if (message.type !== GameAwardType.SLOW_POKE) {
+      writer.uint32(8).int32(gameAwardTypeToNumber(message.type));
     }
     if (message.receipient !== "") {
       writer.uint32(18).string(message.receipient);
@@ -496,7 +556,7 @@ export const GameAward = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.type = reader.int32() as any;
+          message.type = gameAwardTypeFromJSON(reader.int32());
           break;
         case 2:
           message.receipient = reader.string();
@@ -520,7 +580,7 @@ export const GameAward = {
     message.type =
       object.type !== undefined && object.type !== null
         ? gameAwardTypeFromJSON(object.type)
-        : 0;
+        : GameAwardType.SLOW_POKE;
     message.receipient =
       object.receipient !== undefined && object.receipient !== null
         ? String(object.receipient)
@@ -550,7 +610,7 @@ export const GameAward = {
     object: I
   ): GameAward {
     const message = { ...baseGameAward } as GameAward;
-    message.type = object.type ?? 0;
+    message.type = object.type ?? GameAwardType.SLOW_POKE;
     message.receipient = object.receipient ?? "";
     message.value = object.value ?? "";
     message.name = object.name ?? "";
@@ -869,7 +929,7 @@ export const GameViewerData = {
   },
 };
 
-const baseGame: object = { status: 0 };
+const baseGame: object = { status: GameStatus.UNKNOWN };
 
 export const Game = {
   encode(message: Game, writer: Writer = Writer.create()): Writer {
@@ -885,8 +945,8 @@ export const Game = {
         writer.uint32(26).fork()
       ).ldelim();
     }
-    if (message.status !== 0) {
-      writer.uint32(32).int32(message.status);
+    if (message.status !== GameStatus.UNKNOWN) {
+      writer.uint32(32).int32(gameStatusToNumber(message.status));
     }
     if (message.startedAt !== undefined) {
       Timestamp.encode(
@@ -921,7 +981,7 @@ export const Game = {
           message.resolution = GameResolution.decode(reader, reader.uint32());
           break;
         case 4:
-          message.status = reader.int32() as any;
+          message.status = gameStatusFromJSON(reader.int32());
           break;
         case 5:
           message.startedAt = fromTimestamp(
@@ -955,7 +1015,7 @@ export const Game = {
     message.status =
       object.status !== undefined && object.status !== null
         ? gameStatusFromJSON(object.status)
-        : 0;
+        : GameStatus.UNKNOWN;
     message.startedAt =
       object.startedAt !== undefined && object.startedAt !== null
         ? fromJsonTimestamp(object.startedAt)
@@ -1007,7 +1067,7 @@ export const Game = {
       object.resolution !== undefined && object.resolution !== null
         ? GameResolution.fromPartial(object.resolution)
         : undefined;
-    message.status = object.status ?? 0;
+    message.status = object.status ?? GameStatus.UNKNOWN;
     message.startedAt = object.startedAt ?? undefined;
     message.viewerData =
       object.viewerData !== undefined && object.viewerData !== null
