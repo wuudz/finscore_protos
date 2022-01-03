@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+message UserData {
+  repeated string sessions = 1;
+  repeated Player players = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message Player {
+  string name = 1;
+}
