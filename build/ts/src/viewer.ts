@@ -49,18 +49,14 @@ export function viewerTypeToNumber(object: ViewerType): number {
 
 export interface Viewer {
   type: ViewerType;
-  uid: string;
 }
 
-const baseViewer: object = { type: ViewerType.WEBSITE, uid: "" };
+const baseViewer: object = { type: ViewerType.WEBSITE };
 
 export const Viewer = {
   encode(message: Viewer, writer: Writer = Writer.create()): Writer {
     if (message.type !== ViewerType.WEBSITE) {
       writer.uint32(8).int32(viewerTypeToNumber(message.type));
-    }
-    if (message.uid !== "") {
-      writer.uint32(18).string(message.uid);
     }
     return writer;
   },
@@ -74,9 +70,6 @@ export const Viewer = {
       switch (tag >>> 3) {
         case 1:
           message.type = viewerTypeFromJSON(reader.int32());
-          break;
-        case 2:
-          message.uid = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -92,22 +85,18 @@ export const Viewer = {
       object.type !== undefined && object.type !== null
         ? viewerTypeFromJSON(object.type)
         : ViewerType.WEBSITE;
-    message.uid =
-      object.uid !== undefined && object.uid !== null ? String(object.uid) : "";
     return message;
   },
 
   toJSON(message: Viewer): unknown {
     const obj: any = {};
     message.type !== undefined && (obj.type = viewerTypeToJSON(message.type));
-    message.uid !== undefined && (obj.uid = message.uid);
     return obj;
   },
 
   fromPartial<I extends Exact<DeepPartial<Viewer>, I>>(object: I): Viewer {
     const message = { ...baseViewer } as Viewer;
     message.type = object.type ?? ViewerType.WEBSITE;
-    message.uid = object.uid ?? "";
     return message;
   },
 };

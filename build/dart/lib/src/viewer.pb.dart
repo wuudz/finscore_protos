@@ -16,21 +16,16 @@ export 'viewer.pbenum.dart';
 class Viewer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Viewer', createEmptyInstance: create)
     ..e<ViewerType>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: ViewerType.WEBSITE, valueOf: ViewerType.valueOf, enumValues: ViewerType.values)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uid')
     ..hasRequiredFields = false
   ;
 
   Viewer._() : super();
   factory Viewer({
     ViewerType? type,
-    $core.String? uid,
   }) {
     final _result = create();
     if (type != null) {
       _result.type = type;
-    }
-    if (uid != null) {
-      _result.uid = uid;
     }
     return _result;
   }
@@ -63,14 +58,5 @@ class Viewer extends $pb.GeneratedMessage {
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
   void clearType() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get uid => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set uid($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasUid() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearUid() => clearField(2);
 }
 

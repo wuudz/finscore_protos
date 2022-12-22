@@ -24,9 +24,8 @@ const Viewer$json = const {
   '1': 'Viewer',
   '2': const [
     const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.ViewerType', '10': 'type'},
-    const {'1': 'uid', '3': 2, '4': 1, '5': 9, '10': 'uid'},
   ],
 };
 
 /// Descriptor for `Viewer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List viewerDescriptor = $convert.base64Decode('CgZWaWV3ZXISHwoEdHlwZRgBIAEoDjILLlZpZXdlclR5cGVSBHR5cGUSEAoDdWlkGAIgASgJUgN1aWQ=');
+final $typed_data.Uint8List viewerDescriptor = $convert.base64Decode('CgZWaWV3ZXISHwoEdHlwZRgBIAEoDjILLlZpZXdlclR5cGVSBHR5cGU=');
