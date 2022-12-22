@@ -7,4 +7,5 @@ enum ViewerType {
 
 message Viewer {
   ViewerType type = 1;
+  string uid = 2;
 }
