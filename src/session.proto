@@ -3,7 +3,6 @@ import "src/game.proto";
 import "src/viewer.proto";
 
 message Session {
-  string owner = 1;
-  map<string, Viewer> viewers = 2;
-  repeated Game games = 4;
+  reserved 1 to 4;
+  google.protobuf.Timestamp created_at = 5;
 }
