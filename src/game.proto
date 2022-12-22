@@ -8,7 +8,7 @@ enum PlayerOrder {
 }
 
 message GameConfig {
-  uint32 zeros = 1;
+  sint32 zeros = 1;
   uint32 reset_score = 2;
   uint32 winning_score = 3;
   PlayerOrder player_order = 4;

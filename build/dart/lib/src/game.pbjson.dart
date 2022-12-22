@@ -56,7 +56,7 @@ final $typed_data.Uint8List gameAwardTypeDescriptor = $convert.base64Decode('Cg1
 const GameConfig$json = const {
   '1': 'GameConfig',
   '2': const [
-    const {'1': 'zeros', '3': 1, '4': 1, '5': 13, '10': 'zeros'},
+    const {'1': 'zeros', '3': 1, '4': 1, '5': 17, '10': 'zeros'},
     const {'1': 'reset_score', '3': 2, '4': 1, '5': 13, '10': 'resetScore'},
     const {'1': 'winning_score', '3': 3, '4': 1, '5': 13, '10': 'winningScore'},
     const {'1': 'player_order', '3': 4, '4': 1, '5': 14, '6': '.PlayerOrder', '10': 'playerOrder'},
@@ -64,7 +64,7 @@ const GameConfig$json = const {
 };
 
 /// Descriptor for `GameConfig`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameConfigDescriptor = $convert.base64Decode('CgpHYW1lQ29uZmlnEhQKBXplcm9zGAEgASgNUgV6ZXJvcxIfCgtyZXNldF9zY29yZRgCIAEoDVIKcmVzZXRTY29yZRIjCg13aW5uaW5nX3Njb3JlGAMgASgNUgx3aW5uaW5nU2NvcmUSLwoMcGxheWVyX29yZGVyGAQgASgOMgwuUGxheWVyT3JkZXJSC3BsYXllck9yZGVy');
+final $typed_data.Uint8List gameConfigDescriptor = $convert.base64Decode('CgpHYW1lQ29uZmlnEhQKBXplcm9zGAEgASgRUgV6ZXJvcxIfCgtyZXNldF9zY29yZRgCIAEoDVIKcmVzZXRTY29yZRIjCg13aW5uaW5nX3Njb3JlGAMgASgNUgx3aW5uaW5nU2NvcmUSLwoMcGxheWVyX29yZGVyGAQgASgOMgwuUGxheWVyT3JkZXJSC3BsYXllck9yZGVy');
 @$core.Deprecated('Use gameScoreDescriptor instead')
 const GameScore$json = const {
   '1': 'GameScore',

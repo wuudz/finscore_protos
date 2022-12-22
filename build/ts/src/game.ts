@@ -286,7 +286,7 @@ const baseGameConfig: object = {
 export const GameConfig = {
   encode(message: GameConfig, writer: Writer = Writer.create()): Writer {
     if (message.zeros !== 0) {
-      writer.uint32(8).uint32(message.zeros);
+      writer.uint32(8).sint32(message.zeros);
     }
     if (message.resetScore !== 0) {
       writer.uint32(16).uint32(message.resetScore);
@@ -308,7 +308,7 @@ export const GameConfig = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.zeros = reader.uint32();
+          message.zeros = reader.sint32();
           break;
         case 2:
           message.resetScore = reader.uint32();

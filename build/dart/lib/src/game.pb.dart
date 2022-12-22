@@ -17,7 +17,7 @@ export 'game.pbenum.dart';
 
 class GameConfig extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GameConfig', createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'zeros', $pb.PbFieldType.OU3)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'zeros', $pb.PbFieldType.OS3)
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resetScore', $pb.PbFieldType.OU3)
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'winningScore', $pb.PbFieldType.OU3)
     ..e<PlayerOrder>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerOrder', $pb.PbFieldType.OE, defaultOrMaker: PlayerOrder.USER_DEFINED, valueOf: PlayerOrder.valueOf, enumValues: PlayerOrder.values)
@@ -70,7 +70,7 @@ class GameConfig extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.int get zeros => $_getIZ(0);
   @$pb.TagNumber(1)
-  set zeros($core.int v) { $_setUnsignedInt32(0, v); }
+  set zeros($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasZeros() => $_has(0);
   @$pb.TagNumber(1)
