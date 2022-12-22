@@ -6,7 +6,6 @@ import { Timestamp } from "../google/protobuf/timestamp";
 export const protobufPackage = "";
 
 export interface UserData {
-  sessions: string[];
   players: Player[];
   createdAt: Date | undefined;
 }
@@ -15,13 +14,10 @@ export interface Player {
   name: string;
 }
 
-const baseUserData: object = { sessions: "" };
+const baseUserData: object = {};
 
 export const UserData = {
   encode(message: UserData, writer: Writer = Writer.create()): Writer {
-    for (const v of message.sessions) {
-      writer.uint32(10).string(v!);
-    }
     for (const v of message.players) {
       Player.encode(v!, writer.uint32(18).fork()).ldelim();
     }
@@ -38,14 +34,10 @@ export const UserData = {
     const reader = input instanceof Reader ? input : new Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseUserData } as UserData;
-    message.sessions = [];
     message.players = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.sessions.push(reader.string());
-          break;
         case 2:
           message.players.push(Player.decode(reader, reader.uint32()));
           break;
@@ -64,7 +56,6 @@ export const UserData = {
 
   fromJSON(object: any): UserData {
     const message = { ...baseUserData } as UserData;
-    message.sessions = (object.sessions ?? []).map((e: any) => String(e));
     message.players = (object.players ?? []).map((e: any) =>
       Player.fromJSON(e)
     );
@@ -77,11 +68,6 @@ export const UserData = {
 
   toJSON(message: UserData): unknown {
     const obj: any = {};
-    if (message.sessions) {
-      obj.sessions = message.sessions.map((e) => e);
-    } else {
-      obj.sessions = [];
-    }
     if (message.players) {
       obj.players = message.players.map((e) =>
         e ? Player.toJSON(e) : undefined
@@ -96,7 +82,6 @@ export const UserData = {
 
   fromPartial<I extends Exact<DeepPartial<UserData>, I>>(object: I): UserData {
     const message = { ...baseUserData } as UserData;
-    message.sessions = object.sessions?.map((e) => e) || [];
     message.players = object.players?.map((e) => Player.fromPartial(e)) || [];
     message.createdAt = object.createdAt ?? undefined;
     return message;

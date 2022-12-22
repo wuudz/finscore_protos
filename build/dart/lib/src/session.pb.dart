@@ -3,38 +3,27 @@
 //  source: src/session.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'game.pb.dart' as $1;
-import 'viewer.pb.dart' as $2;
+import '../google/protobuf/timestamp.pb.dart' as $0;
 
 class Session extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Session', createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
-    ..m<$core.String, $2.Viewer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'viewers', entryClassName: 'Session.ViewersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $2.Viewer.create)
-    ..pc<$1.Game>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'games', $pb.PbFieldType.PM, subBuilder: $1.Game.create)
+    ..aOM<$0.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', subBuilder: $0.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
   Session._() : super();
   factory Session({
-    $core.String? owner,
-    $core.Map<$core.String, $2.Viewer>? viewers,
-    $core.Iterable<$1.Game>? games,
+    $0.Timestamp? createdAt,
   }) {
     final _result = create();
-    if (owner != null) {
-      _result.owner = owner;
-    }
-    if (viewers != null) {
-      _result.viewers.addAll(viewers);
-    }
-    if (games != null) {
-      _result.games.addAll(games);
+    if (createdAt != null) {
+      _result.createdAt = createdAt;
     }
     return _result;
   }
@@ -59,19 +48,15 @@ class Session extends $pb.GeneratedMessage {
   static Session getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Session>(create);
   static Session? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  $core.String get owner => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set owner($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasOwner() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearOwner() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.Map<$core.String, $2.Viewer> get viewers => $_getMap(1);
-
-  @$pb.TagNumber(4)
-  $core.List<$1.Game> get games => $_getList(2);
+  @$pb.TagNumber(5)
+  $0.Timestamp get createdAt => $_getN(0);
+  @$pb.TagNumber(5)
+  set createdAt($0.Timestamp v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasCreatedAt() => $_has(0);
+  @$pb.TagNumber(5)
+  void clearCreatedAt() => clearField(5);
+  @$pb.TagNumber(5)
+  $0.Timestamp ensureCreatedAt() => $_ensure(0);
 }
 

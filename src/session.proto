@@ -1,6 +1,6 @@
 syntax = "proto3";
-import "src/game.proto";
-import "src/viewer.proto";
+
+import "google/protobuf/timestamp.proto";
 
 message Session {
   reserved 1 to 4;

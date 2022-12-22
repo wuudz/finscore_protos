@@ -3,7 +3,7 @@
 //  source: src/user.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
@@ -13,7 +13,6 @@ import '../google/protobuf/timestamp.pb.dart' as $0;
 
 class UserData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserData', createEmptyInstance: create)
-    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sessions')
     ..pc<Player>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', $pb.PbFieldType.PM, subBuilder: Player.create)
     ..aOM<$0.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', subBuilder: $0.Timestamp.create)
     ..hasRequiredFields = false
@@ -21,14 +20,10 @@ class UserData extends $pb.GeneratedMessage {
 
   UserData._() : super();
   factory UserData({
-    $core.Iterable<$core.String>? sessions,
     $core.Iterable<Player>? players,
     $0.Timestamp? createdAt,
   }) {
     final _result = create();
-    if (sessions != null) {
-      _result.sessions.addAll(sessions);
-    }
     if (players != null) {
       _result.players.addAll(players);
     }
@@ -58,22 +53,19 @@ class UserData extends $pb.GeneratedMessage {
   static UserData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserData>(create);
   static UserData? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  $core.List<$core.String> get sessions => $_getList(0);
-
   @$pb.TagNumber(2)
-  $core.List<Player> get players => $_getList(1);
+  $core.List<Player> get players => $_getList(0);
 
   @$pb.TagNumber(3)
-  $0.Timestamp get createdAt => $_getN(2);
+  $0.Timestamp get createdAt => $_getN(1);
   @$pb.TagNumber(3)
   set createdAt($0.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasCreatedAt() => $_has(2);
+  $core.bool hasCreatedAt() => $_has(1);
   @$pb.TagNumber(3)
   void clearCreatedAt() => clearField(3);
   @$pb.TagNumber(3)
-  $0.Timestamp ensureCreatedAt() => $_ensure(2);
+  $0.Timestamp ensureCreatedAt() => $_ensure(1);
 }
 
 class Player extends $pb.GeneratedMessage {
