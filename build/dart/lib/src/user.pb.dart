@@ -15,6 +15,7 @@ class UserData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserData', createEmptyInstance: create)
     ..pc<Player>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'players', $pb.PbFieldType.PM, subBuilder: Player.create)
     ..aOM<$0.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', subBuilder: $0.Timestamp.create)
+    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'admin')
     ..hasRequiredFields = false
   ;
 
@@ -22,6 +23,7 @@ class UserData extends $pb.GeneratedMessage {
   factory UserData({
     $core.Iterable<Player>? players,
     $0.Timestamp? createdAt,
+    $core.bool? admin,
   }) {
     final _result = create();
     if (players != null) {
@@ -29,6 +31,9 @@ class UserData extends $pb.GeneratedMessage {
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
+    }
+    if (admin != null) {
+      _result.admin = admin;
     }
     return _result;
   }
@@ -66,6 +71,15 @@ class UserData extends $pb.GeneratedMessage {
   void clearCreatedAt() => clearField(3);
   @$pb.TagNumber(3)
   $0.Timestamp ensureCreatedAt() => $_ensure(1);
+
+  @$pb.TagNumber(4)
+  $core.bool get admin => $_getBF(2);
+  @$pb.TagNumber(4)
+  set admin($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasAdmin() => $_has(2);
+  @$pb.TagNumber(4)
+  void clearAdmin() => clearField(4);
 }
 
 class Player extends $pb.GeneratedMessage {

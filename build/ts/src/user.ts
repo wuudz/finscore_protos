@@ -8,13 +8,14 @@ export const protobufPackage = "";
 export interface UserData {
   players: Player[];
   createdAt: Date | undefined;
+  admin: boolean;
 }
 
 export interface Player {
   name: string;
 }
 
-const baseUserData: object = {};
+const baseUserData: object = { admin: false };
 
 export const UserData = {
   encode(message: UserData, writer: Writer = Writer.create()): Writer {
@@ -26,6 +27,9 @@ export const UserData = {
         toTimestamp(message.createdAt),
         writer.uint32(26).fork()
       ).ldelim();
+    }
+    if (message.admin === true) {
+      writer.uint32(32).bool(message.admin);
     }
     return writer;
   },
@@ -46,6 +50,9 @@ export const UserData = {
             Timestamp.decode(reader, reader.uint32())
           );
           break;
+        case 4:
+          message.admin = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -63,6 +70,10 @@ export const UserData = {
       object.createdAt !== undefined && object.createdAt !== null
         ? fromJsonTimestamp(object.createdAt)
         : undefined;
+    message.admin =
+      object.admin !== undefined && object.admin !== null
+        ? Boolean(object.admin)
+        : false;
     return message;
   },
 
@@ -77,6 +88,7 @@ export const UserData = {
     }
     message.createdAt !== undefined &&
       (obj.createdAt = message.createdAt.toISOString());
+    message.admin !== undefined && (obj.admin = message.admin);
     return obj;
   },
 
@@ -84,6 +96,7 @@ export const UserData = {
     const message = { ...baseUserData } as UserData;
     message.players = object.players?.map((e) => Player.fromPartial(e)) || [];
     message.createdAt = object.createdAt ?? undefined;
+    message.admin = object.admin ?? false;
     return message;
   },
 };

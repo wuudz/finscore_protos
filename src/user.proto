@@ -7,6 +7,7 @@ message UserData {
 
   repeated Player players = 2;
   google.protobuf.Timestamp created_at = 3;
+  bool admin = 4;
 }
 
 message Player {
