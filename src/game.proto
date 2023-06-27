@@ -73,6 +73,10 @@ message GameViewerData {
   uint32 current_round = 4;
 }
 
+message GameShareData {
+  string key = 1;
+}
+
 message Game {
   GameConfig config = 1;
   repeated GamePlayer players = 2;
@@ -80,4 +84,5 @@ message Game {
   GameStatus status = 4;
   google.protobuf.Timestamp started_at = 5;
   GameViewerData viewer_data = 6;
+  GameShareData share_data = 7;
 }

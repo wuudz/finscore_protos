@@ -181,6 +181,18 @@ final $typed_data.Uint8List gameViewerDataDescriptor = $convert.base64Decode(
     'bWUSKAoQbmV4dF9wbGF5ZXJfbmFtZRgDIAEoCVIObmV4dFBsYXllck5hbWUSIwoNY3VycmVudF'
     '9yb3VuZBgEIAEoDVIMY3VycmVudFJvdW5k');
 
+@$core.Deprecated('Use gameShareDataDescriptor instead')
+const GameShareData$json = {
+  '1': 'GameShareData',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+  ],
+};
+
+/// Descriptor for `GameShareData`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List gameShareDataDescriptor = $convert.base64Decode(
+    'Cg1HYW1lU2hhcmVEYXRhEhAKA2tleRgBIAEoCVIDa2V5');
+
 @$core.Deprecated('Use gameDescriptor instead')
 const Game$json = {
   '1': 'Game',
@@ -191,6 +203,7 @@ const Game$json = {
     {'1': 'status', '3': 4, '4': 1, '5': 14, '6': '.GameStatus', '10': 'status'},
     {'1': 'started_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'startedAt'},
     {'1': 'viewer_data', '3': 6, '4': 1, '5': 11, '6': '.GameViewerData', '10': 'viewerData'},
+    {'1': 'share_data', '3': 7, '4': 1, '5': 11, '6': '.GameShareData', '10': 'shareData'},
   ],
 };
 
@@ -200,6 +213,6 @@ final $typed_data.Uint8List gameDescriptor = $convert.base64Decode(
     'IgAygLMgsuR2FtZVBsYXllclIHcGxheWVycxIvCgpyZXNvbHV0aW9uGAMgASgLMg8uR2FtZVJl'
     'c29sdXRpb25SCnJlc29sdXRpb24SIwoGc3RhdHVzGAQgASgOMgsuR2FtZVN0YXR1c1IGc3RhdH'
     'VzEjkKCnN0YXJ0ZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUglzdGFy'
-    'dGVkQXQSMAoLdmlld2VyX2RhdGEYBiABKAsyDy5HYW1lVmlld2VyRGF0YVIKdmlld2VyRGF0YQ'
-    '==');
+    'dGVkQXQSMAoLdmlld2VyX2RhdGEYBiABKAsyDy5HYW1lVmlld2VyRGF0YVIKdmlld2VyRGF0YR'
+    'ItCgpzaGFyZV9kYXRhGAcgASgLMg4uR2FtZVNoYXJlRGF0YVIJc2hhcmVEYXRh');
 

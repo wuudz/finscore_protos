@@ -267,6 +267,10 @@ export interface GameViewerData {
   currentRound: number;
 }
 
+export interface GameShareData {
+  key: string;
+}
+
 export interface Game {
   config: GameConfig | undefined;
   players: GamePlayer[];
@@ -274,6 +278,7 @@ export interface Game {
   status: GameStatus;
   startedAt: Date | undefined;
   viewerData: GameViewerData | undefined;
+  shareData: GameShareData | undefined;
 }
 
 const baseGameConfig: object = {
@@ -929,6 +934,56 @@ export const GameViewerData = {
   },
 };
 
+const baseGameShareData: object = { key: "" };
+
+export const GameShareData = {
+  encode(message: GameShareData, writer: Writer = Writer.create()): Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): GameShareData {
+    const reader = input instanceof Reader ? input : new Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseGameShareData } as GameShareData;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.key = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GameShareData {
+    const message = { ...baseGameShareData } as GameShareData;
+    message.key =
+      object.key !== undefined && object.key !== null ? String(object.key) : "";
+    return message;
+  },
+
+  toJSON(message: GameShareData): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    return obj;
+  },
+
+  fromPartial<I extends Exact<DeepPartial<GameShareData>, I>>(
+    object: I
+  ): GameShareData {
+    const message = { ...baseGameShareData } as GameShareData;
+    message.key = object.key ?? "";
+    return message;
+  },
+};
+
 const baseGame: object = { status: GameStatus.UNKNOWN };
 
 export const Game = {
@@ -958,6 +1013,12 @@ export const Game = {
       GameViewerData.encode(
         message.viewerData,
         writer.uint32(50).fork()
+      ).ldelim();
+    }
+    if (message.shareData !== undefined) {
+      GameShareData.encode(
+        message.shareData,
+        writer.uint32(58).fork()
       ).ldelim();
     }
     return writer;
@@ -990,6 +1051,9 @@ export const Game = {
           break;
         case 6:
           message.viewerData = GameViewerData.decode(reader, reader.uint32());
+          break;
+        case 7:
+          message.shareData = GameShareData.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1024,6 +1088,10 @@ export const Game = {
       object.viewerData !== undefined && object.viewerData !== null
         ? GameViewerData.fromJSON(object.viewerData)
         : undefined;
+    message.shareData =
+      object.shareData !== undefined && object.shareData !== null
+        ? GameShareData.fromJSON(object.shareData)
+        : undefined;
     return message;
   },
 
@@ -1052,6 +1120,10 @@ export const Game = {
       (obj.viewerData = message.viewerData
         ? GameViewerData.toJSON(message.viewerData)
         : undefined);
+    message.shareData !== undefined &&
+      (obj.shareData = message.shareData
+        ? GameShareData.toJSON(message.shareData)
+        : undefined);
     return obj;
   },
 
@@ -1072,6 +1144,10 @@ export const Game = {
     message.viewerData =
       object.viewerData !== undefined && object.viewerData !== null
         ? GameViewerData.fromPartial(object.viewerData)
+        : undefined;
+    message.shareData =
+      object.shareData !== undefined && object.shareData !== null
+        ? GameShareData.fromPartial(object.shareData)
         : undefined;
     return message;
   },

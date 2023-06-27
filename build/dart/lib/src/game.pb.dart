@@ -456,6 +456,48 @@ class GameViewerData extends $pb.GeneratedMessage {
   void clearCurrentRound() => clearField(4);
 }
 
+class GameShareData extends $pb.GeneratedMessage {
+  factory GameShareData() => create();
+  GameShareData._() : super();
+  factory GameShareData.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GameShareData.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GameShareData', createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'key')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GameShareData clone() => GameShareData()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GameShareData copyWith(void Function(GameShareData) updates) => super.copyWith((message) => updates(message as GameShareData)) as GameShareData;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GameShareData create() => GameShareData._();
+  GameShareData createEmptyInstance() => create();
+  static $pb.PbList<GameShareData> createRepeated() => $pb.PbList<GameShareData>();
+  @$core.pragma('dart2js:noInline')
+  static GameShareData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GameShareData>(create);
+  static GameShareData? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get key => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set key($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearKey() => clearField(1);
+}
+
 class Game extends $pb.GeneratedMessage {
   factory Game() => create();
   Game._() : super();
@@ -469,6 +511,7 @@ class Game extends $pb.GeneratedMessage {
     ..e<GameStatus>(4, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: GameStatus.UNKNOWN, valueOf: GameStatus.valueOf, enumValues: GameStatus.values)
     ..aOM<$0.Timestamp>(5, _omitFieldNames ? '' : 'startedAt', subBuilder: $0.Timestamp.create)
     ..aOM<GameViewerData>(6, _omitFieldNames ? '' : 'viewerData', subBuilder: GameViewerData.create)
+    ..aOM<GameShareData>(7, _omitFieldNames ? '' : 'shareData', subBuilder: GameShareData.create)
     ..hasRequiredFields = false
   ;
 
@@ -548,6 +591,17 @@ class Game extends $pb.GeneratedMessage {
   void clearViewerData() => clearField(6);
   @$pb.TagNumber(6)
   GameViewerData ensureViewerData() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  GameShareData get shareData => $_getN(6);
+  @$pb.TagNumber(7)
+  set shareData(GameShareData v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasShareData() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearShareData() => clearField(7);
+  @$pb.TagNumber(7)
+  GameShareData ensureShareData() => $_ensure(6);
 }
 
 
