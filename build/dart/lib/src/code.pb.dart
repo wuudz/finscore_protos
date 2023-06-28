@@ -15,6 +15,7 @@ class Code extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Code', createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uid')
     ..aOM<$0.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', subBuilder: $0.Timestamp.create)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
     ..hasRequiredFields = false
   ;
 
@@ -22,6 +23,7 @@ class Code extends $pb.GeneratedMessage {
   factory Code({
     $core.String? uid,
     $0.Timestamp? createdAt,
+    $core.String? path,
   }) {
     final _result = create();
     if (uid != null) {
@@ -29,6 +31,9 @@ class Code extends $pb.GeneratedMessage {
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
+    }
+    if (path != null) {
+      _result.path = path;
     }
     return _result;
   }
@@ -72,5 +77,14 @@ class Code extends $pb.GeneratedMessage {
   void clearCreatedAt() => clearField(2);
   @$pb.TagNumber(2)
   $0.Timestamp ensureCreatedAt() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.String get path => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set path($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPath() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPath() => clearField(3);
 }
 

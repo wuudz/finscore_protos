@@ -8,9 +8,10 @@ export const protobufPackage = "";
 export interface Code {
   uid: string;
   createdAt: Date | undefined;
+  path: string;
 }
 
-const baseCode: object = { uid: "" };
+const baseCode: object = { uid: "", path: "" };
 
 export const Code = {
   encode(message: Code, writer: Writer = Writer.create()): Writer {
@@ -22,6 +23,9 @@ export const Code = {
         toTimestamp(message.createdAt),
         writer.uint32(18).fork()
       ).ldelim();
+    }
+    if (message.path !== "") {
+      writer.uint32(26).string(message.path);
     }
     return writer;
   },
@@ -41,6 +45,9 @@ export const Code = {
             Timestamp.decode(reader, reader.uint32())
           );
           break;
+        case 3:
+          message.path = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -57,6 +64,10 @@ export const Code = {
       object.createdAt !== undefined && object.createdAt !== null
         ? fromJsonTimestamp(object.createdAt)
         : undefined;
+    message.path =
+      object.path !== undefined && object.path !== null
+        ? String(object.path)
+        : "";
     return message;
   },
 
@@ -65,6 +76,7 @@ export const Code = {
     message.uid !== undefined && (obj.uid = message.uid);
     message.createdAt !== undefined &&
       (obj.createdAt = message.createdAt.toISOString());
+    message.path !== undefined && (obj.path = message.path);
     return obj;
   },
 
@@ -72,6 +84,7 @@ export const Code = {
     const message = { ...baseCode } as Code;
     message.uid = object.uid ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.path = object.path ?? "";
     return message;
   },
 };
