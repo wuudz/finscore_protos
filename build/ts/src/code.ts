@@ -8,10 +8,10 @@ export const protobufPackage = "";
 export interface Code {
   uid: string;
   createdAt: Date | undefined;
-  path: string;
+  path?: string | undefined;
 }
 
-const baseCode: object = { uid: "", path: "" };
+const baseCode: object = { uid: "" };
 
 export const Code = {
   encode(message: Code, writer: Writer = Writer.create()): Writer {
@@ -24,7 +24,7 @@ export const Code = {
         writer.uint32(18).fork()
       ).ldelim();
     }
-    if (message.path !== "") {
+    if (message.path !== undefined) {
       writer.uint32(26).string(message.path);
     }
     return writer;
@@ -67,7 +67,7 @@ export const Code = {
     message.path =
       object.path !== undefined && object.path !== null
         ? String(object.path)
-        : "";
+        : undefined;
     return message;
   },
 
@@ -84,7 +84,7 @@ export const Code = {
     const message = { ...baseCode } as Code;
     message.uid = object.uid ?? "";
     message.createdAt = object.createdAt ?? undefined;
-    message.path = object.path ?? "";
+    message.path = object.path ?? undefined;
     return message;
   },
 };

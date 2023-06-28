@@ -14,9 +14,12 @@ const Code$json = const {
   '2': const [
     const {'1': 'uid', '3': 1, '4': 1, '5': 9, '10': 'uid'},
     const {'1': 'created_at', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'path', '3': 3, '4': 1, '5': 9, '10': 'path'},
+    const {'1': 'path', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'path', '17': true},
+  ],
+  '8': const [
+    const {'1': '_path'},
   ],
 };
 
 /// Descriptor for `Code`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List codeDescriptor = $convert.base64Decode('CgRDb2RlEhAKA3VpZBgBIAEoCVIDdWlkEjkKCmNyZWF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSEgoEcGF0aBgDIAEoCVIEcGF0aA==');
+final $typed_data.Uint8List codeDescriptor = $convert.base64Decode('CgRDb2RlEhAKA3VpZBgBIAEoCVIDdWlkEjkKCmNyZWF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSFwoEcGF0aBgDIAEoCUgAUgRwYXRoiAEBQgcKBV9wYXRo');
