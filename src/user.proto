@@ -3,13 +3,8 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 
 message UserData {
-  reserved 1;
+  reserved 1 to 2;
 
-  repeated Player players = 2;
   google.protobuf.Timestamp created_at = 3;
   bool admin = 4;
-}
-
-message Player {
-  string name = 1;
 }

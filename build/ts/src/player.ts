@@ -5,41 +5,72 @@ import { Timestamp } from "../google/protobuf/timestamp";
 
 export const protobufPackage = "";
 
-export interface UserData {
+export interface Player {
+  name: string;
+  color: number;
   createdAt: Date | undefined;
-  admin: boolean;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
 }
 
-const baseUserData: object = { admin: false };
+const basePlayer: object = { name: "", color: 0 };
 
-export const UserData = {
-  encode(message: UserData, writer: Writer = Writer.create()): Writer {
+export const Player = {
+  encode(message: Player, writer: Writer = Writer.create()): Writer {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+    if (message.color !== 0) {
+      writer.uint32(16).int32(message.color);
+    }
     if (message.createdAt !== undefined) {
       Timestamp.encode(
         toTimestamp(message.createdAt),
         writer.uint32(26).fork()
       ).ldelim();
     }
-    if (message.admin === true) {
-      writer.uint32(32).bool(message.admin);
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(
+        toTimestamp(message.updatedAt),
+        writer.uint32(34).fork()
+      ).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(
+        toTimestamp(message.deletedAt),
+        writer.uint32(42).fork()
+      ).ldelim();
     }
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): UserData {
+  decode(input: Reader | Uint8Array, length?: number): Player {
     const reader = input instanceof Reader ? input : new Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = { ...baseUserData } as UserData;
+    const message = { ...basePlayer } as Player;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1:
+          message.name = reader.string();
+          break;
+        case 2:
+          message.color = reader.int32();
+          break;
         case 3:
           message.createdAt = fromTimestamp(
             Timestamp.decode(reader, reader.uint32())
           );
           break;
         case 4:
-          message.admin = reader.bool();
+          message.updatedAt = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
+          break;
+        case 5:
+          message.deletedAt = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -49,31 +80,51 @@ export const UserData = {
     return message;
   },
 
-  fromJSON(object: any): UserData {
-    const message = { ...baseUserData } as UserData;
+  fromJSON(object: any): Player {
+    const message = { ...basePlayer } as Player;
+    message.name =
+      object.name !== undefined && object.name !== null
+        ? String(object.name)
+        : "";
+    message.color =
+      object.color !== undefined && object.color !== null
+        ? Number(object.color)
+        : 0;
     message.createdAt =
       object.createdAt !== undefined && object.createdAt !== null
         ? fromJsonTimestamp(object.createdAt)
         : undefined;
-    message.admin =
-      object.admin !== undefined && object.admin !== null
-        ? Boolean(object.admin)
-        : false;
+    message.updatedAt =
+      object.updatedAt !== undefined && object.updatedAt !== null
+        ? fromJsonTimestamp(object.updatedAt)
+        : undefined;
+    message.deletedAt =
+      object.deletedAt !== undefined && object.deletedAt !== null
+        ? fromJsonTimestamp(object.deletedAt)
+        : undefined;
     return message;
   },
 
-  toJSON(message: UserData): unknown {
+  toJSON(message: Player): unknown {
     const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.color !== undefined && (obj.color = Math.round(message.color));
     message.createdAt !== undefined &&
       (obj.createdAt = message.createdAt.toISOString());
-    message.admin !== undefined && (obj.admin = message.admin);
+    message.updatedAt !== undefined &&
+      (obj.updatedAt = message.updatedAt.toISOString());
+    message.deletedAt !== undefined &&
+      (obj.deletedAt = message.deletedAt.toISOString());
     return obj;
   },
 
-  fromPartial<I extends Exact<DeepPartial<UserData>, I>>(object: I): UserData {
-    const message = { ...baseUserData } as UserData;
+  fromPartial<I extends Exact<DeepPartial<Player>, I>>(object: I): Player {
+    const message = { ...basePlayer } as Player;
+    message.name = object.name ?? "";
+    message.color = object.color ?? 0;
     message.createdAt = object.createdAt ?? undefined;
-    message.admin = object.admin ?? false;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     return message;
   },
 };
