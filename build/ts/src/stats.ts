@@ -5,20 +5,27 @@ import { Timestamp } from "../google/protobuf/timestamp";
 
 export const protobufPackage = "";
 
-export interface Stat {
+export interface CountStat {
   count: number;
   ratePerSecond: number;
   updatedAt: Date | undefined;
 }
 
-export interface Stats {
-  games: Stat | undefined;
+export interface StoreRatingStat {
+  userRatingCount: number;
+  averageUserRating: number;
 }
 
-const baseStat: object = { count: 0, ratePerSecond: 0 };
+export interface Stats {
+  games: CountStat | undefined;
+  users: CountStat | undefined;
+  appStoreRating: StoreRatingStat | undefined;
+}
 
-export const Stat = {
-  encode(message: Stat, writer: Writer = Writer.create()): Writer {
+const baseCountStat: object = { count: 0, ratePerSecond: 0 };
+
+export const CountStat = {
+  encode(message: CountStat, writer: Writer = Writer.create()): Writer {
     if (message.count !== 0) {
       writer.uint32(8).uint32(message.count);
     }
@@ -34,10 +41,10 @@ export const Stat = {
     return writer;
   },
 
-  decode(input: Reader | Uint8Array, length?: number): Stat {
+  decode(input: Reader | Uint8Array, length?: number): CountStat {
     const reader = input instanceof Reader ? input : new Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = { ...baseStat } as Stat;
+    const message = { ...baseCountStat } as CountStat;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -60,8 +67,8 @@ export const Stat = {
     return message;
   },
 
-  fromJSON(object: any): Stat {
-    const message = { ...baseStat } as Stat;
+  fromJSON(object: any): CountStat {
+    const message = { ...baseCountStat } as CountStat;
     message.count =
       object.count !== undefined && object.count !== null
         ? Number(object.count)
@@ -77,7 +84,7 @@ export const Stat = {
     return message;
   },
 
-  toJSON(message: Stat): unknown {
+  toJSON(message: CountStat): unknown {
     const obj: any = {};
     message.count !== undefined && (obj.count = Math.round(message.count));
     message.ratePerSecond !== undefined &&
@@ -87,11 +94,83 @@ export const Stat = {
     return obj;
   },
 
-  fromPartial<I extends Exact<DeepPartial<Stat>, I>>(object: I): Stat {
-    const message = { ...baseStat } as Stat;
+  fromPartial<I extends Exact<DeepPartial<CountStat>, I>>(
+    object: I
+  ): CountStat {
+    const message = { ...baseCountStat } as CountStat;
     message.count = object.count ?? 0;
     message.ratePerSecond = object.ratePerSecond ?? 0;
     message.updatedAt = object.updatedAt ?? undefined;
+    return message;
+  },
+};
+
+const baseStoreRatingStat: object = {
+  userRatingCount: 0,
+  averageUserRating: 0,
+};
+
+export const StoreRatingStat = {
+  encode(message: StoreRatingStat, writer: Writer = Writer.create()): Writer {
+    if (message.userRatingCount !== 0) {
+      writer.uint32(8).uint32(message.userRatingCount);
+    }
+    if (message.averageUserRating !== 0) {
+      writer.uint32(21).float(message.averageUserRating);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): StoreRatingStat {
+    const reader = input instanceof Reader ? input : new Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseStoreRatingStat } as StoreRatingStat;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.userRatingCount = reader.uint32();
+          break;
+        case 2:
+          message.averageUserRating = reader.float();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): StoreRatingStat {
+    const message = { ...baseStoreRatingStat } as StoreRatingStat;
+    message.userRatingCount =
+      object.userRatingCount !== undefined && object.userRatingCount !== null
+        ? Number(object.userRatingCount)
+        : 0;
+    message.averageUserRating =
+      object.averageUserRating !== undefined &&
+      object.averageUserRating !== null
+        ? Number(object.averageUserRating)
+        : 0;
+    return message;
+  },
+
+  toJSON(message: StoreRatingStat): unknown {
+    const obj: any = {};
+    message.userRatingCount !== undefined &&
+      (obj.userRatingCount = Math.round(message.userRatingCount));
+    message.averageUserRating !== undefined &&
+      (obj.averageUserRating = message.averageUserRating);
+    return obj;
+  },
+
+  fromPartial<I extends Exact<DeepPartial<StoreRatingStat>, I>>(
+    object: I
+  ): StoreRatingStat {
+    const message = { ...baseStoreRatingStat } as StoreRatingStat;
+    message.userRatingCount = object.userRatingCount ?? 0;
+    message.averageUserRating = object.averageUserRating ?? 0;
     return message;
   },
 };
@@ -101,7 +180,16 @@ const baseStats: object = {};
 export const Stats = {
   encode(message: Stats, writer: Writer = Writer.create()): Writer {
     if (message.games !== undefined) {
-      Stat.encode(message.games, writer.uint32(10).fork()).ldelim();
+      CountStat.encode(message.games, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.users !== undefined) {
+      CountStat.encode(message.users, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.appStoreRating !== undefined) {
+      StoreRatingStat.encode(
+        message.appStoreRating,
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -114,7 +202,16 @@ export const Stats = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.games = Stat.decode(reader, reader.uint32());
+          message.games = CountStat.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.users = CountStat.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.appStoreRating = StoreRatingStat.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -128,7 +225,15 @@ export const Stats = {
     const message = { ...baseStats } as Stats;
     message.games =
       object.games !== undefined && object.games !== null
-        ? Stat.fromJSON(object.games)
+        ? CountStat.fromJSON(object.games)
+        : undefined;
+    message.users =
+      object.users !== undefined && object.users !== null
+        ? CountStat.fromJSON(object.users)
+        : undefined;
+    message.appStoreRating =
+      object.appStoreRating !== undefined && object.appStoreRating !== null
+        ? StoreRatingStat.fromJSON(object.appStoreRating)
         : undefined;
     return message;
   },
@@ -136,7 +241,13 @@ export const Stats = {
   toJSON(message: Stats): unknown {
     const obj: any = {};
     message.games !== undefined &&
-      (obj.games = message.games ? Stat.toJSON(message.games) : undefined);
+      (obj.games = message.games ? CountStat.toJSON(message.games) : undefined);
+    message.users !== undefined &&
+      (obj.users = message.users ? CountStat.toJSON(message.users) : undefined);
+    message.appStoreRating !== undefined &&
+      (obj.appStoreRating = message.appStoreRating
+        ? StoreRatingStat.toJSON(message.appStoreRating)
+        : undefined);
     return obj;
   },
 
@@ -144,7 +255,15 @@ export const Stats = {
     const message = { ...baseStats } as Stats;
     message.games =
       object.games !== undefined && object.games !== null
-        ? Stat.fromPartial(object.games)
+        ? CountStat.fromPartial(object.games)
+        : undefined;
+    message.users =
+      object.users !== undefined && object.users !== null
+        ? CountStat.fromPartial(object.users)
+        : undefined;
+    message.appStoreRating =
+      object.appStoreRating !== undefined && object.appStoreRating !== null
+        ? StoreRatingStat.fromPartial(object.appStoreRating)
         : undefined;
     return message;
   },

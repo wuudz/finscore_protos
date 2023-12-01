@@ -16,4 +16,4 @@ export type { Session } from "./src/session";
 export type { Viewer, ViewerType } from "./src/viewer";
 export type { Code } from "./src/code";
 export type { Config } from "./src/config";
-export type { Stats, Stat } from "./src/stats";
+export type { Stats, CountStat, StoreRatingStat } from "./src/stats";

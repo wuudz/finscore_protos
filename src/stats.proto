@@ -2,12 +2,19 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
-message Stat {
+message CountStat {
   uint32 count = 1;
   float ratePerSecond = 2;
   google.protobuf.Timestamp updatedAt = 3;
 }
 
+message StoreRatingStat {
+  uint32 userRatingCount = 1;
+  float averageUserRating = 2;
+}
+
 message Stats {
-  Stat games = 1;
+  CountStat games = 1;
+  CountStat users = 2;
+  StoreRatingStat appStoreRating = 3; 
 }
