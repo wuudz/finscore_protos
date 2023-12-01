@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+message Stat {
+  uint32 count = 1;
+  float ratePerSecond = 2;
+  google.protobuf.Timestamp updatedAt = 3;
+}
+
+message Stats {
+  Stat games = 1;
+}

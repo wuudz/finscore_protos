@@ -6,3 +6,4 @@ export 'src/viewer.pb.dart';
 export 'src/user.pb.dart';
 export 'src/code.pb.dart';
 export 'src/config.pb.dart';
+export 'src/stats.pb.dart';
