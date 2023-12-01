@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: src/player.proto
+//  source: src/config.proto
 //
 // @dart = 2.12
 

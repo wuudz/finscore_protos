@@ -1,25 +1,34 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: src/code.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-import 'dart:core' as $core;
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+
 import 'dart:convert' as $convert;
+import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use codeDescriptor instead')
-const Code$json = const {
+const Code$json = {
   '1': 'Code',
-  '2': const [
-    const {'1': 'uid', '3': 1, '4': 1, '5': 9, '10': 'uid'},
-    const {'1': 'created_at', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'path', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'path', '17': true},
+  '2': [
+    {'1': 'uid', '3': 1, '4': 1, '5': 9, '10': 'uid'},
+    {'1': 'created_at', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'path', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'path', '17': true},
   ],
-  '8': const [
-    const {'1': '_path'},
+  '8': [
+    {'1': '_path'},
   ],
 };
 
 /// Descriptor for `Code`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List codeDescriptor = $convert.base64Decode('CgRDb2RlEhAKA3VpZBgBIAEoCVIDdWlkEjkKCmNyZWF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSFwoEcGF0aBgDIAEoCUgAUgRwYXRoiAEBQgcKBV9wYXRo');
+final $typed_data.Uint8List codeDescriptor = $convert.base64Decode(
+    'CgRDb2RlEhAKA3VpZBgBIAEoCVIDdWlkEjkKCmNyZWF0ZWRfYXQYAiABKAsyGi5nb29nbGUucH'
+    'JvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSFwoEcGF0aBgDIAEoCUgAUgRwYXRoiAEBQgcK'
+    'BV9wYXRo');
+
