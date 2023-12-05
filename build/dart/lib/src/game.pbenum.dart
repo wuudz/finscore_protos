@@ -1,17 +1,21 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: src/game.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-// ignore_for_file: UNDEFINED_SHOWN_NAME
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+
 import 'dart:core' as $core;
+
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class PlayerOrder extends $pb.ProtobufEnum {
-  static const PlayerOrder USER_DEFINED = PlayerOrder._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'USER_DEFINED');
-  static const PlayerOrder RANDOM = PlayerOrder._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RANDOM');
+  static const PlayerOrder USER_DEFINED = PlayerOrder._(0, _omitEnumNames ? '' : 'USER_DEFINED');
+  static const PlayerOrder RANDOM = PlayerOrder._(1, _omitEnumNames ? '' : 'RANDOM');
 
   static const $core.List<PlayerOrder> values = <PlayerOrder> [
     USER_DEFINED,
@@ -25,11 +29,11 @@ class PlayerOrder extends $pb.ProtobufEnum {
 }
 
 class GameStatus extends $pb.ProtobufEnum {
-  static const GameStatus UNKNOWN = GameStatus._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
-  static const GameStatus PLAYING = GameStatus._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PLAYING');
-  static const GameStatus PAUSED = GameStatus._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PAUSED');
-  static const GameStatus FINISHED = GameStatus._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'FINISHED');
-  static const GameStatus CANCELED = GameStatus._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CANCELED');
+  static const GameStatus UNKNOWN = GameStatus._(0, _omitEnumNames ? '' : 'UNKNOWN');
+  static const GameStatus PLAYING = GameStatus._(1, _omitEnumNames ? '' : 'PLAYING');
+  static const GameStatus PAUSED = GameStatus._(2, _omitEnumNames ? '' : 'PAUSED');
+  static const GameStatus FINISHED = GameStatus._(3, _omitEnumNames ? '' : 'FINISHED');
+  static const GameStatus CANCELED = GameStatus._(4, _omitEnumNames ? '' : 'CANCELED');
 
   static const $core.List<GameStatus> values = <GameStatus> [
     UNKNOWN,
@@ -46,16 +50,16 @@ class GameStatus extends $pb.ProtobufEnum {
 }
 
 class GameAwardType extends $pb.ProtobufEnum {
-  static const GameAwardType SLOW_POKE = GameAwardType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SLOW_POKE');
-  static const GameAwardType SHARP_SHOOTER = GameAwardType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SHARP_SHOOTER');
-  static const GameAwardType PEA_SHOOTER = GameAwardType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PEA_SHOOTER');
-  static const GameAwardType TWELVIE = GameAwardType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TWELVIE');
-  static const GameAwardType HIGH_ROLLER = GameAwardType._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'HIGH_ROLLER');
-  static const GameAwardType ZEROS = GameAwardType._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ZEROS');
-  static const GameAwardType RESETTER = GameAwardType._(6, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'RESETTER');
-  static const GameAwardType SO_CLOSE = GameAwardType._(7, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SO_CLOSE');
-  static const GameAwardType LOWEST_SCORE = GameAwardType._(8, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'LOWEST_SCORE');
-  static const GameAwardType CLOSE_CALL = GameAwardType._(9, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CLOSE_CALL');
+  static const GameAwardType SLOW_POKE = GameAwardType._(0, _omitEnumNames ? '' : 'SLOW_POKE');
+  static const GameAwardType SHARP_SHOOTER = GameAwardType._(1, _omitEnumNames ? '' : 'SHARP_SHOOTER');
+  static const GameAwardType PEA_SHOOTER = GameAwardType._(2, _omitEnumNames ? '' : 'PEA_SHOOTER');
+  static const GameAwardType TWELVIE = GameAwardType._(3, _omitEnumNames ? '' : 'TWELVIE');
+  static const GameAwardType HIGH_ROLLER = GameAwardType._(4, _omitEnumNames ? '' : 'HIGH_ROLLER');
+  static const GameAwardType ZEROS = GameAwardType._(5, _omitEnumNames ? '' : 'ZEROS');
+  static const GameAwardType RESETTER = GameAwardType._(6, _omitEnumNames ? '' : 'RESETTER');
+  static const GameAwardType SO_CLOSE = GameAwardType._(7, _omitEnumNames ? '' : 'SO_CLOSE');
+  static const GameAwardType LOWEST_SCORE = GameAwardType._(8, _omitEnumNames ? '' : 'LOWEST_SCORE');
+  static const GameAwardType CLOSE_CALL = GameAwardType._(9, _omitEnumNames ? '' : 'CLOSE_CALL');
 
   static const $core.List<GameAwardType> values = <GameAwardType> [
     SLOW_POKE,
@@ -76,3 +80,5 @@ class GameAwardType extends $pb.ProtobufEnum {
   const GameAwardType._($core.int v, $core.String n) : super(v, n);
 }
 
+
+const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

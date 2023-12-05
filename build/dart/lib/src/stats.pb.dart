@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: src/stats.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -12,33 +16,34 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import '../google/protobuf/timestamp.pb.dart' as $0;
 
 class CountStat extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CountStat', createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count', $pb.PbFieldType.OU3)
-    ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ratePerSecond', $pb.PbFieldType.OF, protoName: 'ratePerSecond')
-    ..aOM<$0.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $0.Timestamp.create)
-    ..hasRequiredFields = false
-  ;
-
-  CountStat._() : super();
   factory CountStat({
     $core.int? count,
     $core.double? ratePerSecond,
     $0.Timestamp? updatedAt,
   }) {
-    final _result = create();
+    final $result = create();
     if (count != null) {
-      _result.count = count;
+      $result.count = count;
     }
     if (ratePerSecond != null) {
-      _result.ratePerSecond = ratePerSecond;
+      $result.ratePerSecond = ratePerSecond;
     }
     if (updatedAt != null) {
-      _result.updatedAt = updatedAt;
+      $result.updatedAt = updatedAt;
     }
-    return _result;
+    return $result;
   }
+  CountStat._() : super();
   factory CountStat.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CountStat.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CountStat', createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'count', $pb.PbFieldType.OU3)
+    ..a<$core.double>(2, _omitFieldNames ? '' : 'ratePerSecond', $pb.PbFieldType.OF, protoName: 'ratePerSecond')
+    ..aOM<$0.Timestamp>(3, _omitFieldNames ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $0.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -48,8 +53,10 @@ class CountStat extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CountStat copyWith(void Function(CountStat) updates) => super.copyWith((message) => updates(message as CountStat)) as CountStat; // ignore: deprecated_member_use
+  CountStat copyWith(void Function(CountStat) updates) => super.copyWith((message) => updates(message as CountStat)) as CountStat;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CountStat create() => CountStat._();
   CountStat createEmptyInstance() => create();
@@ -89,28 +96,29 @@ class CountStat extends $pb.GeneratedMessage {
 }
 
 class StoreRatingStat extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StoreRatingStat', createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userRatingCount', $pb.PbFieldType.OU3, protoName: 'userRatingCount')
-    ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'averageUserRating', $pb.PbFieldType.OF, protoName: 'averageUserRating')
-    ..hasRequiredFields = false
-  ;
-
-  StoreRatingStat._() : super();
   factory StoreRatingStat({
     $core.int? userRatingCount,
     $core.double? averageUserRating,
   }) {
-    final _result = create();
+    final $result = create();
     if (userRatingCount != null) {
-      _result.userRatingCount = userRatingCount;
+      $result.userRatingCount = userRatingCount;
     }
     if (averageUserRating != null) {
-      _result.averageUserRating = averageUserRating;
+      $result.averageUserRating = averageUserRating;
     }
-    return _result;
+    return $result;
   }
+  StoreRatingStat._() : super();
   factory StoreRatingStat.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory StoreRatingStat.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'StoreRatingStat', createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'userRatingCount', $pb.PbFieldType.OU3, protoName: 'userRatingCount')
+    ..a<$core.double>(2, _omitFieldNames ? '' : 'averageUserRating', $pb.PbFieldType.OF, protoName: 'averageUserRating')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -120,8 +128,10 @@ class StoreRatingStat extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  StoreRatingStat copyWith(void Function(StoreRatingStat) updates) => super.copyWith((message) => updates(message as StoreRatingStat)) as StoreRatingStat; // ignore: deprecated_member_use
+  StoreRatingStat copyWith(void Function(StoreRatingStat) updates) => super.copyWith((message) => updates(message as StoreRatingStat)) as StoreRatingStat;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static StoreRatingStat create() => StoreRatingStat._();
   StoreRatingStat createEmptyInstance() => create();
@@ -150,33 +160,34 @@ class StoreRatingStat extends $pb.GeneratedMessage {
 }
 
 class Stats extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Stats', createEmptyInstance: create)
-    ..aOM<CountStat>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'games', subBuilder: CountStat.create)
-    ..aOM<CountStat>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'users', subBuilder: CountStat.create)
-    ..aOM<StoreRatingStat>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appStoreRating', protoName: 'appStoreRating', subBuilder: StoreRatingStat.create)
-    ..hasRequiredFields = false
-  ;
-
-  Stats._() : super();
   factory Stats({
     CountStat? games,
     CountStat? users,
     StoreRatingStat? appStoreRating,
   }) {
-    final _result = create();
+    final $result = create();
     if (games != null) {
-      _result.games = games;
+      $result.games = games;
     }
     if (users != null) {
-      _result.users = users;
+      $result.users = users;
     }
     if (appStoreRating != null) {
-      _result.appStoreRating = appStoreRating;
+      $result.appStoreRating = appStoreRating;
     }
-    return _result;
+    return $result;
   }
+  Stats._() : super();
   factory Stats.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Stats.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Stats', createEmptyInstance: create)
+    ..aOM<CountStat>(1, _omitFieldNames ? '' : 'games', subBuilder: CountStat.create)
+    ..aOM<CountStat>(2, _omitFieldNames ? '' : 'users', subBuilder: CountStat.create)
+    ..aOM<StoreRatingStat>(3, _omitFieldNames ? '' : 'appStoreRating', protoName: 'appStoreRating', subBuilder: StoreRatingStat.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -186,8 +197,10 @@ class Stats extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Stats copyWith(void Function(Stats) updates) => super.copyWith((message) => updates(message as Stats)) as Stats; // ignore: deprecated_member_use
+  Stats copyWith(void Function(Stats) updates) => super.copyWith((message) => updates(message as Stats)) as Stats;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Stats create() => Stats._();
   Stats createEmptyInstance() => create();
@@ -230,3 +243,6 @@ class Stats extends $pb.GeneratedMessage {
   StoreRatingStat ensureAppStoreRating() => $_ensure(2);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

@@ -235,7 +235,8 @@ export interface GameScore {
 }
 
 export interface GamePlayer {
-  name: string;
+  name: string | undefined;
+  playerRef: string | undefined;
   scores: GameScore[];
   kicked: boolean;
 }
@@ -447,12 +448,15 @@ export const GameScore = {
   },
 };
 
-const baseGamePlayer: object = { name: "", kicked: false };
+const baseGamePlayer: object = { kicked: false };
 
 export const GamePlayer = {
   encode(message: GamePlayer, writer: Writer = Writer.create()): Writer {
-    if (message.name !== "") {
+    if (message.name !== undefined) {
       writer.uint32(10).string(message.name);
+    }
+    if (message.playerRef !== undefined) {
+      writer.uint32(34).string(message.playerRef);
     }
     for (const v of message.scores) {
       GameScore.encode(v!, writer.uint32(18).fork()).ldelim();
@@ -474,6 +478,9 @@ export const GamePlayer = {
         case 1:
           message.name = reader.string();
           break;
+        case 4:
+          message.playerRef = reader.string();
+          break;
         case 2:
           message.scores.push(GameScore.decode(reader, reader.uint32()));
           break;
@@ -493,7 +500,11 @@ export const GamePlayer = {
     message.name =
       object.name !== undefined && object.name !== null
         ? String(object.name)
-        : "";
+        : undefined;
+    message.playerRef =
+      object.playerRef !== undefined && object.playerRef !== null
+        ? String(object.playerRef)
+        : undefined;
     message.scores = (object.scores ?? []).map((e: any) =>
       GameScore.fromJSON(e)
     );
@@ -507,6 +518,7 @@ export const GamePlayer = {
   toJSON(message: GamePlayer): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
+    message.playerRef !== undefined && (obj.playerRef = message.playerRef);
     if (message.scores) {
       obj.scores = message.scores.map((e) =>
         e ? GameScore.toJSON(e) : undefined
@@ -522,7 +534,8 @@ export const GamePlayer = {
     object: I
   ): GamePlayer {
     const message = { ...baseGamePlayer } as GamePlayer;
-    message.name = object.name ?? "";
+    message.name = object.name ?? undefined;
+    message.playerRef = object.playerRef ?? undefined;
     message.scores = object.scores?.map((e) => GameScore.fromPartial(e)) || [];
     message.kicked = object.kicked ?? false;
     return message;

@@ -20,7 +20,11 @@ message GameScore {
 }
 
 message GamePlayer {
-  string name = 1;
+  oneof player {
+    string name = 1;
+    string player_ref = 4;
+  }
+
   repeated GameScore scores = 2;
   bool kicked = 3;
 }
