@@ -17,4 +17,5 @@ message Stats {
   CountStat games = 1;
   CountStat users = 2;
   StoreRatingStat appStoreRating = 3; 
+  google.protobuf.Timestamp createdAt = 4;
 }

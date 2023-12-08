@@ -20,6 +20,7 @@ export interface Stats {
   games: CountStat | undefined;
   users: CountStat | undefined;
   appStoreRating: StoreRatingStat | undefined;
+  createdAt: Date | undefined;
 }
 
 const baseCountStat: object = { count: 0, ratePerSecond: 0 };
@@ -191,6 +192,12 @@ export const Stats = {
         writer.uint32(26).fork()
       ).ldelim();
     }
+    if (message.createdAt !== undefined) {
+      Timestamp.encode(
+        toTimestamp(message.createdAt),
+        writer.uint32(34).fork()
+      ).ldelim();
+    }
     return writer;
   },
 
@@ -211,6 +218,11 @@ export const Stats = {
           message.appStoreRating = StoreRatingStat.decode(
             reader,
             reader.uint32()
+          );
+          break;
+        case 4:
+          message.createdAt = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
           );
           break;
         default:
@@ -235,6 +247,10 @@ export const Stats = {
       object.appStoreRating !== undefined && object.appStoreRating !== null
         ? StoreRatingStat.fromJSON(object.appStoreRating)
         : undefined;
+    message.createdAt =
+      object.createdAt !== undefined && object.createdAt !== null
+        ? fromJsonTimestamp(object.createdAt)
+        : undefined;
     return message;
   },
 
@@ -248,6 +264,8 @@ export const Stats = {
       (obj.appStoreRating = message.appStoreRating
         ? StoreRatingStat.toJSON(message.appStoreRating)
         : undefined);
+    message.createdAt !== undefined &&
+      (obj.createdAt = message.createdAt.toISOString());
     return obj;
   },
 
@@ -265,6 +283,7 @@ export const Stats = {
       object.appStoreRating !== undefined && object.appStoreRating !== null
         ? StoreRatingStat.fromPartial(object.appStoreRating)
         : undefined;
+    message.createdAt = object.createdAt ?? undefined;
     return message;
   },
 };

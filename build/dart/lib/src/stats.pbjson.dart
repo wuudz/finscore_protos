@@ -50,6 +50,7 @@ const Stats$json = {
     {'1': 'games', '3': 1, '4': 1, '5': 11, '6': '.CountStat', '10': 'games'},
     {'1': 'users', '3': 2, '4': 1, '5': 11, '6': '.CountStat', '10': 'users'},
     {'1': 'appStoreRating', '3': 3, '4': 1, '5': 11, '6': '.StoreRatingStat', '10': 'appStoreRating'},
+    {'1': 'createdAt', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
   ],
 };
 
@@ -57,5 +58,6 @@ const Stats$json = {
 final $typed_data.Uint8List statsDescriptor = $convert.base64Decode(
     'CgVTdGF0cxIgCgVnYW1lcxgBIAEoCzIKLkNvdW50U3RhdFIFZ2FtZXMSIAoFdXNlcnMYAiABKA'
     'syCi5Db3VudFN0YXRSBXVzZXJzEjgKDmFwcFN0b3JlUmF0aW5nGAMgASgLMhAuU3RvcmVSYXRp'
-    'bmdTdGF0Ug5hcHBTdG9yZVJhdGluZw==');
+    'bmdTdGF0Ug5hcHBTdG9yZVJhdGluZxI4CgljcmVhdGVkQXQYBCABKAsyGi5nb29nbGUucHJvdG'
+    '9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQ=');
 

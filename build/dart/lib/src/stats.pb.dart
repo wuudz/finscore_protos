@@ -164,6 +164,7 @@ class Stats extends $pb.GeneratedMessage {
     CountStat? games,
     CountStat? users,
     StoreRatingStat? appStoreRating,
+    $0.Timestamp? createdAt,
   }) {
     final $result = create();
     if (games != null) {
@@ -175,6 +176,9 @@ class Stats extends $pb.GeneratedMessage {
     if (appStoreRating != null) {
       $result.appStoreRating = appStoreRating;
     }
+    if (createdAt != null) {
+      $result.createdAt = createdAt;
+    }
     return $result;
   }
   Stats._() : super();
@@ -185,6 +189,7 @@ class Stats extends $pb.GeneratedMessage {
     ..aOM<CountStat>(1, _omitFieldNames ? '' : 'games', subBuilder: CountStat.create)
     ..aOM<CountStat>(2, _omitFieldNames ? '' : 'users', subBuilder: CountStat.create)
     ..aOM<StoreRatingStat>(3, _omitFieldNames ? '' : 'appStoreRating', protoName: 'appStoreRating', subBuilder: StoreRatingStat.create)
+    ..aOM<$0.Timestamp>(4, _omitFieldNames ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $0.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -241,6 +246,17 @@ class Stats extends $pb.GeneratedMessage {
   void clearAppStoreRating() => clearField(3);
   @$pb.TagNumber(3)
   StoreRatingStat ensureAppStoreRating() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $0.Timestamp get createdAt => $_getN(3);
+  @$pb.TagNumber(4)
+  set createdAt($0.Timestamp v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasCreatedAt() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearCreatedAt() => clearField(4);
+  @$pb.TagNumber(4)
+  $0.Timestamp ensureCreatedAt() => $_ensure(3);
 }
 
 
