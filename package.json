@@ -1,6 +1,6 @@
 {
   "name": "finscore_protos",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "devDependencies": {
     "typescript": "^4.5.4",
     "ts-proto": "^1.96.0"
