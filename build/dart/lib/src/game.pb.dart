@@ -283,6 +283,9 @@ class GameAward extends $pb.GeneratedMessage {
     $core.String? receipient,
     $core.String? value,
     $core.String? name,
+    $core.String? description,
+    $core.String? emoji,
+    $core.int? priority,
   }) {
     final $result = create();
     if (type != null) {
@@ -297,6 +300,15 @@ class GameAward extends $pb.GeneratedMessage {
     if (name != null) {
       $result.name = name;
     }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (emoji != null) {
+      $result.emoji = emoji;
+    }
+    if (priority != null) {
+      $result.priority = priority;
+    }
     return $result;
   }
   GameAward._() : super();
@@ -308,6 +320,9 @@ class GameAward extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'receipient')
     ..aOS(3, _omitFieldNames ? '' : 'value')
     ..aOS(4, _omitFieldNames ? '' : 'name')
+    ..aOS(5, _omitFieldNames ? '' : 'description')
+    ..aOS(6, _omitFieldNames ? '' : 'emoji')
+    ..a<$core.int>(7, _omitFieldNames ? '' : 'priority', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -367,6 +382,33 @@ class GameAward extends $pb.GeneratedMessage {
   $core.bool hasName() => $_has(3);
   @$pb.TagNumber(4)
   void clearName() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get description => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set description($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasDescription() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDescription() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get emoji => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set emoji($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasEmoji() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearEmoji() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.int get priority => $_getIZ(6);
+  @$pb.TagNumber(7)
+  set priority($core.int v) { $_setUnsignedInt32(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasPriority() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearPriority() => clearField(7);
 }
 
 class GameResolution extends $pb.GeneratedMessage {

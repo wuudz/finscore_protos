@@ -126,6 +126,10 @@ export enum GameAwardType {
   SO_CLOSE = "SO_CLOSE",
   LOWEST_SCORE = "LOWEST_SCORE",
   CLOSE_CALL = "CLOSE_CALL",
+  DOMINATION = "DOMINATION",
+  NO_MISSES = "NO_MISSES",
+  INSTANT_OUT = "INSTANT_OUT",
+  PERFECT_GAME = "PERFECT_GAME",
   UNRECOGNIZED = "UNRECOGNIZED",
 }
 
@@ -161,6 +165,18 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 9:
     case "CLOSE_CALL":
       return GameAwardType.CLOSE_CALL;
+    case 10:
+    case "DOMINATION":
+      return GameAwardType.DOMINATION;
+    case 11:
+    case "NO_MISSES":
+      return GameAwardType.NO_MISSES;
+    case 12:
+    case "INSTANT_OUT":
+      return GameAwardType.INSTANT_OUT;
+    case 13:
+    case "PERFECT_GAME":
+      return GameAwardType.PERFECT_GAME;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -190,6 +206,14 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "LOWEST_SCORE";
     case GameAwardType.CLOSE_CALL:
       return "CLOSE_CALL";
+    case GameAwardType.DOMINATION:
+      return "DOMINATION";
+    case GameAwardType.NO_MISSES:
+      return "NO_MISSES";
+    case GameAwardType.INSTANT_OUT:
+      return "INSTANT_OUT";
+    case GameAwardType.PERFECT_GAME:
+      return "PERFECT_GAME";
     default:
       return "UNKNOWN";
   }
@@ -217,6 +241,14 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 8;
     case GameAwardType.CLOSE_CALL:
       return 9;
+    case GameAwardType.DOMINATION:
+      return 10;
+    case GameAwardType.NO_MISSES:
+      return 11;
+    case GameAwardType.INSTANT_OUT:
+      return 12;
+    case GameAwardType.PERFECT_GAME:
+      return 13;
     default:
       return 0;
   }
@@ -243,9 +275,12 @@ export interface GamePlayer {
 
 export interface GameAward {
   type: GameAwardType;
-  receipient: string;
   value: string;
+  priority: number;
+  emoji: string;
+  receipient: string;
   name: string;
+  description: string;
 }
 
 export interface GameResolution {
@@ -544,9 +579,12 @@ export const GamePlayer = {
 
 const baseGameAward: object = {
   type: GameAwardType.SLOW_POKE,
-  receipient: "",
   value: "",
+  priority: 0,
+  emoji: "",
+  receipient: "",
   name: "",
+  description: "",
 };
 
 export const GameAward = {
@@ -554,14 +592,23 @@ export const GameAward = {
     if (message.type !== GameAwardType.SLOW_POKE) {
       writer.uint32(8).int32(gameAwardTypeToNumber(message.type));
     }
-    if (message.receipient !== "") {
-      writer.uint32(18).string(message.receipient);
-    }
     if (message.value !== "") {
       writer.uint32(26).string(message.value);
     }
+    if (message.priority !== 0) {
+      writer.uint32(56).uint32(message.priority);
+    }
+    if (message.emoji !== "") {
+      writer.uint32(50).string(message.emoji);
+    }
+    if (message.receipient !== "") {
+      writer.uint32(18).string(message.receipient);
+    }
     if (message.name !== "") {
       writer.uint32(34).string(message.name);
+    }
+    if (message.description !== "") {
+      writer.uint32(42).string(message.description);
     }
     return writer;
   },
@@ -576,14 +623,23 @@ export const GameAward = {
         case 1:
           message.type = gameAwardTypeFromJSON(reader.int32());
           break;
-        case 2:
-          message.receipient = reader.string();
-          break;
         case 3:
           message.value = reader.string();
           break;
+        case 7:
+          message.priority = reader.uint32();
+          break;
+        case 6:
+          message.emoji = reader.string();
+          break;
+        case 2:
+          message.receipient = reader.string();
+          break;
         case 4:
           message.name = reader.string();
+          break;
+        case 5:
+          message.description = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -599,17 +655,29 @@ export const GameAward = {
       object.type !== undefined && object.type !== null
         ? gameAwardTypeFromJSON(object.type)
         : GameAwardType.SLOW_POKE;
-    message.receipient =
-      object.receipient !== undefined && object.receipient !== null
-        ? String(object.receipient)
-        : "";
     message.value =
       object.value !== undefined && object.value !== null
         ? String(object.value)
         : "";
+    message.priority =
+      object.priority !== undefined && object.priority !== null
+        ? Number(object.priority)
+        : 0;
+    message.emoji =
+      object.emoji !== undefined && object.emoji !== null
+        ? String(object.emoji)
+        : "";
+    message.receipient =
+      object.receipient !== undefined && object.receipient !== null
+        ? String(object.receipient)
+        : "";
     message.name =
       object.name !== undefined && object.name !== null
         ? String(object.name)
+        : "";
+    message.description =
+      object.description !== undefined && object.description !== null
+        ? String(object.description)
         : "";
     return message;
   },
@@ -618,9 +686,14 @@ export const GameAward = {
     const obj: any = {};
     message.type !== undefined &&
       (obj.type = gameAwardTypeToJSON(message.type));
-    message.receipient !== undefined && (obj.receipient = message.receipient);
     message.value !== undefined && (obj.value = message.value);
+    message.priority !== undefined &&
+      (obj.priority = Math.round(message.priority));
+    message.emoji !== undefined && (obj.emoji = message.emoji);
+    message.receipient !== undefined && (obj.receipient = message.receipient);
     message.name !== undefined && (obj.name = message.name);
+    message.description !== undefined &&
+      (obj.description = message.description);
     return obj;
   },
 
@@ -629,9 +702,12 @@ export const GameAward = {
   ): GameAward {
     const message = { ...baseGameAward } as GameAward;
     message.type = object.type ?? GameAwardType.SLOW_POKE;
-    message.receipient = object.receipient ?? "";
     message.value = object.value ?? "";
+    message.priority = object.priority ?? 0;
+    message.emoji = object.emoji ?? "";
+    message.receipient = object.receipient ?? "";
     message.name = object.name ?? "";
+    message.description = object.description ?? "";
     return message;
   },
 };

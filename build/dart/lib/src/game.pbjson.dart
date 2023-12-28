@@ -57,6 +57,10 @@ const GameAwardType$json = {
     {'1': 'SO_CLOSE', '2': 7},
     {'1': 'LOWEST_SCORE', '2': 8},
     {'1': 'CLOSE_CALL', '2': 9},
+    {'1': 'DOMINATION', '2': 10},
+    {'1': 'NO_MISSES', '2': 11},
+    {'1': 'INSTANT_OUT', '2': 12},
+    {'1': 'PERFECT_GAME', '2': 13},
   ],
 };
 
@@ -65,7 +69,8 @@ final $typed_data.Uint8List gameAwardTypeDescriptor = $convert.base64Decode(
     'Cg1HYW1lQXdhcmRUeXBlEg0KCVNMT1dfUE9LRRAAEhEKDVNIQVJQX1NIT09URVIQARIPCgtQRU'
     'FfU0hPT1RFUhACEgsKB1RXRUxWSUUQAxIPCgtISUdIX1JPTExFUhAEEgkKBVpFUk9TEAUSDAoI'
     'UkVTRVRURVIQBhIMCghTT19DTE9TRRAHEhAKDExPV0VTVF9TQ09SRRAIEg4KCkNMT1NFX0NBTE'
-    'wQCQ==');
+    'wQCRIOCgpET01JTkFUSU9OEAoSDQoJTk9fTUlTU0VTEAsSDwoLSU5TVEFOVF9PVVQQDBIQCgxQ'
+    'RVJGRUNUX0dBTUUQDQ==');
 
 @$core.Deprecated('Use gameConfigDescriptor instead')
 const GameConfig$json = {
@@ -123,17 +128,21 @@ const GameAward$json = {
   '1': 'GameAward',
   '2': [
     {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.GameAwardType', '10': 'type'},
-    {'1': 'receipient', '3': 2, '4': 1, '5': 9, '10': 'receipient'},
     {'1': 'value', '3': 3, '4': 1, '5': 9, '10': 'value'},
+    {'1': 'priority', '3': 7, '4': 1, '5': 13, '10': 'priority'},
+    {'1': 'emoji', '3': 6, '4': 1, '5': 9, '10': 'emoji'},
+    {'1': 'receipient', '3': 2, '4': 1, '5': 9, '10': 'receipient'},
     {'1': 'name', '3': 4, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'description', '3': 5, '4': 1, '5': 9, '10': 'description'},
   ],
 };
 
 /// Descriptor for `GameAward`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List gameAwardDescriptor = $convert.base64Decode(
-    'CglHYW1lQXdhcmQSIgoEdHlwZRgBIAEoDjIOLkdhbWVBd2FyZFR5cGVSBHR5cGUSHgoKcmVjZW'
-    'lwaWVudBgCIAEoCVIKcmVjZWlwaWVudBIUCgV2YWx1ZRgDIAEoCVIFdmFsdWUSEgoEbmFtZRgE'
-    'IAEoCVIEbmFtZQ==');
+    'CglHYW1lQXdhcmQSIgoEdHlwZRgBIAEoDjIOLkdhbWVBd2FyZFR5cGVSBHR5cGUSFAoFdmFsdW'
+    'UYAyABKAlSBXZhbHVlEhoKCHByaW9yaXR5GAcgASgNUghwcmlvcml0eRIUCgVlbW9qaRgGIAEo'
+    'CVIFZW1vamkSHgoKcmVjZWlwaWVudBgCIAEoCVIKcmVjZWlwaWVudBISCgRuYW1lGAQgASgJUg'
+    'RuYW1lEiAKC2Rlc2NyaXB0aW9uGAUgASgJUgtkZXNjcmlwdGlvbg==');
 
 @$core.Deprecated('Use gameResolutionDescriptor instead')
 const GameResolution$json = {

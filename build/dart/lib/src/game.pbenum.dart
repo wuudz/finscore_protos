@@ -60,6 +60,10 @@ class GameAwardType extends $pb.ProtobufEnum {
   static const GameAwardType SO_CLOSE = GameAwardType._(7, _omitEnumNames ? '' : 'SO_CLOSE');
   static const GameAwardType LOWEST_SCORE = GameAwardType._(8, _omitEnumNames ? '' : 'LOWEST_SCORE');
   static const GameAwardType CLOSE_CALL = GameAwardType._(9, _omitEnumNames ? '' : 'CLOSE_CALL');
+  static const GameAwardType DOMINATION = GameAwardType._(10, _omitEnumNames ? '' : 'DOMINATION');
+  static const GameAwardType NO_MISSES = GameAwardType._(11, _omitEnumNames ? '' : 'NO_MISSES');
+  static const GameAwardType INSTANT_OUT = GameAwardType._(12, _omitEnumNames ? '' : 'INSTANT_OUT');
+  static const GameAwardType PERFECT_GAME = GameAwardType._(13, _omitEnumNames ? '' : 'PERFECT_GAME');
 
   static const $core.List<GameAwardType> values = <GameAwardType> [
     SLOW_POKE,
@@ -72,6 +76,10 @@ class GameAwardType extends $pb.ProtobufEnum {
     SO_CLOSE,
     LOWEST_SCORE,
     CLOSE_CALL,
+    DOMINATION,
+    NO_MISSES,
+    INSTANT_OUT,
+    PERFECT_GAME,
   ];
 
   static final $core.Map<$core.int, GameAwardType> _byValue = $pb.ProtobufEnum.initByValue(values);

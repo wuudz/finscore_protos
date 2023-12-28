@@ -48,13 +48,21 @@ enum GameAwardType {
   SO_CLOSE = 7;
   LOWEST_SCORE = 8;
   CLOSE_CALL = 9;
+  DOMINATION = 10;
+  NO_MISSES = 11;
+  INSTANT_OUT = 12;
+  PERFECT_GAME = 13;
 }
 
 message GameAward {
   GameAwardType type = 1;
-  string receipient = 2;
   string value = 3;
+  uint32 priority = 7;
+
+  string emoji = 6;
+  string receipient = 2;
   string name = 4;
+  string description = 5;
 }
 
 message GameResolution {
