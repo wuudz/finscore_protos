@@ -60,7 +60,7 @@ message GameAward {
   uint32 priority = 7;
 
   string emoji = 6;
-  string receipient = 2;
+  string recipient = 2;
   string name = 4;
   string description = 5;
 }

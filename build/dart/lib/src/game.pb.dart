@@ -280,7 +280,7 @@ class GamePlayer extends $pb.GeneratedMessage {
 class GameAward extends $pb.GeneratedMessage {
   factory GameAward({
     GameAwardType? type,
-    $core.String? receipient,
+    $core.String? recipient,
     $core.String? value,
     $core.String? name,
     $core.String? description,
@@ -291,8 +291,8 @@ class GameAward extends $pb.GeneratedMessage {
     if (type != null) {
       $result.type = type;
     }
-    if (receipient != null) {
-      $result.receipient = receipient;
+    if (recipient != null) {
+      $result.recipient = recipient;
     }
     if (value != null) {
       $result.value = value;
@@ -317,7 +317,7 @@ class GameAward extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GameAward', createEmptyInstance: create)
     ..e<GameAwardType>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: GameAwardType.SLOW_POKE, valueOf: GameAwardType.valueOf, enumValues: GameAwardType.values)
-    ..aOS(2, _omitFieldNames ? '' : 'receipient')
+    ..aOS(2, _omitFieldNames ? '' : 'recipient')
     ..aOS(3, _omitFieldNames ? '' : 'value')
     ..aOS(4, _omitFieldNames ? '' : 'name')
     ..aOS(5, _omitFieldNames ? '' : 'description')
@@ -357,13 +357,13 @@ class GameAward extends $pb.GeneratedMessage {
   void clearType() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get receipient => $_getSZ(1);
+  $core.String get recipient => $_getSZ(1);
   @$pb.TagNumber(2)
-  set receipient($core.String v) { $_setString(1, v); }
+  set recipient($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasReceipient() => $_has(1);
+  $core.bool hasRecipient() => $_has(1);
   @$pb.TagNumber(2)
-  void clearReceipient() => clearField(2);
+  void clearRecipient() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.String get value => $_getSZ(2);

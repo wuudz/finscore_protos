@@ -278,7 +278,7 @@ export interface GameAward {
   value: string;
   priority: number;
   emoji: string;
-  receipient: string;
+  recipient: string;
   name: string;
   description: string;
 }
@@ -582,7 +582,7 @@ const baseGameAward: object = {
   value: "",
   priority: 0,
   emoji: "",
-  receipient: "",
+  recipient: "",
   name: "",
   description: "",
 };
@@ -601,8 +601,8 @@ export const GameAward = {
     if (message.emoji !== "") {
       writer.uint32(50).string(message.emoji);
     }
-    if (message.receipient !== "") {
-      writer.uint32(18).string(message.receipient);
+    if (message.recipient !== "") {
+      writer.uint32(18).string(message.recipient);
     }
     if (message.name !== "") {
       writer.uint32(34).string(message.name);
@@ -633,7 +633,7 @@ export const GameAward = {
           message.emoji = reader.string();
           break;
         case 2:
-          message.receipient = reader.string();
+          message.recipient = reader.string();
           break;
         case 4:
           message.name = reader.string();
@@ -667,9 +667,9 @@ export const GameAward = {
       object.emoji !== undefined && object.emoji !== null
         ? String(object.emoji)
         : "";
-    message.receipient =
-      object.receipient !== undefined && object.receipient !== null
-        ? String(object.receipient)
+    message.recipient =
+      object.recipient !== undefined && object.recipient !== null
+        ? String(object.recipient)
         : "";
     message.name =
       object.name !== undefined && object.name !== null
@@ -690,7 +690,7 @@ export const GameAward = {
     message.priority !== undefined &&
       (obj.priority = Math.round(message.priority));
     message.emoji !== undefined && (obj.emoji = message.emoji);
-    message.receipient !== undefined && (obj.receipient = message.receipient);
+    message.recipient !== undefined && (obj.recipient = message.recipient);
     message.name !== undefined && (obj.name = message.name);
     message.description !== undefined &&
       (obj.description = message.description);
@@ -705,7 +705,7 @@ export const GameAward = {
     message.value = object.value ?? "";
     message.priority = object.priority ?? 0;
     message.emoji = object.emoji ?? "";
-    message.receipient = object.receipient ?? "";
+    message.recipient = object.recipient ?? "";
     message.name = object.name ?? "";
     message.description = object.description ?? "";
     return message;
