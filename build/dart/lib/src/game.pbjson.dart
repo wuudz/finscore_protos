@@ -61,6 +61,7 @@ const GameAwardType$json = {
     {'1': 'NO_MISSES', '2': 11},
     {'1': 'INSTANT_OUT', '2': 12},
     {'1': 'PERFECT_GAME', '2': 13},
+    {'1': 'ALWAYS_IN_LEAD', '2': 14},
   ],
 };
 
@@ -70,7 +71,7 @@ final $typed_data.Uint8List gameAwardTypeDescriptor = $convert.base64Decode(
     'FfU0hPT1RFUhACEgsKB1RXRUxWSUUQAxIPCgtISUdIX1JPTExFUhAEEgkKBVpFUk9TEAUSDAoI'
     'UkVTRVRURVIQBhIMCghTT19DTE9TRRAHEhAKDExPV0VTVF9TQ09SRRAIEg4KCkNMT1NFX0NBTE'
     'wQCRIOCgpET01JTkFUSU9OEAoSDQoJTk9fTUlTU0VTEAsSDwoLSU5TVEFOVF9PVVQQDBIQCgxQ'
-    'RVJGRUNUX0dBTUUQDQ==');
+    'RVJGRUNUX0dBTUUQDRISCg5BTFdBWVNfSU5fTEVBRBAO');
 
 @$core.Deprecated('Use gameConfigDescriptor instead')
 const GameConfig$json = {

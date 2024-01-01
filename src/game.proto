@@ -52,6 +52,7 @@ enum GameAwardType {
   NO_MISSES = 11;
   INSTANT_OUT = 12;
   PERFECT_GAME = 13;
+  ALWAYS_IN_LEAD = 14;
 }
 
 message GameAward {

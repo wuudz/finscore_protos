@@ -130,6 +130,7 @@ export enum GameAwardType {
   NO_MISSES = "NO_MISSES",
   INSTANT_OUT = "INSTANT_OUT",
   PERFECT_GAME = "PERFECT_GAME",
+  ALWAYS_IN_LEAD = "ALWAYS_IN_LEAD",
   UNRECOGNIZED = "UNRECOGNIZED",
 }
 
@@ -177,6 +178,9 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 13:
     case "PERFECT_GAME":
       return GameAwardType.PERFECT_GAME;
+    case 14:
+    case "ALWAYS_IN_LEAD":
+      return GameAwardType.ALWAYS_IN_LEAD;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -214,6 +218,8 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "INSTANT_OUT";
     case GameAwardType.PERFECT_GAME:
       return "PERFECT_GAME";
+    case GameAwardType.ALWAYS_IN_LEAD:
+      return "ALWAYS_IN_LEAD";
     default:
       return "UNKNOWN";
   }
@@ -249,6 +255,8 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 12;
     case GameAwardType.PERFECT_GAME:
       return 13;
+    case GameAwardType.ALWAYS_IN_LEAD:
+      return 14;
     default:
       return 0;
   }
