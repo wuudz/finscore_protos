@@ -7,9 +7,10 @@ export const protobufPackage = "";
 
 export interface Session {
   createdAt: Date | undefined;
+  appVersion: string;
 }
 
-const baseSession: object = {};
+const baseSession: object = { appVersion: "" };
 
 export const Session = {
   encode(message: Session, writer: Writer = Writer.create()): Writer {
@@ -18,6 +19,9 @@ export const Session = {
         toTimestamp(message.createdAt),
         writer.uint32(42).fork()
       ).ldelim();
+    }
+    if (message.appVersion !== "") {
+      writer.uint32(50).string(message.appVersion);
     }
     return writer;
   },
@@ -34,6 +38,9 @@ export const Session = {
             Timestamp.decode(reader, reader.uint32())
           );
           break;
+        case 6:
+          message.appVersion = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -48,6 +55,10 @@ export const Session = {
       object.createdAt !== undefined && object.createdAt !== null
         ? fromJsonTimestamp(object.createdAt)
         : undefined;
+    message.appVersion =
+      object.appVersion !== undefined && object.appVersion !== null
+        ? String(object.appVersion)
+        : "";
     return message;
   },
 
@@ -55,12 +66,14 @@ export const Session = {
     const obj: any = {};
     message.createdAt !== undefined &&
       (obj.createdAt = message.createdAt.toISOString());
+    message.appVersion !== undefined && (obj.appVersion = message.appVersion);
     return obj;
   },
 
   fromPartial<I extends Exact<DeepPartial<Session>, I>>(object: I): Session {
     const message = { ...baseSession } as Session;
     message.createdAt = object.createdAt ?? undefined;
+    message.appVersion = object.appVersion ?? "";
     return message;
   },
 };

@@ -18,6 +18,7 @@ const Session$json = {
   '1': 'Session',
   '2': [
     {'1': 'created_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'app_version', '3': 6, '4': 1, '5': 9, '10': 'appVersion'},
   ],
   '9': [
     {'1': 1, '2': 5},
@@ -27,5 +28,5 @@ const Session$json = {
 /// Descriptor for `Session`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sessionDescriptor = $convert.base64Decode(
     'CgdTZXNzaW9uEjkKCmNyZWF0ZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW'
-    '1wUgljcmVhdGVkQXRKBAgBEAU=');
+    '1wUgljcmVhdGVkQXQSHwoLYXBwX3ZlcnNpb24YBiABKAlSCmFwcFZlcnNpb25KBAgBEAU=');
 

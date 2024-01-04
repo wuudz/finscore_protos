@@ -18,10 +18,14 @@ import '../google/protobuf/timestamp.pb.dart' as $0;
 class Session extends $pb.GeneratedMessage {
   factory Session({
     $0.Timestamp? createdAt,
+    $core.String? appVersion,
   }) {
     final $result = create();
     if (createdAt != null) {
       $result.createdAt = createdAt;
+    }
+    if (appVersion != null) {
+      $result.appVersion = appVersion;
     }
     return $result;
   }
@@ -31,6 +35,7 @@ class Session extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Session', createEmptyInstance: create)
     ..aOM<$0.Timestamp>(5, _omitFieldNames ? '' : 'createdAt', subBuilder: $0.Timestamp.create)
+    ..aOS(6, _omitFieldNames ? '' : 'appVersion')
     ..hasRequiredFields = false
   ;
 
@@ -65,6 +70,15 @@ class Session extends $pb.GeneratedMessage {
   void clearCreatedAt() => clearField(5);
   @$pb.TagNumber(5)
   $0.Timestamp ensureCreatedAt() => $_ensure(0);
+
+  @$pb.TagNumber(6)
+  $core.String get appVersion => $_getSZ(1);
+  @$pb.TagNumber(6)
+  set appVersion($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasAppVersion() => $_has(1);
+  @$pb.TagNumber(6)
+  void clearAppVersion() => clearField(6);
 }
 
 
