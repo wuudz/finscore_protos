@@ -132,6 +132,8 @@ const GameAward$json = {
     {'1': 'value', '3': 3, '4': 1, '5': 9, '10': 'value'},
     {'1': 'priority', '3': 7, '4': 1, '5': 13, '10': 'priority'},
     {'1': 'emoji', '3': 6, '4': 1, '5': 9, '10': 'emoji'},
+    {'1': 'text_color', '3': 8, '4': 1, '5': 9, '10': 'textColor'},
+    {'1': 'background_color', '3': 9, '4': 1, '5': 9, '10': 'backgroundColor'},
     {'1': 'receipient', '3': 2, '4': 1, '5': 9, '10': 'receipient'},
     {'1': 'name', '3': 4, '4': 1, '5': 9, '10': 'name'},
     {'1': 'description', '3': 5, '4': 1, '5': 9, '10': 'description'},
@@ -142,8 +144,10 @@ const GameAward$json = {
 final $typed_data.Uint8List gameAwardDescriptor = $convert.base64Decode(
     'CglHYW1lQXdhcmQSIgoEdHlwZRgBIAEoDjIOLkdhbWVBd2FyZFR5cGVSBHR5cGUSFAoFdmFsdW'
     'UYAyABKAlSBXZhbHVlEhoKCHByaW9yaXR5GAcgASgNUghwcmlvcml0eRIUCgVlbW9qaRgGIAEo'
-    'CVIFZW1vamkSHgoKcmVjZWlwaWVudBgCIAEoCVIKcmVjZWlwaWVudBISCgRuYW1lGAQgASgJUg'
-    'RuYW1lEiAKC2Rlc2NyaXB0aW9uGAUgASgJUgtkZXNjcmlwdGlvbg==');
+    'CVIFZW1vamkSHQoKdGV4dF9jb2xvchgIIAEoCVIJdGV4dENvbG9yEikKEGJhY2tncm91bmRfY2'
+    '9sb3IYCSABKAlSD2JhY2tncm91bmRDb2xvchIeCgpyZWNlaXBpZW50GAIgASgJUgpyZWNlaXBp'
+    'ZW50EhIKBG5hbWUYBCABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YBSABKAlSC2Rlc2NyaXB0aW'
+    '9u');
 
 @$core.Deprecated('Use gameResolutionDescriptor instead')
 const GameResolution$json = {

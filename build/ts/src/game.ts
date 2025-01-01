@@ -286,7 +286,9 @@ export interface GameAward {
   value: string;
   priority: number;
   emoji: string;
-  /** mispelled :( dont rename */
+  textColor: string;
+  backgroundColor: string;
+  /** misspelled :( dont rename */
   receipient: string;
   name: string;
   description: string;
@@ -591,6 +593,8 @@ const baseGameAward: object = {
   value: "",
   priority: 0,
   emoji: "",
+  textColor: "",
+  backgroundColor: "",
   receipient: "",
   name: "",
   description: "",
@@ -609,6 +613,12 @@ export const GameAward = {
     }
     if (message.emoji !== "") {
       writer.uint32(50).string(message.emoji);
+    }
+    if (message.textColor !== "") {
+      writer.uint32(66).string(message.textColor);
+    }
+    if (message.backgroundColor !== "") {
+      writer.uint32(74).string(message.backgroundColor);
     }
     if (message.receipient !== "") {
       writer.uint32(18).string(message.receipient);
@@ -640,6 +650,12 @@ export const GameAward = {
           break;
         case 6:
           message.emoji = reader.string();
+          break;
+        case 8:
+          message.textColor = reader.string();
+          break;
+        case 9:
+          message.backgroundColor = reader.string();
           break;
         case 2:
           message.receipient = reader.string();
@@ -676,6 +692,14 @@ export const GameAward = {
       object.emoji !== undefined && object.emoji !== null
         ? String(object.emoji)
         : "";
+    message.textColor =
+      object.textColor !== undefined && object.textColor !== null
+        ? String(object.textColor)
+        : "";
+    message.backgroundColor =
+      object.backgroundColor !== undefined && object.backgroundColor !== null
+        ? String(object.backgroundColor)
+        : "";
     message.receipient =
       object.receipient !== undefined && object.receipient !== null
         ? String(object.receipient)
@@ -699,6 +723,9 @@ export const GameAward = {
     message.priority !== undefined &&
       (obj.priority = Math.round(message.priority));
     message.emoji !== undefined && (obj.emoji = message.emoji);
+    message.textColor !== undefined && (obj.textColor = message.textColor);
+    message.backgroundColor !== undefined &&
+      (obj.backgroundColor = message.backgroundColor);
     message.receipient !== undefined && (obj.receipient = message.receipient);
     message.name !== undefined && (obj.name = message.name);
     message.description !== undefined &&
@@ -714,6 +741,8 @@ export const GameAward = {
     message.value = object.value ?? "";
     message.priority = object.priority ?? 0;
     message.emoji = object.emoji ?? "";
+    message.textColor = object.textColor ?? "";
+    message.backgroundColor = object.backgroundColor ?? "";
     message.receipient = object.receipient ?? "";
     message.name = object.name ?? "";
     message.description = object.description ?? "";

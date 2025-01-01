@@ -61,7 +61,9 @@ message GameAward {
   uint32 priority = 7;
 
   string emoji = 6;
-  string receipient = 2; // mispelled :( dont rename
+  string text_color = 8;
+  string background_color = 9;
+  string receipient = 2; // misspelled :( dont rename
   string name = 4;
   string description = 5;
 }

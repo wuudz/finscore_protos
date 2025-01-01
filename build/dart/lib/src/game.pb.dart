@@ -286,6 +286,8 @@ class GameAward extends $pb.GeneratedMessage {
     $core.String? description,
     $core.String? emoji,
     $core.int? priority,
+    $core.String? textColor,
+    $core.String? backgroundColor,
   }) {
     final $result = create();
     if (type != null) {
@@ -309,6 +311,12 @@ class GameAward extends $pb.GeneratedMessage {
     if (priority != null) {
       $result.priority = priority;
     }
+    if (textColor != null) {
+      $result.textColor = textColor;
+    }
+    if (backgroundColor != null) {
+      $result.backgroundColor = backgroundColor;
+    }
     return $result;
   }
   GameAward._() : super();
@@ -323,6 +331,8 @@ class GameAward extends $pb.GeneratedMessage {
     ..aOS(5, _omitFieldNames ? '' : 'description')
     ..aOS(6, _omitFieldNames ? '' : 'emoji')
     ..a<$core.int>(7, _omitFieldNames ? '' : 'priority', $pb.PbFieldType.OU3)
+    ..aOS(8, _omitFieldNames ? '' : 'textColor')
+    ..aOS(9, _omitFieldNames ? '' : 'backgroundColor')
     ..hasRequiredFields = false
   ;
 
@@ -409,6 +419,24 @@ class GameAward extends $pb.GeneratedMessage {
   $core.bool hasPriority() => $_has(6);
   @$pb.TagNumber(7)
   void clearPriority() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get textColor => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set textColor($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasTextColor() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearTextColor() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get backgroundColor => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set backgroundColor($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasBackgroundColor() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearBackgroundColor() => clearField(9);
 }
 
 class GameResolution extends $pb.GeneratedMessage {
