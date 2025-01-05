@@ -50,7 +50,8 @@ class GameStatus extends $pb.ProtobufEnum {
 }
 
 class GameAwardType extends $pb.ProtobufEnum {
-  static const GameAwardType TIME_AVERAGE_LOWEST = GameAwardType._(0, _omitEnumNames ? '' : 'TIME_AVERAGE_LOWEST');
+  static const GameAwardType TIME_AVERAGE_HIGHEST = GameAwardType._(0, _omitEnumNames ? '' : 'TIME_AVERAGE_HIGHEST');
+  static const GameAwardType TIME_AVERAGE_LOWEST = GameAwardType._(16, _omitEnumNames ? '' : 'TIME_AVERAGE_LOWEST');
   static const GameAwardType ZERO_COUNT_ZERO = GameAwardType._(11, _omitEnumNames ? '' : 'ZERO_COUNT_ZERO');
   static const GameAwardType ZERO_COUNT_LOWEST = GameAwardType._(1, _omitEnumNames ? '' : 'ZERO_COUNT_LOWEST');
   static const GameAwardType ZERO_COUNT_HIGHEST = GameAwardType._(5, _omitEnumNames ? '' : 'ZERO_COUNT_HIGHEST');
@@ -59,14 +60,17 @@ class GameAwardType extends $pb.ProtobufEnum {
   static const GameAwardType SCORE_AVERAGE_HIGHEST = GameAwardType._(4, _omitEnumNames ? '' : 'SCORE_AVERAGE_HIGHEST');
   static const GameAwardType SCORE_TOTAL_2ND_HIGHEST = GameAwardType._(7, _omitEnumNames ? '' : 'SCORE_TOTAL_2ND_HIGHEST');
   static const GameAwardType SCORE_TOTAL_LOWEST = GameAwardType._(8, _omitEnumNames ? '' : 'SCORE_TOTAL_LOWEST');
+  static const GameAwardType SCORE_ROUND_SAME_CONSECUTIVE = GameAwardType._(15, _omitEnumNames ? '' : 'SCORE_ROUND_SAME_CONSECUTIVE');
   static const GameAwardType TWELVE_COUNT_HIGHEST = GameAwardType._(3, _omitEnumNames ? '' : 'TWELVE_COUNT_HIGHEST');
   static const GameAwardType RESET_COUNT_HIGHEST = GameAwardType._(6, _omitEnumNames ? '' : 'RESET_COUNT_HIGHEST');
   static const GameAwardType DANGER_COUNT_HIGHEST = GameAwardType._(9, _omitEnumNames ? '' : 'DANGER_COUNT_HIGHEST');
   static const GameAwardType DOMINATION = GameAwardType._(10, _omitEnumNames ? '' : 'DOMINATION');
   static const GameAwardType ALWAYS_IN_LEAD = GameAwardType._(14, _omitEnumNames ? '' : 'ALWAYS_IN_LEAD');
+  static const GameAwardType COMEBACK = GameAwardType._(17, _omitEnumNames ? '' : 'COMEBACK');
   static const GameAwardType PERFECT_GAME = GameAwardType._(13, _omitEnumNames ? '' : 'PERFECT_GAME');
 
   static const $core.List<GameAwardType> values = <GameAwardType> [
+    TIME_AVERAGE_HIGHEST,
     TIME_AVERAGE_LOWEST,
     ZERO_COUNT_ZERO,
     ZERO_COUNT_LOWEST,
@@ -76,11 +80,13 @@ class GameAwardType extends $pb.ProtobufEnum {
     SCORE_AVERAGE_HIGHEST,
     SCORE_TOTAL_2ND_HIGHEST,
     SCORE_TOTAL_LOWEST,
+    SCORE_ROUND_SAME_CONSECUTIVE,
     TWELVE_COUNT_HIGHEST,
     RESET_COUNT_HIGHEST,
     DANGER_COUNT_HIGHEST,
     DOMINATION,
     ALWAYS_IN_LEAD,
+    COMEBACK,
     PERFECT_GAME,
   ];
 

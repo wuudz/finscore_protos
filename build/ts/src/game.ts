@@ -116,28 +116,26 @@ export function gameStatusToNumber(object: GameStatus): number {
 }
 
 export enum GameAwardType {
-  /** TIME_AVERAGE_LOWEST - Time-based awards */
+  TIME_AVERAGE_HIGHEST = "TIME_AVERAGE_HIGHEST",
   TIME_AVERAGE_LOWEST = "TIME_AVERAGE_LOWEST",
-  /** ZERO_COUNT_ZERO - Zero-based awards */
   ZERO_COUNT_ZERO = "ZERO_COUNT_ZERO",
   ZERO_COUNT_LOWEST = "ZERO_COUNT_LOWEST",
   ZERO_COUNT_HIGHEST = "ZERO_COUNT_HIGHEST",
   INSTANT_OUT = "INSTANT_OUT",
-  /** SCORE_AVERAGE_LOWEST - Score-based awards */
   SCORE_AVERAGE_LOWEST = "SCORE_AVERAGE_LOWEST",
   SCORE_AVERAGE_HIGHEST = "SCORE_AVERAGE_HIGHEST",
   SCORE_TOTAL_2ND_HIGHEST = "SCORE_TOTAL_2ND_HIGHEST",
   SCORE_TOTAL_LOWEST = "SCORE_TOTAL_LOWEST",
-  /** TWELVE_COUNT_HIGHEST - Twelve-based awards */
+  SCORE_ROUND_SAME_CONSECUTIVE = "SCORE_ROUND_SAME_CONSECUTIVE",
   TWELVE_COUNT_HIGHEST = "TWELVE_COUNT_HIGHEST",
-  /** RESET_COUNT_HIGHEST - Reset-based awards */
   RESET_COUNT_HIGHEST = "RESET_COUNT_HIGHEST",
-  /** DANGER_COUNT_HIGHEST - Danger-based awards */
   DANGER_COUNT_HIGHEST = "DANGER_COUNT_HIGHEST",
-  /** DOMINATION - Winner awards */
+  /** DOMINATION - No other player in range */
   DOMINATION = "DOMINATION",
   /** ALWAYS_IN_LEAD - Won and was always in the lead */
   ALWAYS_IN_LEAD = "ALWAYS_IN_LEAD",
+  /** COMEBACK - Won after being in last place in 3rd round */
+  COMEBACK = "COMEBACK",
   /** PERFECT_GAME - Won in least possible rounds */
   PERFECT_GAME = "PERFECT_GAME",
   UNRECOGNIZED = "UNRECOGNIZED",
@@ -146,6 +144,9 @@ export enum GameAwardType {
 export function gameAwardTypeFromJSON(object: any): GameAwardType {
   switch (object) {
     case 0:
+    case "TIME_AVERAGE_HIGHEST":
+      return GameAwardType.TIME_AVERAGE_HIGHEST;
+    case 16:
     case "TIME_AVERAGE_LOWEST":
       return GameAwardType.TIME_AVERAGE_LOWEST;
     case 11:
@@ -172,6 +173,9 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 8:
     case "SCORE_TOTAL_LOWEST":
       return GameAwardType.SCORE_TOTAL_LOWEST;
+    case 15:
+    case "SCORE_ROUND_SAME_CONSECUTIVE":
+      return GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE;
     case 3:
     case "TWELVE_COUNT_HIGHEST":
       return GameAwardType.TWELVE_COUNT_HIGHEST;
@@ -187,6 +191,9 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 14:
     case "ALWAYS_IN_LEAD":
       return GameAwardType.ALWAYS_IN_LEAD;
+    case 17:
+    case "COMEBACK":
+      return GameAwardType.COMEBACK;
     case 13:
     case "PERFECT_GAME":
       return GameAwardType.PERFECT_GAME;
@@ -199,6 +206,8 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
 
 export function gameAwardTypeToJSON(object: GameAwardType): string {
   switch (object) {
+    case GameAwardType.TIME_AVERAGE_HIGHEST:
+      return "TIME_AVERAGE_HIGHEST";
     case GameAwardType.TIME_AVERAGE_LOWEST:
       return "TIME_AVERAGE_LOWEST";
     case GameAwardType.ZERO_COUNT_ZERO:
@@ -217,6 +226,8 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "SCORE_TOTAL_2ND_HIGHEST";
     case GameAwardType.SCORE_TOTAL_LOWEST:
       return "SCORE_TOTAL_LOWEST";
+    case GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE:
+      return "SCORE_ROUND_SAME_CONSECUTIVE";
     case GameAwardType.TWELVE_COUNT_HIGHEST:
       return "TWELVE_COUNT_HIGHEST";
     case GameAwardType.RESET_COUNT_HIGHEST:
@@ -227,6 +238,8 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "DOMINATION";
     case GameAwardType.ALWAYS_IN_LEAD:
       return "ALWAYS_IN_LEAD";
+    case GameAwardType.COMEBACK:
+      return "COMEBACK";
     case GameAwardType.PERFECT_GAME:
       return "PERFECT_GAME";
     default:
@@ -236,8 +249,10 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
 
 export function gameAwardTypeToNumber(object: GameAwardType): number {
   switch (object) {
-    case GameAwardType.TIME_AVERAGE_LOWEST:
+    case GameAwardType.TIME_AVERAGE_HIGHEST:
       return 0;
+    case GameAwardType.TIME_AVERAGE_LOWEST:
+      return 16;
     case GameAwardType.ZERO_COUNT_ZERO:
       return 11;
     case GameAwardType.ZERO_COUNT_LOWEST:
@@ -254,6 +269,8 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 7;
     case GameAwardType.SCORE_TOTAL_LOWEST:
       return 8;
+    case GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE:
+      return 15;
     case GameAwardType.TWELVE_COUNT_HIGHEST:
       return 3;
     case GameAwardType.RESET_COUNT_HIGHEST:
@@ -264,6 +281,8 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 10;
     case GameAwardType.ALWAYS_IN_LEAD:
       return 14;
+    case GameAwardType.COMEBACK:
+      return 17;
     case GameAwardType.PERFECT_GAME:
       return 13;
     default:
@@ -598,7 +617,7 @@ export const GamePlayer = {
 };
 
 const baseGameAward: object = {
-  type: GameAwardType.TIME_AVERAGE_LOWEST,
+  type: GameAwardType.TIME_AVERAGE_HIGHEST,
   value: "",
   priority: 0,
   emoji: "",
@@ -611,7 +630,7 @@ const baseGameAward: object = {
 
 export const GameAward = {
   encode(message: GameAward, writer: Writer = Writer.create()): Writer {
-    if (message.type !== GameAwardType.TIME_AVERAGE_LOWEST) {
+    if (message.type !== GameAwardType.TIME_AVERAGE_HIGHEST) {
       writer.uint32(8).int32(gameAwardTypeToNumber(message.type));
     }
     if (message.value !== "") {
@@ -688,7 +707,7 @@ export const GameAward = {
     message.type =
       object.type !== undefined && object.type !== null
         ? gameAwardTypeFromJSON(object.type)
-        : GameAwardType.TIME_AVERAGE_LOWEST;
+        : GameAwardType.TIME_AVERAGE_HIGHEST;
     message.value =
       object.value !== undefined && object.value !== null
         ? String(object.value)
@@ -746,7 +765,7 @@ export const GameAward = {
     object: I
   ): GameAward {
     const message = { ...baseGameAward } as GameAward;
-    message.type = object.type ?? GameAwardType.TIME_AVERAGE_LOWEST;
+    message.type = object.type ?? GameAwardType.TIME_AVERAGE_HIGHEST;
     message.value = object.value ?? "";
     message.priority = object.priority ?? 0;
     message.emoji = object.emoji ?? "";
