@@ -50,38 +50,38 @@ class GameStatus extends $pb.ProtobufEnum {
 }
 
 class GameAwardType extends $pb.ProtobufEnum {
-  static const GameAwardType SLOW_POKE = GameAwardType._(0, _omitEnumNames ? '' : 'SLOW_POKE');
-  static const GameAwardType SHARP_SHOOTER = GameAwardType._(1, _omitEnumNames ? '' : 'SHARP_SHOOTER');
-  static const GameAwardType PEA_SHOOTER = GameAwardType._(2, _omitEnumNames ? '' : 'PEA_SHOOTER');
-  static const GameAwardType TWELVIE = GameAwardType._(3, _omitEnumNames ? '' : 'TWELVIE');
-  static const GameAwardType HIGH_ROLLER = GameAwardType._(4, _omitEnumNames ? '' : 'HIGH_ROLLER');
-  static const GameAwardType ZEROS = GameAwardType._(5, _omitEnumNames ? '' : 'ZEROS');
-  static const GameAwardType RESETTER = GameAwardType._(6, _omitEnumNames ? '' : 'RESETTER');
-  static const GameAwardType SO_CLOSE = GameAwardType._(7, _omitEnumNames ? '' : 'SO_CLOSE');
-  static const GameAwardType LOWEST_SCORE = GameAwardType._(8, _omitEnumNames ? '' : 'LOWEST_SCORE');
-  static const GameAwardType CLOSE_CALL = GameAwardType._(9, _omitEnumNames ? '' : 'CLOSE_CALL');
-  static const GameAwardType DOMINATION = GameAwardType._(10, _omitEnumNames ? '' : 'DOMINATION');
-  static const GameAwardType NO_MISSES = GameAwardType._(11, _omitEnumNames ? '' : 'NO_MISSES');
+  static const GameAwardType TIME_AVERAGE_LOWEST = GameAwardType._(0, _omitEnumNames ? '' : 'TIME_AVERAGE_LOWEST');
+  static const GameAwardType ZERO_COUNT_ZERO = GameAwardType._(11, _omitEnumNames ? '' : 'ZERO_COUNT_ZERO');
+  static const GameAwardType ZERO_COUNT_LOWEST = GameAwardType._(1, _omitEnumNames ? '' : 'ZERO_COUNT_LOWEST');
+  static const GameAwardType ZERO_COUNT_HIGHEST = GameAwardType._(5, _omitEnumNames ? '' : 'ZERO_COUNT_HIGHEST');
   static const GameAwardType INSTANT_OUT = GameAwardType._(12, _omitEnumNames ? '' : 'INSTANT_OUT');
-  static const GameAwardType PERFECT_GAME = GameAwardType._(13, _omitEnumNames ? '' : 'PERFECT_GAME');
+  static const GameAwardType SCORE_AVERAGE_LOWEST = GameAwardType._(2, _omitEnumNames ? '' : 'SCORE_AVERAGE_LOWEST');
+  static const GameAwardType SCORE_AVERAGE_HIGHEST = GameAwardType._(4, _omitEnumNames ? '' : 'SCORE_AVERAGE_HIGHEST');
+  static const GameAwardType SCORE_TOTAL_2ND_HIGHEST = GameAwardType._(7, _omitEnumNames ? '' : 'SCORE_TOTAL_2ND_HIGHEST');
+  static const GameAwardType SCORE_TOTAL_LOWEST = GameAwardType._(8, _omitEnumNames ? '' : 'SCORE_TOTAL_LOWEST');
+  static const GameAwardType TWELVE_COUNT_HIGHEST = GameAwardType._(3, _omitEnumNames ? '' : 'TWELVE_COUNT_HIGHEST');
+  static const GameAwardType RESET_COUNT_HIGHEST = GameAwardType._(6, _omitEnumNames ? '' : 'RESET_COUNT_HIGHEST');
+  static const GameAwardType DANGER_COUNT_HIGHEST = GameAwardType._(9, _omitEnumNames ? '' : 'DANGER_COUNT_HIGHEST');
+  static const GameAwardType DOMINATION = GameAwardType._(10, _omitEnumNames ? '' : 'DOMINATION');
   static const GameAwardType ALWAYS_IN_LEAD = GameAwardType._(14, _omitEnumNames ? '' : 'ALWAYS_IN_LEAD');
+  static const GameAwardType PERFECT_GAME = GameAwardType._(13, _omitEnumNames ? '' : 'PERFECT_GAME');
 
   static const $core.List<GameAwardType> values = <GameAwardType> [
-    SLOW_POKE,
-    SHARP_SHOOTER,
-    PEA_SHOOTER,
-    TWELVIE,
-    HIGH_ROLLER,
-    ZEROS,
-    RESETTER,
-    SO_CLOSE,
-    LOWEST_SCORE,
-    CLOSE_CALL,
-    DOMINATION,
-    NO_MISSES,
+    TIME_AVERAGE_LOWEST,
+    ZERO_COUNT_ZERO,
+    ZERO_COUNT_LOWEST,
+    ZERO_COUNT_HIGHEST,
     INSTANT_OUT,
-    PERFECT_GAME,
+    SCORE_AVERAGE_LOWEST,
+    SCORE_AVERAGE_HIGHEST,
+    SCORE_TOTAL_2ND_HIGHEST,
+    SCORE_TOTAL_LOWEST,
+    TWELVE_COUNT_HIGHEST,
+    RESET_COUNT_HIGHEST,
+    DANGER_COUNT_HIGHEST,
+    DOMINATION,
     ALWAYS_IN_LEAD,
+    PERFECT_GAME,
   ];
 
   static final $core.Map<$core.int, GameAwardType> _byValue = $pb.ProtobufEnum.initByValue(values);

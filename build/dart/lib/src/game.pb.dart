@@ -324,7 +324,7 @@ class GameAward extends $pb.GeneratedMessage {
   factory GameAward.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GameAward', createEmptyInstance: create)
-    ..e<GameAwardType>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: GameAwardType.SLOW_POKE, valueOf: GameAwardType.valueOf, enumValues: GameAwardType.values)
+    ..e<GameAwardType>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: GameAwardType.TIME_AVERAGE_LOWEST, valueOf: GameAwardType.valueOf, enumValues: GameAwardType.values)
     ..aOS(2, _omitFieldNames ? '' : 'receipient')
     ..aOS(3, _omitFieldNames ? '' : 'value')
     ..aOS(4, _omitFieldNames ? '' : 'name')

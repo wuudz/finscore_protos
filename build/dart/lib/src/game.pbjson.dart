@@ -47,31 +47,33 @@ final $typed_data.Uint8List gameStatusDescriptor = $convert.base64Decode(
 const GameAwardType$json = {
   '1': 'GameAwardType',
   '2': [
-    {'1': 'SLOW_POKE', '2': 0},
-    {'1': 'SHARP_SHOOTER', '2': 1},
-    {'1': 'PEA_SHOOTER', '2': 2},
-    {'1': 'TWELVIE', '2': 3},
-    {'1': 'HIGH_ROLLER', '2': 4},
-    {'1': 'ZEROS', '2': 5},
-    {'1': 'RESETTER', '2': 6},
-    {'1': 'SO_CLOSE', '2': 7},
-    {'1': 'LOWEST_SCORE', '2': 8},
-    {'1': 'CLOSE_CALL', '2': 9},
-    {'1': 'DOMINATION', '2': 10},
-    {'1': 'NO_MISSES', '2': 11},
+    {'1': 'TIME_AVERAGE_LOWEST', '2': 0},
+    {'1': 'ZERO_COUNT_ZERO', '2': 11},
+    {'1': 'ZERO_COUNT_LOWEST', '2': 1},
+    {'1': 'ZERO_COUNT_HIGHEST', '2': 5},
     {'1': 'INSTANT_OUT', '2': 12},
-    {'1': 'PERFECT_GAME', '2': 13},
+    {'1': 'SCORE_AVERAGE_LOWEST', '2': 2},
+    {'1': 'SCORE_AVERAGE_HIGHEST', '2': 4},
+    {'1': 'SCORE_TOTAL_2ND_HIGHEST', '2': 7},
+    {'1': 'SCORE_TOTAL_LOWEST', '2': 8},
+    {'1': 'TWELVE_COUNT_HIGHEST', '2': 3},
+    {'1': 'RESET_COUNT_HIGHEST', '2': 6},
+    {'1': 'DANGER_COUNT_HIGHEST', '2': 9},
+    {'1': 'DOMINATION', '2': 10},
     {'1': 'ALWAYS_IN_LEAD', '2': 14},
+    {'1': 'PERFECT_GAME', '2': 13},
   ],
 };
 
 /// Descriptor for `GameAwardType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List gameAwardTypeDescriptor = $convert.base64Decode(
-    'Cg1HYW1lQXdhcmRUeXBlEg0KCVNMT1dfUE9LRRAAEhEKDVNIQVJQX1NIT09URVIQARIPCgtQRU'
-    'FfU0hPT1RFUhACEgsKB1RXRUxWSUUQAxIPCgtISUdIX1JPTExFUhAEEgkKBVpFUk9TEAUSDAoI'
-    'UkVTRVRURVIQBhIMCghTT19DTE9TRRAHEhAKDExPV0VTVF9TQ09SRRAIEg4KCkNMT1NFX0NBTE'
-    'wQCRIOCgpET01JTkFUSU9OEAoSDQoJTk9fTUlTU0VTEAsSDwoLSU5TVEFOVF9PVVQQDBIQCgxQ'
-    'RVJGRUNUX0dBTUUQDRISCg5BTFdBWVNfSU5fTEVBRBAO');
+    'Cg1HYW1lQXdhcmRUeXBlEhcKE1RJTUVfQVZFUkFHRV9MT1dFU1QQABITCg9aRVJPX0NPVU5UX1'
+    'pFUk8QCxIVChFaRVJPX0NPVU5UX0xPV0VTVBABEhYKElpFUk9fQ09VTlRfSElHSEVTVBAFEg8K'
+    'C0lOU1RBTlRfT1VUEAwSGAoUU0NPUkVfQVZFUkFHRV9MT1dFU1QQAhIZChVTQ09SRV9BVkVSQU'
+    'dFX0hJR0hFU1QQBBIbChdTQ09SRV9UT1RBTF8yTkRfSElHSEVTVBAHEhYKElNDT1JFX1RPVEFM'
+    'X0xPV0VTVBAIEhgKFFRXRUxWRV9DT1VOVF9ISUdIRVNUEAMSFwoTUkVTRVRfQ09VTlRfSElHSE'
+    'VTVBAGEhgKFERBTkdFUl9DT1VOVF9ISUdIRVNUEAkSDgoKRE9NSU5BVElPThAKEhIKDkFMV0FZ'
+    'U19JTl9MRUFEEA4SEAoMUEVSRkVDVF9HQU1FEA0=');
 
 @$core.Deprecated('Use gameConfigDescriptor instead')
 const GameConfig$json = {

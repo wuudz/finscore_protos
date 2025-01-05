@@ -38,21 +38,34 @@ enum GameStatus {
 }
 
 enum GameAwardType {
-  SLOW_POKE = 0;
-  SHARP_SHOOTER = 1;
-  PEA_SHOOTER = 2;
-  TWELVIE = 3;
-  HIGH_ROLLER = 4;
-  ZEROS = 5;
-  RESETTER = 6;
-  SO_CLOSE = 7;
-  LOWEST_SCORE = 8;
-  CLOSE_CALL = 9;
-  DOMINATION = 10;
-  NO_MISSES = 11;
+  // Time-based awards
+  TIME_AVERAGE_LOWEST = 0;
+  
+  // Zero-based awards
+  ZERO_COUNT_ZERO = 11;
+  ZERO_COUNT_LOWEST = 1;
+  ZERO_COUNT_HIGHEST = 5;
   INSTANT_OUT = 12;
-  PERFECT_GAME = 13;
-  ALWAYS_IN_LEAD = 14;
+
+  // Score-based awards
+  SCORE_AVERAGE_LOWEST = 2;
+  SCORE_AVERAGE_HIGHEST = 4;
+  SCORE_TOTAL_2ND_HIGHEST = 7;
+  SCORE_TOTAL_LOWEST = 8;
+
+  // Twelve-based awards
+  TWELVE_COUNT_HIGHEST = 3;
+  
+  // Reset-based awards
+  RESET_COUNT_HIGHEST = 6;
+  
+  // Danger-based awards
+  DANGER_COUNT_HIGHEST = 9;
+
+  // Winner awards
+  DOMINATION = 10; // No other player in range
+  ALWAYS_IN_LEAD = 14; // Won and was always in the lead
+  PERFECT_GAME = 13; // Won in least possible rounds
 }
 
 message GameAward {

@@ -116,71 +116,80 @@ export function gameStatusToNumber(object: GameStatus): number {
 }
 
 export enum GameAwardType {
-  SLOW_POKE = "SLOW_POKE",
-  SHARP_SHOOTER = "SHARP_SHOOTER",
-  PEA_SHOOTER = "PEA_SHOOTER",
-  TWELVIE = "TWELVIE",
-  HIGH_ROLLER = "HIGH_ROLLER",
-  ZEROS = "ZEROS",
-  RESETTER = "RESETTER",
-  SO_CLOSE = "SO_CLOSE",
-  LOWEST_SCORE = "LOWEST_SCORE",
-  CLOSE_CALL = "CLOSE_CALL",
-  DOMINATION = "DOMINATION",
-  NO_MISSES = "NO_MISSES",
+  /** TIME_AVERAGE_LOWEST - Time-based awards */
+  TIME_AVERAGE_LOWEST = "TIME_AVERAGE_LOWEST",
+  /** ZERO_COUNT_ZERO - Zero-based awards */
+  ZERO_COUNT_ZERO = "ZERO_COUNT_ZERO",
+  ZERO_COUNT_LOWEST = "ZERO_COUNT_LOWEST",
+  ZERO_COUNT_HIGHEST = "ZERO_COUNT_HIGHEST",
   INSTANT_OUT = "INSTANT_OUT",
-  PERFECT_GAME = "PERFECT_GAME",
+  /** SCORE_AVERAGE_LOWEST - Score-based awards */
+  SCORE_AVERAGE_LOWEST = "SCORE_AVERAGE_LOWEST",
+  SCORE_AVERAGE_HIGHEST = "SCORE_AVERAGE_HIGHEST",
+  SCORE_TOTAL_2ND_HIGHEST = "SCORE_TOTAL_2ND_HIGHEST",
+  SCORE_TOTAL_LOWEST = "SCORE_TOTAL_LOWEST",
+  /** TWELVE_COUNT_HIGHEST - Twelve-based awards */
+  TWELVE_COUNT_HIGHEST = "TWELVE_COUNT_HIGHEST",
+  /** RESET_COUNT_HIGHEST - Reset-based awards */
+  RESET_COUNT_HIGHEST = "RESET_COUNT_HIGHEST",
+  /** DANGER_COUNT_HIGHEST - Danger-based awards */
+  DANGER_COUNT_HIGHEST = "DANGER_COUNT_HIGHEST",
+  /** DOMINATION - Winner awards */
+  DOMINATION = "DOMINATION",
+  /** ALWAYS_IN_LEAD - Won and was always in the lead */
   ALWAYS_IN_LEAD = "ALWAYS_IN_LEAD",
+  /** PERFECT_GAME - Won in least possible rounds */
+  PERFECT_GAME = "PERFECT_GAME",
   UNRECOGNIZED = "UNRECOGNIZED",
 }
 
 export function gameAwardTypeFromJSON(object: any): GameAwardType {
   switch (object) {
     case 0:
-    case "SLOW_POKE":
-      return GameAwardType.SLOW_POKE;
-    case 1:
-    case "SHARP_SHOOTER":
-      return GameAwardType.SHARP_SHOOTER;
-    case 2:
-    case "PEA_SHOOTER":
-      return GameAwardType.PEA_SHOOTER;
-    case 3:
-    case "TWELVIE":
-      return GameAwardType.TWELVIE;
-    case 4:
-    case "HIGH_ROLLER":
-      return GameAwardType.HIGH_ROLLER;
-    case 5:
-    case "ZEROS":
-      return GameAwardType.ZEROS;
-    case 6:
-    case "RESETTER":
-      return GameAwardType.RESETTER;
-    case 7:
-    case "SO_CLOSE":
-      return GameAwardType.SO_CLOSE;
-    case 8:
-    case "LOWEST_SCORE":
-      return GameAwardType.LOWEST_SCORE;
-    case 9:
-    case "CLOSE_CALL":
-      return GameAwardType.CLOSE_CALL;
-    case 10:
-    case "DOMINATION":
-      return GameAwardType.DOMINATION;
+    case "TIME_AVERAGE_LOWEST":
+      return GameAwardType.TIME_AVERAGE_LOWEST;
     case 11:
-    case "NO_MISSES":
-      return GameAwardType.NO_MISSES;
+    case "ZERO_COUNT_ZERO":
+      return GameAwardType.ZERO_COUNT_ZERO;
+    case 1:
+    case "ZERO_COUNT_LOWEST":
+      return GameAwardType.ZERO_COUNT_LOWEST;
+    case 5:
+    case "ZERO_COUNT_HIGHEST":
+      return GameAwardType.ZERO_COUNT_HIGHEST;
     case 12:
     case "INSTANT_OUT":
       return GameAwardType.INSTANT_OUT;
-    case 13:
-    case "PERFECT_GAME":
-      return GameAwardType.PERFECT_GAME;
+    case 2:
+    case "SCORE_AVERAGE_LOWEST":
+      return GameAwardType.SCORE_AVERAGE_LOWEST;
+    case 4:
+    case "SCORE_AVERAGE_HIGHEST":
+      return GameAwardType.SCORE_AVERAGE_HIGHEST;
+    case 7:
+    case "SCORE_TOTAL_2ND_HIGHEST":
+      return GameAwardType.SCORE_TOTAL_2ND_HIGHEST;
+    case 8:
+    case "SCORE_TOTAL_LOWEST":
+      return GameAwardType.SCORE_TOTAL_LOWEST;
+    case 3:
+    case "TWELVE_COUNT_HIGHEST":
+      return GameAwardType.TWELVE_COUNT_HIGHEST;
+    case 6:
+    case "RESET_COUNT_HIGHEST":
+      return GameAwardType.RESET_COUNT_HIGHEST;
+    case 9:
+    case "DANGER_COUNT_HIGHEST":
+      return GameAwardType.DANGER_COUNT_HIGHEST;
+    case 10:
+    case "DOMINATION":
+      return GameAwardType.DOMINATION;
     case 14:
     case "ALWAYS_IN_LEAD":
       return GameAwardType.ALWAYS_IN_LEAD;
+    case 13:
+    case "PERFECT_GAME":
+      return GameAwardType.PERFECT_GAME;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -190,36 +199,36 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
 
 export function gameAwardTypeToJSON(object: GameAwardType): string {
   switch (object) {
-    case GameAwardType.SLOW_POKE:
-      return "SLOW_POKE";
-    case GameAwardType.SHARP_SHOOTER:
-      return "SHARP_SHOOTER";
-    case GameAwardType.PEA_SHOOTER:
-      return "PEA_SHOOTER";
-    case GameAwardType.TWELVIE:
-      return "TWELVIE";
-    case GameAwardType.HIGH_ROLLER:
-      return "HIGH_ROLLER";
-    case GameAwardType.ZEROS:
-      return "ZEROS";
-    case GameAwardType.RESETTER:
-      return "RESETTER";
-    case GameAwardType.SO_CLOSE:
-      return "SO_CLOSE";
-    case GameAwardType.LOWEST_SCORE:
-      return "LOWEST_SCORE";
-    case GameAwardType.CLOSE_CALL:
-      return "CLOSE_CALL";
-    case GameAwardType.DOMINATION:
-      return "DOMINATION";
-    case GameAwardType.NO_MISSES:
-      return "NO_MISSES";
+    case GameAwardType.TIME_AVERAGE_LOWEST:
+      return "TIME_AVERAGE_LOWEST";
+    case GameAwardType.ZERO_COUNT_ZERO:
+      return "ZERO_COUNT_ZERO";
+    case GameAwardType.ZERO_COUNT_LOWEST:
+      return "ZERO_COUNT_LOWEST";
+    case GameAwardType.ZERO_COUNT_HIGHEST:
+      return "ZERO_COUNT_HIGHEST";
     case GameAwardType.INSTANT_OUT:
       return "INSTANT_OUT";
-    case GameAwardType.PERFECT_GAME:
-      return "PERFECT_GAME";
+    case GameAwardType.SCORE_AVERAGE_LOWEST:
+      return "SCORE_AVERAGE_LOWEST";
+    case GameAwardType.SCORE_AVERAGE_HIGHEST:
+      return "SCORE_AVERAGE_HIGHEST";
+    case GameAwardType.SCORE_TOTAL_2ND_HIGHEST:
+      return "SCORE_TOTAL_2ND_HIGHEST";
+    case GameAwardType.SCORE_TOTAL_LOWEST:
+      return "SCORE_TOTAL_LOWEST";
+    case GameAwardType.TWELVE_COUNT_HIGHEST:
+      return "TWELVE_COUNT_HIGHEST";
+    case GameAwardType.RESET_COUNT_HIGHEST:
+      return "RESET_COUNT_HIGHEST";
+    case GameAwardType.DANGER_COUNT_HIGHEST:
+      return "DANGER_COUNT_HIGHEST";
+    case GameAwardType.DOMINATION:
+      return "DOMINATION";
     case GameAwardType.ALWAYS_IN_LEAD:
       return "ALWAYS_IN_LEAD";
+    case GameAwardType.PERFECT_GAME:
+      return "PERFECT_GAME";
     default:
       return "UNKNOWN";
   }
@@ -227,36 +236,36 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
 
 export function gameAwardTypeToNumber(object: GameAwardType): number {
   switch (object) {
-    case GameAwardType.SLOW_POKE:
+    case GameAwardType.TIME_AVERAGE_LOWEST:
       return 0;
-    case GameAwardType.SHARP_SHOOTER:
+    case GameAwardType.ZERO_COUNT_ZERO:
+      return 11;
+    case GameAwardType.ZERO_COUNT_LOWEST:
       return 1;
-    case GameAwardType.PEA_SHOOTER:
-      return 2;
-    case GameAwardType.TWELVIE:
-      return 3;
-    case GameAwardType.HIGH_ROLLER:
-      return 4;
-    case GameAwardType.ZEROS:
+    case GameAwardType.ZERO_COUNT_HIGHEST:
       return 5;
-    case GameAwardType.RESETTER:
-      return 6;
-    case GameAwardType.SO_CLOSE:
+    case GameAwardType.INSTANT_OUT:
+      return 12;
+    case GameAwardType.SCORE_AVERAGE_LOWEST:
+      return 2;
+    case GameAwardType.SCORE_AVERAGE_HIGHEST:
+      return 4;
+    case GameAwardType.SCORE_TOTAL_2ND_HIGHEST:
       return 7;
-    case GameAwardType.LOWEST_SCORE:
+    case GameAwardType.SCORE_TOTAL_LOWEST:
       return 8;
-    case GameAwardType.CLOSE_CALL:
+    case GameAwardType.TWELVE_COUNT_HIGHEST:
+      return 3;
+    case GameAwardType.RESET_COUNT_HIGHEST:
+      return 6;
+    case GameAwardType.DANGER_COUNT_HIGHEST:
       return 9;
     case GameAwardType.DOMINATION:
       return 10;
-    case GameAwardType.NO_MISSES:
-      return 11;
-    case GameAwardType.INSTANT_OUT:
-      return 12;
-    case GameAwardType.PERFECT_GAME:
-      return 13;
     case GameAwardType.ALWAYS_IN_LEAD:
       return 14;
+    case GameAwardType.PERFECT_GAME:
+      return 13;
     default:
       return 0;
   }
@@ -589,7 +598,7 @@ export const GamePlayer = {
 };
 
 const baseGameAward: object = {
-  type: GameAwardType.SLOW_POKE,
+  type: GameAwardType.TIME_AVERAGE_LOWEST,
   value: "",
   priority: 0,
   emoji: "",
@@ -602,7 +611,7 @@ const baseGameAward: object = {
 
 export const GameAward = {
   encode(message: GameAward, writer: Writer = Writer.create()): Writer {
-    if (message.type !== GameAwardType.SLOW_POKE) {
+    if (message.type !== GameAwardType.TIME_AVERAGE_LOWEST) {
       writer.uint32(8).int32(gameAwardTypeToNumber(message.type));
     }
     if (message.value !== "") {
@@ -679,7 +688,7 @@ export const GameAward = {
     message.type =
       object.type !== undefined && object.type !== null
         ? gameAwardTypeFromJSON(object.type)
-        : GameAwardType.SLOW_POKE;
+        : GameAwardType.TIME_AVERAGE_LOWEST;
     message.value =
       object.value !== undefined && object.value !== null
         ? String(object.value)
@@ -737,7 +746,7 @@ export const GameAward = {
     object: I
   ): GameAward {
     const message = { ...baseGameAward } as GameAward;
-    message.type = object.type ?? GameAwardType.SLOW_POKE;
+    message.type = object.type ?? GameAwardType.TIME_AVERAGE_LOWEST;
     message.value = object.value ?? "";
     message.priority = object.priority ?? 0;
     message.emoji = object.emoji ?? "";
