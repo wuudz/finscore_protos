@@ -38,7 +38,7 @@ enum GameStatus {
 }
 
 enum GameAwardType {
-  
+
   // Time-based awards
 
   TIME_AVERAGE_HIGHEST = 0;
@@ -58,6 +58,11 @@ enum GameAwardType {
   SCORE_TOTAL_2ND_HIGHEST = 7;
   SCORE_TOTAL_LOWEST = 8;
   SCORE_ROUND_SAME_CONSECUTIVE = 15;
+  SCORE_ROUND_1_TWELVE = 19;
+
+  // Score streak based awards
+
+  SCORE_STREAK_BREAKER = 20;
 
   // Twelve-based awards
 
@@ -71,12 +76,16 @@ enum GameAwardType {
 
   DANGER_COUNT_HIGHEST = 9;
 
+  // Position based awards
+
+  POSITION_FIRST_TO_LAST = 18;
+
   // Winner awards
 
-  DOMINATION = 10; // No other player in range
-  ALWAYS_IN_LEAD = 14; // Won and was always in the lead
-  COMEBACK = 17; // Won after being in last place in 3rd round
-  PERFECT_GAME = 13; // Won in least possible rounds
+  DOMINATION = 10;           // No other player in range
+  ALWAYS_IN_LEAD = 14;       // Won and was always in the lead
+  POSITION_LAST_TO_WIN = 17; // Won after being in last place in 3rd round
+  PERFECT_GAME = 13;         // Won in least possible rounds
 }
 
 message GameAward {

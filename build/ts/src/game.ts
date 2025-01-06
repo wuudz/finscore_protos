@@ -127,15 +127,18 @@ export enum GameAwardType {
   SCORE_TOTAL_2ND_HIGHEST = "SCORE_TOTAL_2ND_HIGHEST",
   SCORE_TOTAL_LOWEST = "SCORE_TOTAL_LOWEST",
   SCORE_ROUND_SAME_CONSECUTIVE = "SCORE_ROUND_SAME_CONSECUTIVE",
+  SCORE_ROUND_1_TWELVE = "SCORE_ROUND_1_TWELVE",
+  SCORE_STREAK_BREAKER = "SCORE_STREAK_BREAKER",
   TWELVE_COUNT_HIGHEST = "TWELVE_COUNT_HIGHEST",
   RESET_COUNT_HIGHEST = "RESET_COUNT_HIGHEST",
   DANGER_COUNT_HIGHEST = "DANGER_COUNT_HIGHEST",
+  POSITION_FIRST_TO_LAST = "POSITION_FIRST_TO_LAST",
   /** DOMINATION - No other player in range */
   DOMINATION = "DOMINATION",
   /** ALWAYS_IN_LEAD - Won and was always in the lead */
   ALWAYS_IN_LEAD = "ALWAYS_IN_LEAD",
-  /** COMEBACK - Won after being in last place in 3rd round */
-  COMEBACK = "COMEBACK",
+  /** POSITION_LAST_TO_WIN - Won after being in last place in 3rd round */
+  POSITION_LAST_TO_WIN = "POSITION_LAST_TO_WIN",
   /** PERFECT_GAME - Won in least possible rounds */
   PERFECT_GAME = "PERFECT_GAME",
   UNRECOGNIZED = "UNRECOGNIZED",
@@ -176,6 +179,12 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 15:
     case "SCORE_ROUND_SAME_CONSECUTIVE":
       return GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE;
+    case 19:
+    case "SCORE_ROUND_1_TWELVE":
+      return GameAwardType.SCORE_ROUND_1_TWELVE;
+    case 20:
+    case "SCORE_STREAK_BREAKER":
+      return GameAwardType.SCORE_STREAK_BREAKER;
     case 3:
     case "TWELVE_COUNT_HIGHEST":
       return GameAwardType.TWELVE_COUNT_HIGHEST;
@@ -185,6 +194,9 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 9:
     case "DANGER_COUNT_HIGHEST":
       return GameAwardType.DANGER_COUNT_HIGHEST;
+    case 18:
+    case "POSITION_FIRST_TO_LAST":
+      return GameAwardType.POSITION_FIRST_TO_LAST;
     case 10:
     case "DOMINATION":
       return GameAwardType.DOMINATION;
@@ -192,8 +204,8 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case "ALWAYS_IN_LEAD":
       return GameAwardType.ALWAYS_IN_LEAD;
     case 17:
-    case "COMEBACK":
-      return GameAwardType.COMEBACK;
+    case "POSITION_LAST_TO_WIN":
+      return GameAwardType.POSITION_LAST_TO_WIN;
     case 13:
     case "PERFECT_GAME":
       return GameAwardType.PERFECT_GAME;
@@ -228,18 +240,24 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "SCORE_TOTAL_LOWEST";
     case GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE:
       return "SCORE_ROUND_SAME_CONSECUTIVE";
+    case GameAwardType.SCORE_ROUND_1_TWELVE:
+      return "SCORE_ROUND_1_TWELVE";
+    case GameAwardType.SCORE_STREAK_BREAKER:
+      return "SCORE_STREAK_BREAKER";
     case GameAwardType.TWELVE_COUNT_HIGHEST:
       return "TWELVE_COUNT_HIGHEST";
     case GameAwardType.RESET_COUNT_HIGHEST:
       return "RESET_COUNT_HIGHEST";
     case GameAwardType.DANGER_COUNT_HIGHEST:
       return "DANGER_COUNT_HIGHEST";
+    case GameAwardType.POSITION_FIRST_TO_LAST:
+      return "POSITION_FIRST_TO_LAST";
     case GameAwardType.DOMINATION:
       return "DOMINATION";
     case GameAwardType.ALWAYS_IN_LEAD:
       return "ALWAYS_IN_LEAD";
-    case GameAwardType.COMEBACK:
-      return "COMEBACK";
+    case GameAwardType.POSITION_LAST_TO_WIN:
+      return "POSITION_LAST_TO_WIN";
     case GameAwardType.PERFECT_GAME:
       return "PERFECT_GAME";
     default:
@@ -271,17 +289,23 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 8;
     case GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE:
       return 15;
+    case GameAwardType.SCORE_ROUND_1_TWELVE:
+      return 19;
+    case GameAwardType.SCORE_STREAK_BREAKER:
+      return 20;
     case GameAwardType.TWELVE_COUNT_HIGHEST:
       return 3;
     case GameAwardType.RESET_COUNT_HIGHEST:
       return 6;
     case GameAwardType.DANGER_COUNT_HIGHEST:
       return 9;
+    case GameAwardType.POSITION_FIRST_TO_LAST:
+      return 18;
     case GameAwardType.DOMINATION:
       return 10;
     case GameAwardType.ALWAYS_IN_LEAD:
       return 14;
-    case GameAwardType.COMEBACK:
+    case GameAwardType.POSITION_LAST_TO_WIN:
       return 17;
     case GameAwardType.PERFECT_GAME:
       return 13;
