@@ -52,6 +52,8 @@ enum GameAwardType {
   INSTANT_OUT = 12;
 
   // Score-based awards
+  // Chain = all players
+  // Streak = single player
 
   SCORE_AVERAGE_LOWEST = 2;
   SCORE_AVERAGE_HIGHEST = 4;
@@ -59,10 +61,9 @@ enum GameAwardType {
   SCORE_TOTAL_LOWEST = 8;
   SCORE_ROUND_SAME_CONSECUTIVE = 15;
   SCORE_ROUND_1_TWELVE = 19;
-
-  // Score streak based awards
-
-  SCORE_STREAK_BREAKER = 20;
+  SCORE_ROUND_1_ZERO = 22;
+  SCORE_CHAIN_BREAKER = 20;
+  SCORE_STREAK_2_1S = 21;
 
   // Twelve-based awards
 

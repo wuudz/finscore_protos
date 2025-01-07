@@ -128,7 +128,9 @@ export enum GameAwardType {
   SCORE_TOTAL_LOWEST = "SCORE_TOTAL_LOWEST",
   SCORE_ROUND_SAME_CONSECUTIVE = "SCORE_ROUND_SAME_CONSECUTIVE",
   SCORE_ROUND_1_TWELVE = "SCORE_ROUND_1_TWELVE",
-  SCORE_STREAK_BREAKER = "SCORE_STREAK_BREAKER",
+  SCORE_ROUND_1_ZERO = "SCORE_ROUND_1_ZERO",
+  SCORE_CHAIN_BREAKER = "SCORE_CHAIN_BREAKER",
+  SCORE_STREAK_2_1S = "SCORE_STREAK_2_1S",
   TWELVE_COUNT_HIGHEST = "TWELVE_COUNT_HIGHEST",
   RESET_COUNT_HIGHEST = "RESET_COUNT_HIGHEST",
   DANGER_COUNT_HIGHEST = "DANGER_COUNT_HIGHEST",
@@ -182,9 +184,15 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 19:
     case "SCORE_ROUND_1_TWELVE":
       return GameAwardType.SCORE_ROUND_1_TWELVE;
+    case 22:
+    case "SCORE_ROUND_1_ZERO":
+      return GameAwardType.SCORE_ROUND_1_ZERO;
     case 20:
-    case "SCORE_STREAK_BREAKER":
-      return GameAwardType.SCORE_STREAK_BREAKER;
+    case "SCORE_CHAIN_BREAKER":
+      return GameAwardType.SCORE_CHAIN_BREAKER;
+    case 21:
+    case "SCORE_STREAK_2_1S":
+      return GameAwardType.SCORE_STREAK_2_1S;
     case 3:
     case "TWELVE_COUNT_HIGHEST":
       return GameAwardType.TWELVE_COUNT_HIGHEST;
@@ -242,8 +250,12 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "SCORE_ROUND_SAME_CONSECUTIVE";
     case GameAwardType.SCORE_ROUND_1_TWELVE:
       return "SCORE_ROUND_1_TWELVE";
-    case GameAwardType.SCORE_STREAK_BREAKER:
-      return "SCORE_STREAK_BREAKER";
+    case GameAwardType.SCORE_ROUND_1_ZERO:
+      return "SCORE_ROUND_1_ZERO";
+    case GameAwardType.SCORE_CHAIN_BREAKER:
+      return "SCORE_CHAIN_BREAKER";
+    case GameAwardType.SCORE_STREAK_2_1S:
+      return "SCORE_STREAK_2_1S";
     case GameAwardType.TWELVE_COUNT_HIGHEST:
       return "TWELVE_COUNT_HIGHEST";
     case GameAwardType.RESET_COUNT_HIGHEST:
@@ -291,8 +303,12 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 15;
     case GameAwardType.SCORE_ROUND_1_TWELVE:
       return 19;
-    case GameAwardType.SCORE_STREAK_BREAKER:
+    case GameAwardType.SCORE_ROUND_1_ZERO:
+      return 22;
+    case GameAwardType.SCORE_CHAIN_BREAKER:
       return 20;
+    case GameAwardType.SCORE_STREAK_2_1S:
+      return 21;
     case GameAwardType.TWELVE_COUNT_HIGHEST:
       return 3;
     case GameAwardType.RESET_COUNT_HIGHEST:
