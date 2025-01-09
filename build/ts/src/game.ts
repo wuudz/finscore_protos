@@ -122,25 +122,25 @@ export enum GameAwardType {
   ZERO_COUNT_LOWEST = "ZERO_COUNT_LOWEST",
   ZERO_COUNT_HIGHEST = "ZERO_COUNT_HIGHEST",
   INSTANT_OUT = "INSTANT_OUT",
+  BREAK_TWELVE = "BREAK_TWELVE",
+  BREAK_ZERO = "BREAK_ZERO",
   SCORE_AVERAGE_LOWEST = "SCORE_AVERAGE_LOWEST",
   SCORE_AVERAGE_HIGHEST = "SCORE_AVERAGE_HIGHEST",
   SCORE_TOTAL_2ND_HIGHEST = "SCORE_TOTAL_2ND_HIGHEST",
   SCORE_TOTAL_LOWEST = "SCORE_TOTAL_LOWEST",
   SCORE_ROUND_SAME_CONSECUTIVE = "SCORE_ROUND_SAME_CONSECUTIVE",
-  SCORE_ROUND_1_TWELVE = "SCORE_ROUND_1_TWELVE",
-  SCORE_ROUND_1_ZERO = "SCORE_ROUND_1_ZERO",
   SCORE_CHAIN_BREAKER = "SCORE_CHAIN_BREAKER",
   SCORE_STREAK_2_1S = "SCORE_STREAK_2_1S",
   TWELVE_COUNT_HIGHEST = "TWELVE_COUNT_HIGHEST",
   RESET_COUNT_HIGHEST = "RESET_COUNT_HIGHEST",
   DANGER_COUNT_HIGHEST = "DANGER_COUNT_HIGHEST",
+  DANGER_THEN_TWELVE = "DANGER_THEN_TWELVE",
+  DANGER_THEN_WIN = "DANGER_THEN_WIN",
   POSITION_FIRST_TO_LAST = "POSITION_FIRST_TO_LAST",
-  /** DOMINATION - No other player in range */
-  DOMINATION = "DOMINATION",
-  /** ALWAYS_IN_LEAD - Won and was always in the lead */
-  ALWAYS_IN_LEAD = "ALWAYS_IN_LEAD",
-  /** POSITION_LAST_TO_WIN - Won after being in last place in 3rd round */
+  POSITION_FIRST_ALWAYS = "POSITION_FIRST_ALWAYS",
   POSITION_LAST_TO_WIN = "POSITION_LAST_TO_WIN",
+  /** DOMINATION - Won with no other player in range */
+  DOMINATION = "DOMINATION",
   /** PERFECT_GAME - Won in least possible rounds */
   PERFECT_GAME = "PERFECT_GAME",
   UNRECOGNIZED = "UNRECOGNIZED",
@@ -166,6 +166,12 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 12:
     case "INSTANT_OUT":
       return GameAwardType.INSTANT_OUT;
+    case 19:
+    case "BREAK_TWELVE":
+      return GameAwardType.BREAK_TWELVE;
+    case 22:
+    case "BREAK_ZERO":
+      return GameAwardType.BREAK_ZERO;
     case 2:
     case "SCORE_AVERAGE_LOWEST":
       return GameAwardType.SCORE_AVERAGE_LOWEST;
@@ -181,12 +187,6 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 15:
     case "SCORE_ROUND_SAME_CONSECUTIVE":
       return GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE;
-    case 19:
-    case "SCORE_ROUND_1_TWELVE":
-      return GameAwardType.SCORE_ROUND_1_TWELVE;
-    case 22:
-    case "SCORE_ROUND_1_ZERO":
-      return GameAwardType.SCORE_ROUND_1_ZERO;
     case 20:
     case "SCORE_CHAIN_BREAKER":
       return GameAwardType.SCORE_CHAIN_BREAKER;
@@ -202,18 +202,24 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 9:
     case "DANGER_COUNT_HIGHEST":
       return GameAwardType.DANGER_COUNT_HIGHEST;
+    case 23:
+    case "DANGER_THEN_TWELVE":
+      return GameAwardType.DANGER_THEN_TWELVE;
+    case 24:
+    case "DANGER_THEN_WIN":
+      return GameAwardType.DANGER_THEN_WIN;
     case 18:
     case "POSITION_FIRST_TO_LAST":
       return GameAwardType.POSITION_FIRST_TO_LAST;
-    case 10:
-    case "DOMINATION":
-      return GameAwardType.DOMINATION;
     case 14:
-    case "ALWAYS_IN_LEAD":
-      return GameAwardType.ALWAYS_IN_LEAD;
+    case "POSITION_FIRST_ALWAYS":
+      return GameAwardType.POSITION_FIRST_ALWAYS;
     case 17:
     case "POSITION_LAST_TO_WIN":
       return GameAwardType.POSITION_LAST_TO_WIN;
+    case 10:
+    case "DOMINATION":
+      return GameAwardType.DOMINATION;
     case 13:
     case "PERFECT_GAME":
       return GameAwardType.PERFECT_GAME;
@@ -238,6 +244,10 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "ZERO_COUNT_HIGHEST";
     case GameAwardType.INSTANT_OUT:
       return "INSTANT_OUT";
+    case GameAwardType.BREAK_TWELVE:
+      return "BREAK_TWELVE";
+    case GameAwardType.BREAK_ZERO:
+      return "BREAK_ZERO";
     case GameAwardType.SCORE_AVERAGE_LOWEST:
       return "SCORE_AVERAGE_LOWEST";
     case GameAwardType.SCORE_AVERAGE_HIGHEST:
@@ -248,10 +258,6 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "SCORE_TOTAL_LOWEST";
     case GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE:
       return "SCORE_ROUND_SAME_CONSECUTIVE";
-    case GameAwardType.SCORE_ROUND_1_TWELVE:
-      return "SCORE_ROUND_1_TWELVE";
-    case GameAwardType.SCORE_ROUND_1_ZERO:
-      return "SCORE_ROUND_1_ZERO";
     case GameAwardType.SCORE_CHAIN_BREAKER:
       return "SCORE_CHAIN_BREAKER";
     case GameAwardType.SCORE_STREAK_2_1S:
@@ -262,14 +268,18 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "RESET_COUNT_HIGHEST";
     case GameAwardType.DANGER_COUNT_HIGHEST:
       return "DANGER_COUNT_HIGHEST";
+    case GameAwardType.DANGER_THEN_TWELVE:
+      return "DANGER_THEN_TWELVE";
+    case GameAwardType.DANGER_THEN_WIN:
+      return "DANGER_THEN_WIN";
     case GameAwardType.POSITION_FIRST_TO_LAST:
       return "POSITION_FIRST_TO_LAST";
-    case GameAwardType.DOMINATION:
-      return "DOMINATION";
-    case GameAwardType.ALWAYS_IN_LEAD:
-      return "ALWAYS_IN_LEAD";
+    case GameAwardType.POSITION_FIRST_ALWAYS:
+      return "POSITION_FIRST_ALWAYS";
     case GameAwardType.POSITION_LAST_TO_WIN:
       return "POSITION_LAST_TO_WIN";
+    case GameAwardType.DOMINATION:
+      return "DOMINATION";
     case GameAwardType.PERFECT_GAME:
       return "PERFECT_GAME";
     default:
@@ -291,6 +301,10 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 5;
     case GameAwardType.INSTANT_OUT:
       return 12;
+    case GameAwardType.BREAK_TWELVE:
+      return 19;
+    case GameAwardType.BREAK_ZERO:
+      return 22;
     case GameAwardType.SCORE_AVERAGE_LOWEST:
       return 2;
     case GameAwardType.SCORE_AVERAGE_HIGHEST:
@@ -301,10 +315,6 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 8;
     case GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE:
       return 15;
-    case GameAwardType.SCORE_ROUND_1_TWELVE:
-      return 19;
-    case GameAwardType.SCORE_ROUND_1_ZERO:
-      return 22;
     case GameAwardType.SCORE_CHAIN_BREAKER:
       return 20;
     case GameAwardType.SCORE_STREAK_2_1S:
@@ -315,14 +325,18 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 6;
     case GameAwardType.DANGER_COUNT_HIGHEST:
       return 9;
+    case GameAwardType.DANGER_THEN_TWELVE:
+      return 23;
+    case GameAwardType.DANGER_THEN_WIN:
+      return 24;
     case GameAwardType.POSITION_FIRST_TO_LAST:
       return 18;
-    case GameAwardType.DOMINATION:
-      return 10;
-    case GameAwardType.ALWAYS_IN_LEAD:
+    case GameAwardType.POSITION_FIRST_ALWAYS:
       return 14;
     case GameAwardType.POSITION_LAST_TO_WIN:
       return 17;
+    case GameAwardType.DOMINATION:
+      return 10;
     case GameAwardType.PERFECT_GAME:
       return 13;
     default:

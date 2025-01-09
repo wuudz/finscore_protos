@@ -56,22 +56,24 @@ class GameAwardType extends $pb.ProtobufEnum {
   static const GameAwardType ZERO_COUNT_LOWEST = GameAwardType._(1, _omitEnumNames ? '' : 'ZERO_COUNT_LOWEST');
   static const GameAwardType ZERO_COUNT_HIGHEST = GameAwardType._(5, _omitEnumNames ? '' : 'ZERO_COUNT_HIGHEST');
   static const GameAwardType INSTANT_OUT = GameAwardType._(12, _omitEnumNames ? '' : 'INSTANT_OUT');
+  static const GameAwardType BREAK_TWELVE = GameAwardType._(19, _omitEnumNames ? '' : 'BREAK_TWELVE');
+  static const GameAwardType BREAK_ZERO = GameAwardType._(22, _omitEnumNames ? '' : 'BREAK_ZERO');
   static const GameAwardType SCORE_AVERAGE_LOWEST = GameAwardType._(2, _omitEnumNames ? '' : 'SCORE_AVERAGE_LOWEST');
   static const GameAwardType SCORE_AVERAGE_HIGHEST = GameAwardType._(4, _omitEnumNames ? '' : 'SCORE_AVERAGE_HIGHEST');
   static const GameAwardType SCORE_TOTAL_2ND_HIGHEST = GameAwardType._(7, _omitEnumNames ? '' : 'SCORE_TOTAL_2ND_HIGHEST');
   static const GameAwardType SCORE_TOTAL_LOWEST = GameAwardType._(8, _omitEnumNames ? '' : 'SCORE_TOTAL_LOWEST');
   static const GameAwardType SCORE_ROUND_SAME_CONSECUTIVE = GameAwardType._(15, _omitEnumNames ? '' : 'SCORE_ROUND_SAME_CONSECUTIVE');
-  static const GameAwardType SCORE_ROUND_1_TWELVE = GameAwardType._(19, _omitEnumNames ? '' : 'SCORE_ROUND_1_TWELVE');
-  static const GameAwardType SCORE_ROUND_1_ZERO = GameAwardType._(22, _omitEnumNames ? '' : 'SCORE_ROUND_1_ZERO');
   static const GameAwardType SCORE_CHAIN_BREAKER = GameAwardType._(20, _omitEnumNames ? '' : 'SCORE_CHAIN_BREAKER');
   static const GameAwardType SCORE_STREAK_2_1S = GameAwardType._(21, _omitEnumNames ? '' : 'SCORE_STREAK_2_1S');
   static const GameAwardType TWELVE_COUNT_HIGHEST = GameAwardType._(3, _omitEnumNames ? '' : 'TWELVE_COUNT_HIGHEST');
   static const GameAwardType RESET_COUNT_HIGHEST = GameAwardType._(6, _omitEnumNames ? '' : 'RESET_COUNT_HIGHEST');
   static const GameAwardType DANGER_COUNT_HIGHEST = GameAwardType._(9, _omitEnumNames ? '' : 'DANGER_COUNT_HIGHEST');
+  static const GameAwardType DANGER_THEN_TWELVE = GameAwardType._(23, _omitEnumNames ? '' : 'DANGER_THEN_TWELVE');
+  static const GameAwardType DANGER_THEN_WIN = GameAwardType._(24, _omitEnumNames ? '' : 'DANGER_THEN_WIN');
   static const GameAwardType POSITION_FIRST_TO_LAST = GameAwardType._(18, _omitEnumNames ? '' : 'POSITION_FIRST_TO_LAST');
-  static const GameAwardType DOMINATION = GameAwardType._(10, _omitEnumNames ? '' : 'DOMINATION');
-  static const GameAwardType ALWAYS_IN_LEAD = GameAwardType._(14, _omitEnumNames ? '' : 'ALWAYS_IN_LEAD');
+  static const GameAwardType POSITION_FIRST_ALWAYS = GameAwardType._(14, _omitEnumNames ? '' : 'POSITION_FIRST_ALWAYS');
   static const GameAwardType POSITION_LAST_TO_WIN = GameAwardType._(17, _omitEnumNames ? '' : 'POSITION_LAST_TO_WIN');
+  static const GameAwardType DOMINATION = GameAwardType._(10, _omitEnumNames ? '' : 'DOMINATION');
   static const GameAwardType PERFECT_GAME = GameAwardType._(13, _omitEnumNames ? '' : 'PERFECT_GAME');
 
   static const $core.List<GameAwardType> values = <GameAwardType> [
@@ -81,22 +83,24 @@ class GameAwardType extends $pb.ProtobufEnum {
     ZERO_COUNT_LOWEST,
     ZERO_COUNT_HIGHEST,
     INSTANT_OUT,
+    BREAK_TWELVE,
+    BREAK_ZERO,
     SCORE_AVERAGE_LOWEST,
     SCORE_AVERAGE_HIGHEST,
     SCORE_TOTAL_2ND_HIGHEST,
     SCORE_TOTAL_LOWEST,
     SCORE_ROUND_SAME_CONSECUTIVE,
-    SCORE_ROUND_1_TWELVE,
-    SCORE_ROUND_1_ZERO,
     SCORE_CHAIN_BREAKER,
     SCORE_STREAK_2_1S,
     TWELVE_COUNT_HIGHEST,
     RESET_COUNT_HIGHEST,
     DANGER_COUNT_HIGHEST,
+    DANGER_THEN_TWELVE,
+    DANGER_THEN_WIN,
     POSITION_FIRST_TO_LAST,
-    DOMINATION,
-    ALWAYS_IN_LEAD,
+    POSITION_FIRST_ALWAYS,
     POSITION_LAST_TO_WIN,
+    DOMINATION,
     PERFECT_GAME,
   ];
 

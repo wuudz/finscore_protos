@@ -51,6 +51,11 @@ enum GameAwardType {
   ZERO_COUNT_HIGHEST = 5;
   INSTANT_OUT = 12;
 
+  // Break-based awards (the first throw of the game)
+
+  BREAK_TWELVE = 19;
+  BREAK_ZERO = 22;
+
   // Score-based awards
   // Chain = all players
   // Streak = single player
@@ -60,8 +65,6 @@ enum GameAwardType {
   SCORE_TOTAL_2ND_HIGHEST = 7;
   SCORE_TOTAL_LOWEST = 8;
   SCORE_ROUND_SAME_CONSECUTIVE = 15;
-  SCORE_ROUND_1_TWELVE = 19;
-  SCORE_ROUND_1_ZERO = 22;
   SCORE_CHAIN_BREAKER = 20;
   SCORE_STREAK_2_1S = 21;
 
@@ -76,17 +79,19 @@ enum GameAwardType {
   // Danger-based awards
 
   DANGER_COUNT_HIGHEST = 9;
+  DANGER_THEN_TWELVE = 23;
+  DANGER_THEN_WIN = 24;
 
   // Position based awards
 
   POSITION_FIRST_TO_LAST = 18;
+  POSITION_FIRST_ALWAYS = 14;
+  POSITION_LAST_TO_WIN = 17;
 
-  // Winner awards
+  // Special awards
 
-  DOMINATION = 10;           // No other player in range
-  ALWAYS_IN_LEAD = 14;       // Won and was always in the lead
-  POSITION_LAST_TO_WIN = 17; // Won after being in last place in 3rd round
-  PERFECT_GAME = 13;         // Won in least possible rounds
+  DOMINATION = 10;   // Won with no other player in range
+  PERFECT_GAME = 13; // Won in least possible rounds
 }
 
 message GameAward {
