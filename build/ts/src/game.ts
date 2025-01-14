@@ -128,9 +128,9 @@ export enum GameAwardType {
   SCORE_AVERAGE_HIGHEST = "SCORE_AVERAGE_HIGHEST",
   SCORE_TOTAL_2ND_HIGHEST = "SCORE_TOTAL_2ND_HIGHEST",
   SCORE_TOTAL_LOWEST = "SCORE_TOTAL_LOWEST",
-  SCORE_ROUND_SAME_CONSECUTIVE = "SCORE_ROUND_SAME_CONSECUTIVE",
   SCORE_CHAIN_BREAKER = "SCORE_CHAIN_BREAKER",
-  SCORE_STREAK_2_1S = "SCORE_STREAK_2_1S",
+  SCORE_STREAK_TWO_1S = "SCORE_STREAK_TWO_1S",
+  SCORE_STREAK_SAME = "SCORE_STREAK_SAME",
   TWELVE_COUNT_HIGHEST = "TWELVE_COUNT_HIGHEST",
   RESET_COUNT_HIGHEST = "RESET_COUNT_HIGHEST",
   DANGER_COUNT_HIGHEST = "DANGER_COUNT_HIGHEST",
@@ -186,15 +186,15 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 8:
     case "SCORE_TOTAL_LOWEST":
       return GameAwardType.SCORE_TOTAL_LOWEST;
-    case 15:
-    case "SCORE_ROUND_SAME_CONSECUTIVE":
-      return GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE;
     case 20:
     case "SCORE_CHAIN_BREAKER":
       return GameAwardType.SCORE_CHAIN_BREAKER;
     case 21:
-    case "SCORE_STREAK_2_1S":
-      return GameAwardType.SCORE_STREAK_2_1S;
+    case "SCORE_STREAK_TWO_1S":
+      return GameAwardType.SCORE_STREAK_TWO_1S;
+    case 15:
+    case "SCORE_STREAK_SAME":
+      return GameAwardType.SCORE_STREAK_SAME;
     case 3:
     case "TWELVE_COUNT_HIGHEST":
       return GameAwardType.TWELVE_COUNT_HIGHEST;
@@ -264,12 +264,12 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "SCORE_TOTAL_2ND_HIGHEST";
     case GameAwardType.SCORE_TOTAL_LOWEST:
       return "SCORE_TOTAL_LOWEST";
-    case GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE:
-      return "SCORE_ROUND_SAME_CONSECUTIVE";
     case GameAwardType.SCORE_CHAIN_BREAKER:
       return "SCORE_CHAIN_BREAKER";
-    case GameAwardType.SCORE_STREAK_2_1S:
-      return "SCORE_STREAK_2_1S";
+    case GameAwardType.SCORE_STREAK_TWO_1S:
+      return "SCORE_STREAK_TWO_1S";
+    case GameAwardType.SCORE_STREAK_SAME:
+      return "SCORE_STREAK_SAME";
     case GameAwardType.TWELVE_COUNT_HIGHEST:
       return "TWELVE_COUNT_HIGHEST";
     case GameAwardType.RESET_COUNT_HIGHEST:
@@ -325,12 +325,12 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 7;
     case GameAwardType.SCORE_TOTAL_LOWEST:
       return 8;
-    case GameAwardType.SCORE_ROUND_SAME_CONSECUTIVE:
-      return 15;
     case GameAwardType.SCORE_CHAIN_BREAKER:
       return 20;
-    case GameAwardType.SCORE_STREAK_2_1S:
+    case GameAwardType.SCORE_STREAK_TWO_1S:
       return 21;
+    case GameAwardType.SCORE_STREAK_SAME:
+      return 15;
     case GameAwardType.TWELVE_COUNT_HIGHEST:
       return 3;
     case GameAwardType.RESET_COUNT_HIGHEST:
