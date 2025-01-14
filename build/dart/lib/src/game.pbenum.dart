@@ -69,12 +69,14 @@ class GameAwardType extends $pb.ProtobufEnum {
   static const GameAwardType RESET_COUNT_HIGHEST = GameAwardType._(6, _omitEnumNames ? '' : 'RESET_COUNT_HIGHEST');
   static const GameAwardType DANGER_COUNT_HIGHEST = GameAwardType._(9, _omitEnumNames ? '' : 'DANGER_COUNT_HIGHEST');
   static const GameAwardType DANGER_THEN_TWELVE = GameAwardType._(23, _omitEnumNames ? '' : 'DANGER_THEN_TWELVE');
-  static const GameAwardType DANGER_THEN_WIN = GameAwardType._(24, _omitEnumNames ? '' : 'DANGER_THEN_WIN');
   static const GameAwardType POSITION_FIRST_TO_LAST = GameAwardType._(18, _omitEnumNames ? '' : 'POSITION_FIRST_TO_LAST');
-  static const GameAwardType POSITION_FIRST_ALWAYS = GameAwardType._(14, _omitEnumNames ? '' : 'POSITION_FIRST_ALWAYS');
-  static const GameAwardType POSITION_LAST_TO_WIN = GameAwardType._(17, _omitEnumNames ? '' : 'POSITION_LAST_TO_WIN');
-  static const GameAwardType DOMINATION = GameAwardType._(10, _omitEnumNames ? '' : 'DOMINATION');
-  static const GameAwardType PERFECT_GAME = GameAwardType._(13, _omitEnumNames ? '' : 'PERFECT_GAME');
+  static const GameAwardType WIN_NONE_IN_RANGE = GameAwardType._(10, _omitEnumNames ? '' : 'WIN_NONE_IN_RANGE');
+  static const GameAwardType WIN_MINIMUM_ROUNDS = GameAwardType._(13, _omitEnumNames ? '' : 'WIN_MINIMUM_ROUNDS');
+  static const GameAwardType WIN_FROM_EARLY_LAST_POSITION = GameAwardType._(17, _omitEnumNames ? '' : 'WIN_FROM_EARLY_LAST_POSITION');
+  static const GameAwardType WIN_ALWAYS_FIRST_POSITION = GameAwardType._(14, _omitEnumNames ? '' : 'WIN_ALWAYS_FIRST_POSITION');
+  static const GameAwardType WIN_AFTER_RESET = GameAwardType._(25, _omitEnumNames ? '' : 'WIN_AFTER_RESET');
+  static const GameAwardType WIN_WHILE_IN_DANGER = GameAwardType._(24, _omitEnumNames ? '' : 'WIN_WHILE_IN_DANGER');
+  static const GameAwardType WIN_WITH_SCORE_ONE = GameAwardType._(26, _omitEnumNames ? '' : 'WIN_WITH_SCORE_ONE');
 
   static const $core.List<GameAwardType> values = <GameAwardType> [
     TIME_AVERAGE_HIGHEST,
@@ -96,12 +98,14 @@ class GameAwardType extends $pb.ProtobufEnum {
     RESET_COUNT_HIGHEST,
     DANGER_COUNT_HIGHEST,
     DANGER_THEN_TWELVE,
-    DANGER_THEN_WIN,
     POSITION_FIRST_TO_LAST,
-    POSITION_FIRST_ALWAYS,
-    POSITION_LAST_TO_WIN,
-    DOMINATION,
-    PERFECT_GAME,
+    WIN_NONE_IN_RANGE,
+    WIN_MINIMUM_ROUNDS,
+    WIN_FROM_EARLY_LAST_POSITION,
+    WIN_ALWAYS_FIRST_POSITION,
+    WIN_AFTER_RESET,
+    WIN_WHILE_IN_DANGER,
+    WIN_WITH_SCORE_ONE,
   ];
 
   static final $core.Map<$core.int, GameAwardType> _byValue = $pb.ProtobufEnum.initByValue(values);

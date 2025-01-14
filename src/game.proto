@@ -80,18 +80,20 @@ enum GameAwardType {
 
   DANGER_COUNT_HIGHEST = 9;
   DANGER_THEN_TWELVE = 23;
-  DANGER_THEN_WIN = 24;
 
   // Position based awards
 
   POSITION_FIRST_TO_LAST = 18;
-  POSITION_FIRST_ALWAYS = 14;
-  POSITION_LAST_TO_WIN = 17;
 
   // Special awards
 
-  DOMINATION = 10;   // Won with no other player in range
-  PERFECT_GAME = 13; // Won in least possible rounds
+  WIN_NONE_IN_RANGE = 10;   // Won with no other player in range
+  WIN_MINIMUM_ROUNDS = 13; // Won in least possible rounds
+  WIN_FROM_EARLY_LAST_POSITION = 17;
+  WIN_ALWAYS_FIRST_POSITION = 14;
+  WIN_AFTER_RESET = 25;
+  WIN_WHILE_IN_DANGER = 24;
+  WIN_WITH_SCORE_ONE = 26;
 }
 
 message GameAward {

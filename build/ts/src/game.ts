@@ -135,14 +135,16 @@ export enum GameAwardType {
   RESET_COUNT_HIGHEST = "RESET_COUNT_HIGHEST",
   DANGER_COUNT_HIGHEST = "DANGER_COUNT_HIGHEST",
   DANGER_THEN_TWELVE = "DANGER_THEN_TWELVE",
-  DANGER_THEN_WIN = "DANGER_THEN_WIN",
   POSITION_FIRST_TO_LAST = "POSITION_FIRST_TO_LAST",
-  POSITION_FIRST_ALWAYS = "POSITION_FIRST_ALWAYS",
-  POSITION_LAST_TO_WIN = "POSITION_LAST_TO_WIN",
-  /** DOMINATION - Won with no other player in range */
-  DOMINATION = "DOMINATION",
-  /** PERFECT_GAME - Won in least possible rounds */
-  PERFECT_GAME = "PERFECT_GAME",
+  /** WIN_NONE_IN_RANGE - Won with no other player in range */
+  WIN_NONE_IN_RANGE = "WIN_NONE_IN_RANGE",
+  /** WIN_MINIMUM_ROUNDS - Won in least possible rounds */
+  WIN_MINIMUM_ROUNDS = "WIN_MINIMUM_ROUNDS",
+  WIN_FROM_EARLY_LAST_POSITION = "WIN_FROM_EARLY_LAST_POSITION",
+  WIN_ALWAYS_FIRST_POSITION = "WIN_ALWAYS_FIRST_POSITION",
+  WIN_AFTER_RESET = "WIN_AFTER_RESET",
+  WIN_WHILE_IN_DANGER = "WIN_WHILE_IN_DANGER",
+  WIN_WITH_SCORE_ONE = "WIN_WITH_SCORE_ONE",
   UNRECOGNIZED = "UNRECOGNIZED",
 }
 
@@ -205,24 +207,30 @@ export function gameAwardTypeFromJSON(object: any): GameAwardType {
     case 23:
     case "DANGER_THEN_TWELVE":
       return GameAwardType.DANGER_THEN_TWELVE;
-    case 24:
-    case "DANGER_THEN_WIN":
-      return GameAwardType.DANGER_THEN_WIN;
     case 18:
     case "POSITION_FIRST_TO_LAST":
       return GameAwardType.POSITION_FIRST_TO_LAST;
-    case 14:
-    case "POSITION_FIRST_ALWAYS":
-      return GameAwardType.POSITION_FIRST_ALWAYS;
-    case 17:
-    case "POSITION_LAST_TO_WIN":
-      return GameAwardType.POSITION_LAST_TO_WIN;
     case 10:
-    case "DOMINATION":
-      return GameAwardType.DOMINATION;
+    case "WIN_NONE_IN_RANGE":
+      return GameAwardType.WIN_NONE_IN_RANGE;
     case 13:
-    case "PERFECT_GAME":
-      return GameAwardType.PERFECT_GAME;
+    case "WIN_MINIMUM_ROUNDS":
+      return GameAwardType.WIN_MINIMUM_ROUNDS;
+    case 17:
+    case "WIN_FROM_EARLY_LAST_POSITION":
+      return GameAwardType.WIN_FROM_EARLY_LAST_POSITION;
+    case 14:
+    case "WIN_ALWAYS_FIRST_POSITION":
+      return GameAwardType.WIN_ALWAYS_FIRST_POSITION;
+    case 25:
+    case "WIN_AFTER_RESET":
+      return GameAwardType.WIN_AFTER_RESET;
+    case 24:
+    case "WIN_WHILE_IN_DANGER":
+      return GameAwardType.WIN_WHILE_IN_DANGER;
+    case 26:
+    case "WIN_WITH_SCORE_ONE":
+      return GameAwardType.WIN_WITH_SCORE_ONE;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -270,18 +278,22 @@ export function gameAwardTypeToJSON(object: GameAwardType): string {
       return "DANGER_COUNT_HIGHEST";
     case GameAwardType.DANGER_THEN_TWELVE:
       return "DANGER_THEN_TWELVE";
-    case GameAwardType.DANGER_THEN_WIN:
-      return "DANGER_THEN_WIN";
     case GameAwardType.POSITION_FIRST_TO_LAST:
       return "POSITION_FIRST_TO_LAST";
-    case GameAwardType.POSITION_FIRST_ALWAYS:
-      return "POSITION_FIRST_ALWAYS";
-    case GameAwardType.POSITION_LAST_TO_WIN:
-      return "POSITION_LAST_TO_WIN";
-    case GameAwardType.DOMINATION:
-      return "DOMINATION";
-    case GameAwardType.PERFECT_GAME:
-      return "PERFECT_GAME";
+    case GameAwardType.WIN_NONE_IN_RANGE:
+      return "WIN_NONE_IN_RANGE";
+    case GameAwardType.WIN_MINIMUM_ROUNDS:
+      return "WIN_MINIMUM_ROUNDS";
+    case GameAwardType.WIN_FROM_EARLY_LAST_POSITION:
+      return "WIN_FROM_EARLY_LAST_POSITION";
+    case GameAwardType.WIN_ALWAYS_FIRST_POSITION:
+      return "WIN_ALWAYS_FIRST_POSITION";
+    case GameAwardType.WIN_AFTER_RESET:
+      return "WIN_AFTER_RESET";
+    case GameAwardType.WIN_WHILE_IN_DANGER:
+      return "WIN_WHILE_IN_DANGER";
+    case GameAwardType.WIN_WITH_SCORE_ONE:
+      return "WIN_WITH_SCORE_ONE";
     default:
       return "UNKNOWN";
   }
@@ -327,18 +339,22 @@ export function gameAwardTypeToNumber(object: GameAwardType): number {
       return 9;
     case GameAwardType.DANGER_THEN_TWELVE:
       return 23;
-    case GameAwardType.DANGER_THEN_WIN:
-      return 24;
     case GameAwardType.POSITION_FIRST_TO_LAST:
       return 18;
-    case GameAwardType.POSITION_FIRST_ALWAYS:
-      return 14;
-    case GameAwardType.POSITION_LAST_TO_WIN:
-      return 17;
-    case GameAwardType.DOMINATION:
+    case GameAwardType.WIN_NONE_IN_RANGE:
       return 10;
-    case GameAwardType.PERFECT_GAME:
+    case GameAwardType.WIN_MINIMUM_ROUNDS:
       return 13;
+    case GameAwardType.WIN_FROM_EARLY_LAST_POSITION:
+      return 17;
+    case GameAwardType.WIN_ALWAYS_FIRST_POSITION:
+      return 14;
+    case GameAwardType.WIN_AFTER_RESET:
+      return 25;
+    case GameAwardType.WIN_WHILE_IN_DANGER:
+      return 24;
+    case GameAwardType.WIN_WITH_SCORE_ONE:
+      return 26;
     default:
       return 0;
   }
