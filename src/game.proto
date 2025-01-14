@@ -85,7 +85,7 @@ enum GameAwardType {
 
   POSITION_FIRST_TO_LAST = 18;
 
-  // Special awards
+  // Win awards
 
   WIN_NONE_IN_RANGE = 10;   // Won with no other player in range
   WIN_MINIMUM_ROUNDS = 13; // Won in least possible rounds
