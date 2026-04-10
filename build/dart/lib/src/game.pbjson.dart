@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: src/game.proto
-//
-// @dart = 2.12
+// Generated from src/game.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -100,7 +102,14 @@ const GameConfig$json = {
     {'1': 'zeros', '3': 1, '4': 1, '5': 17, '10': 'zeros'},
     {'1': 'reset_score', '3': 2, '4': 1, '5': 13, '10': 'resetScore'},
     {'1': 'winning_score', '3': 3, '4': 1, '5': 13, '10': 'winningScore'},
-    {'1': 'player_order', '3': 4, '4': 1, '5': 14, '6': '.PlayerOrder', '10': 'playerOrder'},
+    {
+      '1': 'player_order',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.PlayerOrder',
+      '10': 'playerOrder'
+    },
   ],
 };
 
@@ -115,7 +124,14 @@ const GameScore$json = {
   '1': 'GameScore',
   '2': [
     {'1': 'score', '3': 1, '4': 1, '5': 13, '10': 'score'},
-    {'1': 'timestamp', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'timestamp'},
+    {
+      '1': 'timestamp',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '10': 'timestamp'
+    },
   ],
 };
 
@@ -175,7 +191,14 @@ final $typed_data.Uint8List gameAwardDescriptor = $convert.base64Decode(
 const GameResolution$json = {
   '1': 'GameResolution',
   '2': [
-    {'1': 'finished_at', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'finishedAt'},
+    {
+      '1': 'finished_at',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '10': 'finishedAt'
+    },
     {'1': 'winner', '3': 2, '4': 1, '5': 9, '10': 'winner'},
     {'1': 'awards', '3': 3, '4': 3, '5': 11, '6': '.GameAward', '10': 'awards'},
   ],
@@ -208,8 +231,21 @@ final $typed_data.Uint8List gameViewerDataPlayerDescriptor = $convert.base64Deco
 const GameViewerData$json = {
   '1': 'GameViewerData',
   '2': [
-    {'1': 'players', '3': 1, '4': 3, '5': 11, '6': '.GameViewerDataPlayer', '10': 'players'},
-    {'1': 'current_player_name', '3': 2, '4': 1, '5': 9, '10': 'currentPlayerName'},
+    {
+      '1': 'players',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.GameViewerDataPlayer',
+      '10': 'players'
+    },
+    {
+      '1': 'current_player_name',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'currentPlayerName'
+    },
     {'1': 'next_player_name', '3': 3, '4': 1, '5': 9, '10': 'nextPlayerName'},
     {'1': 'current_round', '3': 4, '4': 1, '5': 13, '10': 'currentRound'},
   ],
@@ -231,20 +267,69 @@ const GameShareData$json = {
 };
 
 /// Descriptor for `GameShareData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List gameShareDataDescriptor = $convert.base64Decode(
-    'Cg1HYW1lU2hhcmVEYXRhEhAKA2tleRgBIAEoCVIDa2V5');
+final $typed_data.Uint8List gameShareDataDescriptor =
+    $convert.base64Decode('Cg1HYW1lU2hhcmVEYXRhEhAKA2tleRgBIAEoCVIDa2V5');
 
 @$core.Deprecated('Use gameDescriptor instead')
 const Game$json = {
   '1': 'Game',
   '2': [
-    {'1': 'config', '3': 1, '4': 1, '5': 11, '6': '.GameConfig', '10': 'config'},
-    {'1': 'players', '3': 2, '4': 3, '5': 11, '6': '.GamePlayer', '10': 'players'},
-    {'1': 'resolution', '3': 3, '4': 1, '5': 11, '6': '.GameResolution', '10': 'resolution'},
-    {'1': 'status', '3': 4, '4': 1, '5': 14, '6': '.GameStatus', '10': 'status'},
-    {'1': 'started_at', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'startedAt'},
-    {'1': 'viewer_data', '3': 6, '4': 1, '5': 11, '6': '.GameViewerData', '10': 'viewerData'},
-    {'1': 'share_data', '3': 7, '4': 1, '5': 11, '6': '.GameShareData', '10': 'shareData'},
+    {
+      '1': 'config',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.GameConfig',
+      '10': 'config'
+    },
+    {
+      '1': 'players',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.GamePlayer',
+      '10': 'players'
+    },
+    {
+      '1': 'resolution',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.GameResolution',
+      '10': 'resolution'
+    },
+    {
+      '1': 'status',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.GameStatus',
+      '10': 'status'
+    },
+    {
+      '1': 'started_at',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '10': 'startedAt'
+    },
+    {
+      '1': 'viewer_data',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.GameViewerData',
+      '10': 'viewerData'
+    },
+    {
+      '1': 'share_data',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.GameShareData',
+      '10': 'shareData'
+    },
   ],
 };
 
@@ -256,4 +341,3 @@ final $typed_data.Uint8List gameDescriptor = $convert.base64Decode(
     'VzEjkKCnN0YXJ0ZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUglzdGFy'
     'dGVkQXQSMAoLdmlld2VyX2RhdGEYBiABKAsyDy5HYW1lVmlld2VyRGF0YVIKdmlld2VyRGF0YR'
     'ItCgpzaGFyZV9kYXRhGAcgASgLMg4uR2FtZVNoYXJlRGF0YVIJc2hhcmVEYXRh');
-

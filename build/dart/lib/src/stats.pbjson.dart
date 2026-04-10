@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: src/stats.proto
-//
-// @dart = 2.12
+// Generated from src/stats.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -19,7 +21,14 @@ const CountStat$json = {
   '2': [
     {'1': 'count', '3': 1, '4': 1, '5': 13, '10': 'count'},
     {'1': 'ratePerSecond', '3': 2, '4': 1, '5': 2, '10': 'ratePerSecond'},
-    {'1': 'updatedAt', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    {
+      '1': 'updatedAt',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '10': 'updatedAt'
+    },
   ],
 };
 
@@ -34,7 +43,13 @@ const StoreRatingStat$json = {
   '1': 'StoreRatingStat',
   '2': [
     {'1': 'userRatingCount', '3': 1, '4': 1, '5': 13, '10': 'userRatingCount'},
-    {'1': 'averageUserRating', '3': 2, '4': 1, '5': 2, '10': 'averageUserRating'},
+    {
+      '1': 'averageUserRating',
+      '3': 2,
+      '4': 1,
+      '5': 2,
+      '10': 'averageUserRating'
+    },
   ],
 };
 
@@ -49,8 +64,22 @@ const Stats$json = {
   '2': [
     {'1': 'games', '3': 1, '4': 1, '5': 11, '6': '.CountStat', '10': 'games'},
     {'1': 'users', '3': 2, '4': 1, '5': 11, '6': '.CountStat', '10': 'users'},
-    {'1': 'appStoreRating', '3': 3, '4': 1, '5': 11, '6': '.StoreRatingStat', '10': 'appStoreRating'},
-    {'1': 'createdAt', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {
+      '1': 'appStoreRating',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.StoreRatingStat',
+      '10': 'appStoreRating'
+    },
+    {
+      '1': 'createdAt',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '10': 'createdAt'
+    },
   ],
 };
 
@@ -60,4 +89,3 @@ final $typed_data.Uint8List statsDescriptor = $convert.base64Decode(
     'syCi5Db3VudFN0YXRSBXVzZXJzEjgKDmFwcFN0b3JlUmF0aW5nGAMgASgLMhAuU3RvcmVSYXRp'
     'bmdTdGF0Ug5hcHBTdG9yZVJhdGluZxI4CgljcmVhdGVkQXQYBCABKAsyGi5nb29nbGUucHJvdG'
     '9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQ=');
-
