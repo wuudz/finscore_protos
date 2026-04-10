@@ -377,6 +377,7 @@ export interface GamePlayer {
   playerRef: string | undefined;
   scores: GameScore[];
   kicked: boolean;
+  teamMembers: string[];
 }
 
 export interface GameAward {
@@ -592,7 +593,7 @@ export const GameScore = {
   },
 };
 
-const baseGamePlayer: object = { kicked: false };
+const baseGamePlayer: object = { kicked: false, teamMembers: "" };
 
 export const GamePlayer = {
   encode(message: GamePlayer, writer: Writer = Writer.create()): Writer {
@@ -608,6 +609,9 @@ export const GamePlayer = {
     if (message.kicked === true) {
       writer.uint32(24).bool(message.kicked);
     }
+    for (const v of message.teamMembers) {
+      writer.uint32(42).string(v!);
+    }
     return writer;
   },
 
@@ -616,6 +620,7 @@ export const GamePlayer = {
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = { ...baseGamePlayer } as GamePlayer;
     message.scores = [];
+    message.teamMembers = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -630,6 +635,9 @@ export const GamePlayer = {
           break;
         case 3:
           message.kicked = reader.bool();
+          break;
+        case 5:
+          message.teamMembers.push(reader.string());
           break;
         default:
           reader.skipType(tag & 7);
@@ -656,6 +664,7 @@ export const GamePlayer = {
       object.kicked !== undefined && object.kicked !== null
         ? Boolean(object.kicked)
         : false;
+    message.teamMembers = (object.teamMembers ?? []).map((e: any) => String(e));
     return message;
   },
 
@@ -671,6 +680,11 @@ export const GamePlayer = {
       obj.scores = [];
     }
     message.kicked !== undefined && (obj.kicked = message.kicked);
+    if (message.teamMembers) {
+      obj.teamMembers = message.teamMembers.map((e) => e);
+    } else {
+      obj.teamMembers = [];
+    }
     return obj;
   },
 
@@ -682,6 +696,7 @@ export const GamePlayer = {
     message.playerRef = object.playerRef ?? undefined;
     message.scores = object.scores?.map((e) => GameScore.fromPartial(e)) || [];
     message.kicked = object.kicked ?? false;
+    message.teamMembers = object.teamMembers?.map((e) => e) || [];
     return message;
   },
 };

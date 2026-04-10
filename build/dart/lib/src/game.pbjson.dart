@@ -132,6 +132,7 @@ const GamePlayer$json = {
     {'1': 'player_ref', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'playerRef'},
     {'1': 'scores', '3': 2, '4': 3, '5': 11, '6': '.GameScore', '10': 'scores'},
     {'1': 'kicked', '3': 3, '4': 1, '5': 8, '10': 'kicked'},
+    {'1': 'team_members', '3': 5, '4': 3, '5': 9, '10': 'teamMembers'},
   ],
   '8': [
     {'1': 'player'},
@@ -142,7 +143,8 @@ const GamePlayer$json = {
 final $typed_data.Uint8List gamePlayerDescriptor = $convert.base64Decode(
     'CgpHYW1lUGxheWVyEhQKBG5hbWUYASABKAlIAFIEbmFtZRIfCgpwbGF5ZXJfcmVmGAQgASgJSA'
     'BSCXBsYXllclJlZhIiCgZzY29yZXMYAiADKAsyCi5HYW1lU2NvcmVSBnNjb3JlcxIWCgZraWNr'
-    'ZWQYAyABKAhSBmtpY2tlZEIICgZwbGF5ZXI=');
+    'ZWQYAyABKAhSBmtpY2tlZBIhCgx0ZWFtX21lbWJlcnMYBSADKAlSC3RlYW1NZW1iZXJzQggKBn'
+    'BsYXllcg==');
 
 @$core.Deprecated('Use gameAwardDescriptor instead')
 const GameAward$json = {

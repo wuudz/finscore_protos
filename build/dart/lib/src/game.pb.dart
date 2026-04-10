@@ -188,6 +188,7 @@ class GamePlayer extends $pb.GeneratedMessage {
     $core.Iterable<GameScore>? scores,
     $core.bool? kicked,
     $core.String? playerRef,
+    $core.Iterable<$core.String>? teamMembers,
   }) {
     final $result = create();
     if (name != null) {
@@ -201,6 +202,9 @@ class GamePlayer extends $pb.GeneratedMessage {
     }
     if (playerRef != null) {
       $result.playerRef = playerRef;
+    }
+    if (teamMembers != null) {
+      $result.teamMembers.addAll(teamMembers);
     }
     return $result;
   }
@@ -219,6 +223,7 @@ class GamePlayer extends $pb.GeneratedMessage {
     ..pc<GameScore>(2, _omitFieldNames ? '' : 'scores', $pb.PbFieldType.PM, subBuilder: GameScore.create)
     ..aOB(3, _omitFieldNames ? '' : 'kicked')
     ..aOS(4, _omitFieldNames ? '' : 'playerRef')
+    ..pPS(5, _omitFieldNames ? '' : 'teamMembers')
     ..hasRequiredFields = false
   ;
 
@@ -275,6 +280,9 @@ class GamePlayer extends $pb.GeneratedMessage {
   $core.bool hasPlayerRef() => $_has(3);
   @$pb.TagNumber(4)
   void clearPlayerRef() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.String> get teamMembers => $_getList(4);
 }
 
 class GameAward extends $pb.GeneratedMessage {
