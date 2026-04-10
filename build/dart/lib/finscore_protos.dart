@@ -1,4 +1,4 @@
-export 'google/protobuf/timestamp.pb.dart';
+export 'package:protobuf/well_known_types/google/protobuf/timestamp.pb.dart';
 
 export 'src/game.pb.dart';
 export 'src/session.pb.dart';
